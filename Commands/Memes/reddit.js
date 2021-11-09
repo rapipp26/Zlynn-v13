@@ -1,5 +1,6 @@
 const { CommandInteraction, MessageEmbed } = require("discord.js");
 const axios                                = require("axios");
+const { true1, false1, arrow, reply1, reply2 } = require ('../../config.json');
 
 module.exports = {
     name: "reddit",
@@ -54,7 +55,7 @@ module.exports = {
             reply.react("🔴");
         } catch (error) {
             if (error.response.data.message) {
-                errorEmbed.setDescription(`${false1} **|** Unable to finde subreddit\n\`\`\`${error.response.data.message}\`\`\``)
+                errorEmbed.setDescription(`${false1} **|** Unable to find subreddit\n\`\`\`${error.response.data.message}\`\`\``)
                 return interaction.reply({embeds: [errorEmbed], ephemeral: true});
             }
 
