@@ -30,15 +30,11 @@ module.exports = {
     async execute(interaction, client) {
         const animal      = interaction.options.getString("animal");
         const capitalised = animal.replaceAll("_", " ").replace(/(^\w{1})|(\s{1}\w{1})/g, match => match.toUpperCase());
-        const errorEmbed  = new MessageEmbed()
-            .setColor("NAVY")
-            .setDescription(`${false1} **|** An error occured while running this command ╰（‵□′）╯`)
-            .addField("Error Info", `\`\`\`The API that we're using is probably undergoing maintenance.\`\`\``);
+        const embed       = new MessageEmbed();
 
         try {
             const response = await axios.get(`https://some-random-api.ml/animal/${animal}`);
-            const embed    = new MessageEmbed()
-                .setAuthor(`${capitalised} facts`, client.user.displayAvatarURL({dynamic: true}))
+                embed.setAuthor(`${capitalised} facts`, interaction.user.displayAvatarURL({dynamic: true}))
                 .setDescription(response.data.fact)
                 .setColor("RANDOM")
                 .setImage(response.data.image)
@@ -47,7 +43,11 @@ module.exports = {
             interaction.reply({embeds: [embed]})
         } catch (error) {
             console.log(error);
-            interaction.reply({embeds: [errorEmbed]});
+            embed.setTitle("⚠ An error occured ⚠")
+            .setColor("YELLOW")
+            .setDescription("The API that we're using is probably undergoing maintenance.")
+            .setFooter("🚧")
+            interaction.reply({ embeds: [errorEmbed], ephemeral: true });
         }
     }
 }
