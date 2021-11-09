@@ -1,5 +1,6 @@
-const { CommandInteraction, MessageEmbed } = require("discord.js");
-const axios                                = require("axios");
+const { CommandInteraction, MessageEmbed }     = require("discord.js");
+const axios                                    = require("axios");
+const { true1, false1, arrow, reply1, reply2 } = require ('../../config.json');
 
 module.exports = {
     name: "reddit",
@@ -34,18 +35,15 @@ module.exports = {
                 .addFields(
                     {
                         name: "Post Title",
-                        value: `${response.data.title}`,
-                        inline: true
+                        value: `${reply1} ${response.data.title}`
                     },
                     {
                         name: "Post Author",
-                        value: `${response.data.author}`,
-                        inline: true
+                        value: `${reply1} ${response.data.author}`
                     },
                     {
                         name: "Post Upvotes",
-                        value: `${response.data.ups.toLocaleString()}`,
-                        inline: true
+                        value: `${reply1} ${response.data.ups.toLocaleString()}`
                     }
                 )
                 .setImage(response.data.url)
