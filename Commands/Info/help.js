@@ -20,17 +20,12 @@ module.exports = {
             },
             {
                 name: "Information",
-                value: "\`\`\`/help\n/status\`\`\`",
+                value: "\`\`\`/help\n/status\n/zoo\`\`\`",
                 inline: true
             },
             {
                 name: "Overlay",
                 value: "\`\`\`/gay\`\`\`",
-                inline: true
-            },
-            {
-                name: "Zoo",
-                value: "\`\`\`/bird\n/cat\n/dog\n/fox\n/kangaroo\n/koala\n/panda\n/raccoon\n/redpanda\n/whale\`\`\`",
                 inline: true
             },
             {
