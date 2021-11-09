@@ -10,7 +10,7 @@ module.exports = {
             name: "subreddit",
             description: "Provide a subreddit to request content from.",
             type: "STRING",
-            required: false
+            required: true
         }
     ],
     /**
