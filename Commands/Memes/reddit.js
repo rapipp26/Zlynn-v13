@@ -1,6 +1,6 @@
 const { CommandInteraction, MessageEmbed }     = require("discord.js");
 const axios                                    = require("axios");
-const { true1, false1, arrow, reply1, reply2 } = require ('../../config.json');
+const { true1, false1, arrow, reply1, reply2, thumbsdown, thumbsup } = require ('../../config.json');
 
 module.exports = {
     name: "reddit",
@@ -27,7 +27,8 @@ module.exports = {
                 embed.setTitle("⚠ An error occured ⚠")
                     .setDescription("No **NSFW** content allowed in this channel. Go to a channel where **NSFW** is *enabled*.")
                     .setColor("RED")
-                    .setFooter("🔞 No NSFW Content 🔞");
+                    .setFooter("🔞")
+                    .setTimestamp();
                 return interaction.reply({embeds: [embed], ephemeral: true});
             }
             
@@ -51,19 +52,23 @@ module.exports = {
                 .setTimestamp();
 
             const reply = await interaction.reply({ embeds: [embed], fetchReply: true });
-            reply.react("🟢");
-            reply.react("🔴");
+            reply.react(`${thumbsup}`);
+            reply.react(`${thumbsdown}`);
         } catch (error) {
             if (error.response.data.message) {
                 embed.setTitle("⚠ An error occured ⚠")
+                    .setColor("YELLOW")
                     .setDescription(error.response.data.message)
-                    .setFooter("Unable to find the subreddit 🔍");
+                    .setFooter("🔍")
+                    .setTimestamp();
                 return interaction.reply({embeds: [embed], ephemeral: true});
             }
 
             embed.setTitle("⚠ An error occured ⚠")
+                .setColor("YELLOW")
                 .setDescription(`The connection to the API could not be established.`)
-                .setFooter("Unable to find the subreddit 🔍");
+                .setFooter("🔍")
+                .setTimestamp();
             interaction.reply({embeds: [embed], ephemeral: true});
         }
     }
