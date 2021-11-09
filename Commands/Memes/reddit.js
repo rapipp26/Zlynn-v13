@@ -29,7 +29,7 @@ module.exports = {
                 return interaction.reply({embeds: [errorEmbed], ephemeral: true});
             }
             
-            const Response = new MessageEmbed()
+            const embed = new MessageEmbed()
 
             .addFields(
                 {
@@ -50,7 +50,7 @@ module.exports = {
             .setTimestamp()
             .setColor("RANDOM")
 
-            const reply = await interaction.reply({ embeds: [Response], fetchReply: true });
+            const reply = await interaction.reply({ embeds: [embed], fetchReply: true });
             reply.react("🟢");
             reply.react("🔴");
         } catch (error) {
