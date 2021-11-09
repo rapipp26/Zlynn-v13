@@ -1,80 +1,53 @@
 const { CommandInteraction, MessageEmbed } = require("discord.js");
-const axios = require("axios");
-const { true1, false1, arrow, reply1, reply2 } = require ('../../config.json');
+const axios                                = require("axios");
 
 module.exports = {
     name: "reddit",
-    description: "request a meme from reddit via subreddits.",
+    description: "Request random content from Reddit via subreddits.",
     options: [
         {
             name: "subreddit",
-            description: "Provide a name of the subreddit.",
+            description: "Provide a subreddit to request content from.",
             type: "STRING",
             required: true
         }
     ],
     /**
-     * 
      * @param {CommandInteraction} interaction 
      */
     async execute(interaction) {
-        const { options } = interaction;
-
-        const url = "https://meme-api.herokuapp.com/gimme/";
-
-        const name = options.getString("subreddit");
-
-        const meme = url+name;
-
-        const errorEmbed = new MessageEmbed()
-        .setColor("RED")
-
-        let data, response;
-
+        const subreddit = interaction.options.getString("subreddit") || "";
+        const embed     = new MessageEmbed();
+            
         try {
-            response = await axios.get(meme);
-            data = response.data;
-        } catch (e) {
-            if(e){
-                if(e.message.startsWith("Request failed with status code")) {
-                    errorEmbed.setDescription(`${false1} **|** Subreddit \`${name}\` does not exist`)
-                    interaction.reply({ embeds: [errorEmbed], ephemeral: true })
-                } else if(e) {
-                    errorEmbed.setDescription(`${false1} **|** An error was occured\n\`${e}\``)
-                    interaction.reply({ embeds: [errorEmbed], ephemeral: true })
-                } 
+            const response = await axios.get(`https://meme-api.herokuapp.com/gimme/${subreddit}`);
+
+            if (response.data.nsfw && !interaction.channel.nsfw) {
+                embed.setTitle("🔞 NSFW content 🔞")
+                    .setDescription("No **NSFW** content allowed in this channel. Go to a channel where **NSFW** is *enabled*.")
+                    .setColor("RED");
+                return interaction.reply({embeds: [embed], ephemeral: true});
             }
-        }
-        async function ResponseEmbed() {
-            const Response = new MessageEmbed()
+            
+            embed.setColor("RANDOM")
+                .setTitle(response.data.title)
+                .setImage(response.data.url)
+                .setFooter(`Posted by ${response.data.author} in r/${response.data.subreddit} with ${response.data.ups} upvotes`)
+                .setTimestamp();
 
-            .addFields(
-                {
-                    name: "Reddit Title",
-                    value: `${reply1} ${data.title}`
-                },
-                {
-                    name: "Post Link",
-                    value: `${reply1} ${data.postLink}`
-                },
-                {
-                    name: "Post Author",
-                    value: `${reply1} ${data.author}`
-                }
-            )
-            .setImage(data.url)
-            .setFooter(`Executed by ${interaction.user.tag}`)
-            .setTimestamp()
-            .setColor("RANDOM")
-    
-        const message = await interaction.reply({ embeds: [Response], fetchReply: true })
-        message.react(`${true1}`)
-        message.react(`${false1}`)
-        }
+            const reply = await interaction.reply({ embeds: [embed], fetchReply: true });
+            reply.react("🟢");
+            reply.react("🔴");
+        } catch (error) {
+            if (error.response.data.message) {
+                embed.setTitle("🔍 Unable to find subreddit 🔎")
+                    .setDescription(error.response.data.message);
+                return interaction.reply({embeds: [embed], ephemeral: true});
+            }
 
-        if(data === null) return;
-        if(interaction.channel.nsfw && data.nsfw === true) return ResponseEmbed();
-        if(!interaction.channel.nsfw && data.nsfw === true) return interaction.reply({ embeds: [errorEmbed.setDescription(`${false1} **|** We dont serving nsfw content here, please move to channel where nsfw is enabled.`)], ephemeral: true });
-        
+            embed.setTitle("🔍 Unable to reach API 🔎")
+                .setDescription(`The connection to the API could not be established.`);
+            interaction.reply({embeds: [embed], ephemeral: true});
+        }
     }
 }
