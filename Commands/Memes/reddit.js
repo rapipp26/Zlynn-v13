@@ -22,7 +22,7 @@ module.exports = {
 
         const url = "https://meme-api.herokuapp.com/gimme/";
 
-        const name = options.getString("name");
+        const name = options.getString("subreddit");
 
         const meme = url+name;
 
