@@ -17,32 +17,32 @@ module.exports = {
         .setFields(
         {
             name: "・Username",
-            value: `${client.user.username}`,
+            value: `\`${client.user.username}\``,
             inline: true
         },
         {
             name: "・Discriminator",
-            value: `${client.user.discriminator}`,
+            value: `\`${client.user.discriminator}\``,
             inline: true
         },
         {
             name: "・ID",
-            value: `${client.user.id}`,
+            value: `\`${client.user.id}\``,
             inline: true
         },
         {
             name: "・Servers",
-            value: `${client.guilds.cache.size.toLocaleString()}`,
+            value: `\`${client.guilds.cache.size.toLocaleString()}\``,
             inline: true
         },
         {
             name: "・Channels",
-            value: `${client.channels.cache.size.toLocaleString()}`,
+            value: `\`${client.channels.cache.size.toLocaleString()}\``,
             inline: true
         },
         {
             name: "・Users",
-            value: `${client.users.cache.size.toLocaleString()}`,
+            value: `\`${client.users.cache.size.toLocaleString()}\``,
             inline: true
         },
         )
