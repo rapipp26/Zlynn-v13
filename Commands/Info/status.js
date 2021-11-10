@@ -20,20 +20,49 @@ module.exports = {
         .addFields(
             {
                 name: "🤖・Client",
-                value: `${reply1} \`🟢 ONLINE\``
+                value: `${reply1} \`🟢 ONLINE\``,
+                inline: true
             },
             {
                 name: "🏓・Ping",
-                value: `${reply1} \`${client.ws.ping}ms\``
+                value: `${reply1} \`${client.ws.ping}ms\``,
+                inline: true
             },
             {
                 name: "⏲・Uptime",
-                value: `${reply1} <t:${parseInt(client.readyTimestamp / 1000)}:R>`
+                value: `${reply1} <t:${parseInt(client.readyTimestamp / 1000)}:R>`,
+                inline: true
             },
             {
                 name: "🏬・Database",
-                value: `${reply1} \`${switchTo(connection.readyState)}\``
-            }
+                value: `${reply1} \`${switchTo(connection.readyState)}\``,
+                inline: true
+            },
+            {
+                name: "Username",
+                value: `${reply1} ${client.user.username}`
+            },
+            {
+                name: "Discriminator",
+                value: `${reply1} ${client.user.tag}`
+            },
+            {
+                name: "ID",
+                value: `${reply1} ${client.user.id}`
+            },
+            {
+                name: "Servers",
+                value: `${reply1} ${client.guilds.cache.size.toLocaleString()}`
+            },
+            {
+                name: "Channels",
+                value: `${reply1} ${client.channels.cache.size.toLocaleString()}`
+            },
+            {
+                name: "Users",
+                value: `${reply1} ${client.users.cache.size.toLocaleString()}`
+            },
+
         )
         .setFooter(`Executed by ${interaction.user.tag}`)
         .setTimestamp();
