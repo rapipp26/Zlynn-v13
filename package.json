@@ -12,6 +12,7 @@
   "author": "rapipp_",
   "license": "ISC",
   "dependencies": {
+    "@koenie06/discord.js-music": "^1.2.9",
     "ascii-table": "^0.0.9",
     "axios": "^0.24.0",
     "discord-giveaways": "^5.0.1",
