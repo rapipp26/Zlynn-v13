@@ -19,48 +19,54 @@ module.exports = {
         .setColor("PURPLE")
         .addFields(
             {
-                name: "🤖・Client",
+                name: "Client",
                 value: `${reply1} \`🟢 ONLINE\``,
                 inline: true
             },
             {
-                name: "🏓・Ping",
+                name: "Ping",
                 value: `${reply1} \`${client.ws.ping}ms\``,
                 inline: true
             },
             {
-                name: "⏲・Uptime",
+                name: "Uptime",
                 value: `${reply1} <t:${parseInt(client.readyTimestamp / 1000)}:R>`,
                 inline: true
             },
             {
-                name: "🏬・Database",
+                name: "Database",
                 value: `${reply1} \`${switchTo(connection.readyState)}\``,
                 inline: true
             },
             {
                 name: "Username",
-                value: `${reply1} ${client.user.username}`
+                value: `${reply1} \`${client.user.username}\``,
+                inline: true
             },
             {
                 name: "Discriminator",
-                value: `${reply1} ${client.user.tag}`
+                value: `${reply1} \`${client.user.discriminator}\``,
+                inline: true
             },
             {
                 name: "ID",
-                value: `${reply1} ${client.user.id}`
+                value: `${reply1} \`${client.user.id}\``,
+                inline: true
             },
             {
                 name: "Servers",
-                value: `${reply1} ${client.guilds.cache.size.toLocaleString()}`
+                value: `${reply1} \`${client.guilds.cache.size.toLocaleString()}\``,
+                inline: true
             },
             {
                 name: "Channels",
-                value: `${reply1} ${client.channels.cache.size.toLocaleString()}`
+                value: `${reply1} \`${client.channels.cache.size.toLocaleString()}\``,
+                inline: true
             },
             {
                 name: "Users",
-                value: `${reply1} ${client.users.cache.size.toLocaleString()}`
+                value: `${reply1} \`${client.users.cache.size.toLocaleString()}\``,
+                inline: true
             },
 
         )
