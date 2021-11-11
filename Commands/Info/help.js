@@ -20,7 +20,7 @@ module.exports = {
             },
             {
                 name: "Information",
-                value: "\`\`\`/help\n/status\n/zoo\`\`\`",
+                value: "\`\`\`/help\n/status\n/zoo\n/botinfo`\`\`",
                 inline: true
             },
             {
@@ -30,7 +30,12 @@ module.exports = {
             },
             {
                 name: "Memes",
-                value: "\`\`\`/token\n/reddit\n/simpcard\n/stupid\n/youtube\`\`\`",
+                value: "\`\`\`/token\n/reddit\n/simpcard\n/stupid\n/youtube\n/wouldyourather\n/emojify\`\`\`",
+                inline: true
+            },
+            {
+                name: "System",
+                value: "\`\`\`/giveaway\`\`\`",
                 inline: true
             }
         )
