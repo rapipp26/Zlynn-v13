@@ -49,6 +49,6 @@ module.exports = {
         .setFooter(`Executed by ${interaction.user.tag}`)
         .setTimestamp();
         interaction.reply({ embeds: [embed], fetchReply: true })
-
+        interaction.guild.fetchOwner().then(console.log);
     }
 }
