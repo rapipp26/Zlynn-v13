@@ -25,20 +25,18 @@ module.exports = {
      * @param {Client} client 
      */
     async execute(interaction, client) {
-      const module = interaction.options.getString();
+      const module = interaction.options.getString("module");
 
-      switch(module) {
-        case "Anime" : {
-          const embed = new MessageEmbed()
-          .setAuthor("Anime commands!")
-          .setColor("PURPLE")
-          .setDescription("*Gives action to your friends such as hugs, pats :). Have fun!*")
-          .setFields(
-            { name: "Commands", value: "\`\`\`/hug | /pat | /wink\`\`\`" }
-          )
-          .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
-          interaction.reply({ embeds: [embed], ephemeral: true })
-        }
+      if(module === "Anime") {
+        const embed = new MessageEmbed()
+        .setAuthor("Anime commands!")
+        .setColor("PURPLE")
+        .setDescription("*Gives action to your friends such as hugs, pats :). Have fun!*")
+        .setFields(
+          { name: "Commands", value: "\`\`\`/hug | /pat | /wink\`\`\`" }
+        )
+        .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
+        interaction.reply({ embeds: [embed], ephemeral: true })
       }
 
 
