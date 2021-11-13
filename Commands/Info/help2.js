@@ -6,11 +6,11 @@ const {
   } = require("discord.js");
   const { readdirSync } = require("fs");
   const { stripIndent } = require("common-tags");
-  let color = "#303136";
+  let color = "BLURPLE";
   
   const create_mh = require(`../../Validation/menu.js`);
   module.exports = {
-    name: "help2",
+    name: "help",
     description: "Shows all available bot commands",
     options: [
       {

@@ -8,9 +8,13 @@ const create_mh = (array) => {
     let id = `help-menus`;
     let menus = [];
     const emo = {
-        info: "❗",
-        utility: "⚙️",
-        moderation: "🔧", // Write your category names instead
+        Developer: "🗒️",
+        System: "🔧",
+        Overlay: "🔧",
+        Memes: "🐸",
+        Info: "⚙",
+        Anime: "🍙",
+        Music: "🎵"
     }
     
     array.forEach(cca => {
