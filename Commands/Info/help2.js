@@ -6,7 +6,7 @@ const {
   } = require("discord.js");
   const { readdirSync } = require("fs");
   const { stripIndent } = require("common-tags");
-  let color = "#ff0000";
+  let color = "#303136";
   
   const create_mh = require(`../../Validation/menu.js`);
   module.exports = {
@@ -31,10 +31,14 @@ const {
       if (!helpcmd) {
         let ignored = ["the ingored commands"];
         const emo = {
-          Developers: "🗒️",
-          Administration: "🔧",
-          Infractions: "🔧",
-          Utilities: "⚙️",
+          Developer: "🗒️",
+          System: "🔧",
+          Overlay: "🔧",
+          Memes: "🐸",
+          Info: "⚙",
+          Anime: "🍙",
+          Music: "🎵"
+
           // Add any category
         };
   
