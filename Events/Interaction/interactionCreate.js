@@ -19,5 +19,11 @@ module.exports = {
 
             command.execute(interaction, client)
         }
+
+        if(interaction.isButton()) {
+            if(interaction.customId === "1" ) {
+                interaction.editReply({ content: "Working ig?" })
+            }
+        } 
     }
 }
