@@ -1,48 +1,71 @@
-const { CommandInteraction, MessageEmbed } = require('discord.js');
+const { CommandInteraction, MessageEmbed, MessageButton, MessageActionRow } = require('discord.js');
 const { true1, false1, arrow, reply1, reply2 } = require ('../../config.json');
 
 module.exports = { 
     name: 'help', 
     description: 'Gives my command information!! <3',
+    options: [
+        {
+            name: "module",
+            description: "Select the module",
+            type: "STRING",
+            required: true,
+            choice: [
+                { name: "Anime", value: "Anime" },
+                { name: "Information", value: "Information" },
+                { name: "Overlay", value: "Overlay" },
+                { name: "Memes", value: "Memes" },
+                { name: "System", value: "System" }
+            ]
+        }
+    ],
     /**
      * 
-     * @param {CommandInteraction} interaction 
+     * @param {CommandInteraction} interaction
      * @param {Client} client 
      */
     async execute(interaction, client) {
+        const b1 = new MessageButton()
+        .setCustomId("1")
+        .setLabel("Anime")
+        .setStyle("SUCCESS")
+        .setEmoji("🍙");
+        const b2 = new MessageButton()
+        .setCustomId("2")
+        .setLabel("Information")
+        .setStyle("SUCCESS")
+        .setEmoji("🎫");
+        const b3 = new MessageButton()
+        .setCustomId("3")
+        .setLabel("Memes")
+        .setStyle("SUCCESS")
+        .setEmoji("🐸");
+        const b4 = new MessageButton()
+        .setCustomId("4")
+        .setLabel("Overlay")
+        .setStyle("SUCCESS")
+        .setEmoji("🎑");
+        const b5 = new MessageButton()
+        .setCustomId("5")
+        .setLabel("System")
+        .setStyle("SUCCESS")
+        .setEmoji("📣");
+        const row = new MessageActionRow()
+        .addComponents([ b1, b2, b3, b4, b5 ]);
+
         const embed = new MessageEmbed()
-        .setAuthor("Command Information")
-        .addFields(
-            {
-                name: "Anime",
-                value: "\`\`\`/hug\n/wink\n/pat\`\`\`",
-                inline: true
-            },
-            {
-                name: "Information",
-                value: "\`\`\`/help\n/status\n/zoo\n/botinfo`\`\`",
-                inline: true
-            },
-            {
-                name: "Overlay",
-                value: "\`\`\`/gay\`\`\`",
-                inline: true
-            },
-            {
-                name: "Memes",
-                value: "\`\`\`/token\n/reddit\n/simpcard\n/stupid\n/youtube\n/wouldyourather\n/emojify\`\`\`",
-                inline: true
-            },
-            {
-                name: "System",
-                value: "\`\`\`/giveaway\`\`\`",
-                inline: true
-            }
-        )
-        .setColor("BLURPLE")
+        .setAuthor("Select Module")
+        .setDescription("Please click the button below to check our commands")
+        .setColor("LUMINOUS_VIVID_PINK")
         .setFooter(`Executed by ${interaction.user.tag}`)
         .setTimestamp()
-        .setThumbnail(interaction.user.displayAvatarURL({ dynamic: true }))
-        interaction.reply({ embeds: [embed], ephemeral: true })
-    }
+
+        interaction.reply({ embeds: [embed], components: [row], fetchReply: true })
+
+        setTimeout( async () => {
+            const row1 = new MessageActionRow()
+            .addComponents([]);
+            interaction.editReply({ embeds: [embed], components: [row1] })
+        }, 1000 * 30)
+}
 }
