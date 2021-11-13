@@ -17,7 +17,7 @@ module.exports = {
             embed.setAuthor("Would you rather..? 🤨")
             .setColor("RANDOM")
             .addFields( { name: "Option 1", value: `${response.data.option_1}`}, { name: "Option 2", value: `${response.data.option_2}`} )
-            .setFooter(`Executed  by ${interaction.user.tag}`)
+            .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
             .setTimestamp()
             const message = await interaction.reply({ embeds: [embed], fetchReply: true })
             message.react("1️⃣")

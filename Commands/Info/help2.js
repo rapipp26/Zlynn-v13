@@ -267,7 +267,7 @@ const {
               : "No description for this command."
           )
           .setFooter(
-            `Requested by ${mbr}`,
+            `Executed by ${mbr}`,
             interaction.user.displayAvatarURL({
               dynamic: true,
             })

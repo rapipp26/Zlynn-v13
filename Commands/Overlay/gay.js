@@ -24,7 +24,7 @@ module.exports = {
         .setAuthor("Pride flag is strict...")
         .setColor("RANDOM")
         .setImage(`https://some-random-api.ml/canvas/gay?avatar=${target.displayAvatarURL()}`)
-        .setFooter(`Executed by ${interaction.user.tag}`)
+        .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
         .setTimestamp()
         interaction.reply({ embeds: [embed] })
     }

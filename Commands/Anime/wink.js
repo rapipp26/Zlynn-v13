@@ -42,7 +42,7 @@ module.exports = {
         .setColor("RANDOM")
         .setImage(data.link)
         .setAuthor(`${interaction.user.tag} winks at ${target.user.tag} o((>ω< ))o `)
-        .setFooter(`Executed by ${interaction.user.tag}`)
+        .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
         .setTimestamp()
 
         interaction.reply({ embeds: [embed] })

@@ -41,7 +41,7 @@ module.exports = {
         const embed = new MessageEmbed()
         .setColor("RANDOM")
         .setImage(data.link)
-        .setFooter(`Executed by ${interaction.user.tag}`)
+        .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
         .setTimestamp();
 
         if(target) {

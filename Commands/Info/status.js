@@ -39,7 +39,7 @@ module.exports = {
                 inline: true
             },
         )
-        .setFooter(`Executed by ${interaction.user.tag}`)
+        .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
         .setTimestamp();
         interaction.reply({ embeds: [Response] })
 

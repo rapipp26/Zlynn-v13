@@ -43,7 +43,7 @@ module.exports = {
         .setAuthor("Token leaked!! 😱😱")
         .setColor("DARK_RED")
         .addField("Client",`${reply1} ${target}`)
-        .setFooter(`Executed by ${interaction.user.tag}`)
+        .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
         .setTimestamp()
 
         if(!target.user.bot){

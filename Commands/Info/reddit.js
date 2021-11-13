@@ -48,7 +48,7 @@ module.exports = {
                     }
                 )
                 .setImage(response.data.url)
-                .setFooter(`Executed by ${interaction.user.tag}`)
+                .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
                 .setTimestamp();
 
             const reply = await interaction.reply({ embeds: [embed], fetchReply: true });

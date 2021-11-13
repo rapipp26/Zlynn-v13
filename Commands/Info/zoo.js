@@ -38,7 +38,7 @@ module.exports = {
                 .setDescription(response.data.fact)
                 .setColor("RANDOM")
                 .setImage(response.data.image)
-                .setFooter(`Executed by ${interaction.user.tag}`)
+                .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
                 .setTimestamp();
             interaction.reply({embeds: [embed]})
         } catch (error) {
