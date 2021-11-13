@@ -4,21 +4,6 @@ const { true1, false1, arrow, reply1, reply2 } = require ('../../config.json');
 module.exports = { 
     name: 'help', 
     description: 'Gives my command information!! <3',
-    options: [
-        {
-            name: "module",
-            description: "Select the module",
-            type: "STRING",
-            required: true,
-            choice: [
-                { name: "Anime", value: "Anime" },
-                { name: "Information", value: "Information" },
-                { name: "Overlay", value: "Overlay" },
-                { name: "Memes", value: "Memes" },
-                { name: "System", value: "System" }
-            ]
-        }
-    ],
     /**
      * 
      * @param {CommandInteraction} interaction
@@ -73,6 +58,7 @@ module.exports = {
             .setCustomId("2")
             .setLabel("Information")
             .setStyle("SUCCESS")
+            .setDisabled(true)
             .setEmoji("🎫");
             const b3 = new MessageButton()
             .setCustomId("3")
