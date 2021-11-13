@@ -1,44 +1,91 @@
-const { CommandInteraction, MessageEmbed, Client, MessageButton, MessageActionRow } = require('discord.js');
+const { CommandInteraction, MessageEmbed, Client } = require('discord.js');
 const { true1, false1, arrow, reply1, reply2, thumbsup, thumbsdown } = require ('../../config.json');
 
 module.exports = { 
-    name: 'help2', 
-    description: 'tolol',
+    name: 'help', 
+    description: 'Gives all available bot commands',
+    options: [
+      {
+        name: "module",
+        description: "Select a module",
+        type: "STRING",
+        required: true,
+        choices: [
+          { name: "Anime", value: "Anime" },
+          { name: "Information", value: "Information" },
+          { name: "Overlay", value: "Overlay" },
+          { name: "Memes", value: "Memes" },
+          { name: "System", value: "System" }
+        ]
+      }
+    ],
     /**
      * 
-     * @param {*} interaction 
-     * @param {*} client 
+     * @param {CommandInteraction} interaction 
+     * @param {Client} client 
      */
     async execute(interaction, client) {
-        const b1 = new MessageButton()
-        .setCustomId("1")
-        .setLabel("Anime")
-        .setStyle("SUCCESS")
-        .setEmoji("🍙");
-        const b2 = new MessageButton()
-        .setCustomId("2")
-        .setLabel("Information")
-        .setStyle("SUCCESS")
-        .setEmoji("🎫");
-        const b3 = new MessageButton()
-        .setCustomId("3")
-        .setLabel("Memes")
-        .setStyle("SUCCESS")
-        .setEmoji("🐸");
-        const b4 = new MessageButton()
-        .setCustomId("4")
-        .setLabel("Overlay")
-        .setStyle("SUCCESS")
-        .setEmoji("🎑");
-        const b5 = new MessageButton()
-        .setCustomId("5")
-        .setLabel("System")
-        .setStyle("SUCCESS")
-        .setEmoji("📣");
-        const row = new MessageActionRow()
-        .addComponents([ b1, b2, b3, b4, b5 ]);
+      const module = interaction.options.getString("module");
 
-        interaction.reply({ components: row, content: "Tets" })
+      if(module === "Anime") {
+        const embed = new MessageEmbed()
+        .setAuthor("Anime commands!")
+        .setColor("PURPLE")
+        .setDescription("*Gives action to your friends such as hugs, pats :). Have fun!*")
+        .setFields(
+          { name: "🍙 Commands", value: "\`\`\`/hug | /pat | /wink\`\`\`" }
+        )
+        .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
+        interaction.reply({ embeds: [embed], ephemeral: true })
+      }
+
+      if(module === "Information") {
+        const embed = new MessageEmbed()
+        .setAuthor("Information commands!")
+        .setColor("FUCHSIA")
+        .setDescription("*You can get information from this command module, more future coming soon :)*")
+        .setFields(
+          { name: "⚙ Commands", value: "\`\`\`/botinfo | /reddit | /status | /zoo | /help\`\`\`" }
+        )
+        .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
+        interaction.reply({ embeds: [embed], ephemeral: true })
+      }
+
+      if(module === "Overlay") {
+        const embed = new MessageEmbed()
+        .setAuthor("Overlay commands!")
+        .setColor("BLURPLE")
+        .setDescription("*Put overlays to your friend's profile picture, have fun using this commands :)*")
+        .setFields(
+          { name: "📷 Commands", value: "\`\`\`/gay\`\`\`" }
+        )
+        .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
+        interaction.reply({ embeds: [embed], ephemeral: true })
+      }
+
+      if(module === "Memes") {
+        const embed = new MessageEmbed()
+        .setAuthor("Memes commands!")
+        .setColor("WHITE")
+        .setDescription("*The best module to having fun with your friends :)*")
+        .setFields(
+          { name: "🐸 Commands", value: "\`\`\`/emojify | /simpcard | /stupid | /wouldyourather | /youtube\`\`\`" }
+        )
+        .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
+        interaction.reply({ embeds: [embed], ephemeral: true })
+      }
+
+      if(module === "System") {
+        const embed = new MessageEmbed()
+        .setAuthor("System commands!")
+        .setColor("DARK_GOLD")
+        .setDescription("*Moderate your server using this module :)*")
+        .setFields(
+          { name: "🔧 Commands", value: "\`\`\`/giveaway\`\`\`" }
+        )
+        .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
+        interaction.reply({ embeds: [embed], ephemeral: true })
+      }
 
 
     }
