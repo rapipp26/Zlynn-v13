@@ -63,8 +63,37 @@ module.exports = {
         interaction.reply({ embeds: [embed], components: [row], fetchReply: true })
 
         setTimeout( async () => {
+            const b1 = new MessageButton()
+            .setCustomId("1")
+            .setLabel("Anime")
+            .setStyle("SUCCESS")
+            .setDisabled(true)
+            .setEmoji("🍙");
+            const b2 = new MessageButton()
+            .setCustomId("2")
+            .setLabel("Information")
+            .setStyle("SUCCESS")
+            .setEmoji("🎫");
+            const b3 = new MessageButton()
+            .setCustomId("3")
+            .setLabel("Memes")
+            .setStyle("SUCCESS")
+            .setDisabled(true)
+            .setEmoji("🐸");
+            const b4 = new MessageButton()
+            .setCustomId("4")
+            .setLabel("Overlay")
+            .setStyle("SUCCESS")
+            .setDisabled(true)
+            .setEmoji("🎑");
+            const b5 = new MessageButton()
+            .setCustomId("5")
+            .setLabel("System")
+            .setStyle("SUCCESS")
+            .setDisabled(true)
+            .setEmoji("📣");
             const row1 = new MessageActionRow()
-            .addComponents([]);
+            .addComponents([ b1, b2, b3, b4, b5 ]);
             interaction.editReply({ embeds: [embed], components: [row1] })
         }, 1000 * 30)
 }
