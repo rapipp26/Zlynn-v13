@@ -5,7 +5,7 @@ const { true1, false1, arrow, reply1, reply2 } = require ('../../config.json');
 module.exports = {
     name: "giveaway",
     description: "A complete giveaway system.",
-    permission: "ADMINISTRATOR",
+    permission: "VIEW_AUDIT_LOG",
     options: [
         {
             name: "start",
