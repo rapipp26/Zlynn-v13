@@ -37,7 +37,7 @@ module.exports = {
      * @param {Client} client 
      */
     async execute(interaction, client) {
-        const { options, member, guild, channel } = Interaction;
+        const { options, member, guild, channel } = interaction;
         const VoiceChannel = member.voice.channel;
         const errorEmbed = new MessageEmbed()
         .setTitle("⚠ An error occured ⚠")
