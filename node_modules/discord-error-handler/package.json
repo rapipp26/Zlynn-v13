@@ -1,0 +1,39 @@
+{
+  "name": "discord-error-handler",
+  "version": "1.3.3",
+  "description": "A lightweight and easy to use  managing package for errors",
+  "main": "index.js",
+  "dependencies": {
+    "discord.js": "^13.1.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meister03/discord-error-handler.git"
+  },
+
+  "keywords": [
+    "discord",
+    "discord.js",
+    "intelligent saving",
+    "bot",
+    "discord-error-handler",
+    "discord-errorr",
+    "error-discord",
+    "manage-error",  
+    "bots",
+    "error",
+    "error saving",
+    "mongo",
+    "mongoose",
+    "mongodb",
+    "manage-roles",
+    "framework"
+  ],
+  "author": "meister03",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/meister03/discord-error-handler/issues"
+  },
+  "homepage": "https://github.com/meister03/discord-error-handler#readme"
+}

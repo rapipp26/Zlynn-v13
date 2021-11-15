@@ -7,6 +7,8 @@ const { glob } = require("glob");
 const PG = promisify(glob);
 const Ascii = require("ascii-table");
 
+const Errorhandler = require('discord-error-handler')
+
 client.commands = new Collection();
 
 const { DisTube } = require("distube");
@@ -26,4 +28,12 @@ require("./Systems/GiveawaySys")(client);
 ["Events", "Commands"].forEach(handler => {
     require(`./Handlers/${handler}`)(client, PG, Ascii);
 });
+
+const handle = new Errorhandler(client, {
+    webhook: { id: '909751263481192478', token: 'tIpehWFJUoSmQcg5r5TAn3whks7NFwIS8fhdz-qN0omoDPBSCLsm5o41d_8gJB6RzdtA' }
+    })
+    process.on('unhandledRejection', error => {
+      handle.createrr(client, undefined, undefined, error)
+    })
+
 client.login(token)
