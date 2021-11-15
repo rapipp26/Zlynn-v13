@@ -87,9 +87,11 @@ module.exports = {
                         case "queue" :
                         return interaction.reply({ embeds: [new MessageEmbed()
                         .setColor("DARK_AQUA")
+                        .setAuthor(`Queue in ${interaction.guild.name}`)
                         .setDescription(`${queue.songs.map(
                             (song, id) => `\n**${id + 1}**. ${song.name} - \`${song.formattedDuration}\` `
-                        )}`)]});
+                        )}`)
+                        .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.avatarURL({ dynamic: true }))]});
                     }
                     return;
                 }  
