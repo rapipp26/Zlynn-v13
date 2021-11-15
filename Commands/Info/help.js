@@ -81,7 +81,7 @@ module.exports = {
         .setColor("DARK_GOLD")
         .setDescription("*Moderate your server using this module :)*")
         .setFields(
-          { name: "🔧 Commands", value: "\`\`\`/giveaway\`\`\`" }
+          { name: "🔧 Commands", value: "\`\`\`/giveaway start | /giveaway actions\`\`\`" }
         )
         .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
         interaction.reply({ embeds: [embed], ephemeral: true })
