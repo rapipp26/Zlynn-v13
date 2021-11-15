@@ -44,7 +44,7 @@ client.distube
         .setTimestamp()]}))
 
     .on("finish", queue => queue.textChannel.send({ embeds: [new MessageEmbed()
-    .setAuthor("Queue finished")
+    .setAuthor("Music finished")
     .setColor("#303136")
     .setDescription("Queue finished! leaving the channel...")
     .setFooter("🏁")
