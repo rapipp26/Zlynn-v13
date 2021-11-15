@@ -7,7 +7,18 @@ const { glob } = require("glob");
 const PG = promisify(glob);
 const Ascii = require("ascii-table");
 
-client.commands = new Collection()
+client.commands = new Collection();
+
+const { DisTube } = require("distube");
+const { SpotifyPlugin } = require("@distube/spotify");
+
+client.distube = new DisTube(client, {
+    emitNewSongOnly: true,
+    leaveOnFinish: true,
+    emitAddSongWhenCreatingQueue: false,
+    plugins: [new SpotifyPlugin()]
+});
+module.exports = client;
 
 require("./mongo.js")(client);
 require("./Systems/GiveawaySys")(client);

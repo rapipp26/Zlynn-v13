@@ -12,6 +12,7 @@
   "author": "rapipp_",
   "license": "ISC",
   "dependencies": {
+    "@distube/spotify": "^1.0.0",
     "@koenie06/discord.js-music": "^1.2.9",
     "ascii-table": "^0.0.9",
     "axios": "^0.24.0",
@@ -19,11 +20,16 @@
     "common-tags": "^1.8.1",
     "discord-giveaways": "^5.0.1",
     "discord.js": "^13.3.1",
+    "distube": "^3.0.2",
+    "ffmpeg-static": "^4.4.0",
     "fs": "^0.0.1-security",
     "glob": "^7.2.0",
     "leoapi.xyz": "^1.2.1",
+    "libsodium-wrappers": "^0.7.9",
     "mongoose": "^6.0.12",
     "node-fetch": "^3.0.0",
-    "phin": "^3.6.0"
+    "phin": "^3.6.0",
+    "yt-search": "^2.10.2",
+    "ytdl-core": "^4.9.1"
   }
 }
