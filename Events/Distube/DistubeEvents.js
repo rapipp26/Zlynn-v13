@@ -6,7 +6,7 @@ const status = queue => `Volume: \`${queue.volume}%\` | Filter: \`${queue.filter
 client.distube
     .on("playSong", (queue, song) => queue.textChannel.send({ embeds: [new MessageEmbed()
     .setAuthor("Playing a Music.")
-    .setDescription(`${true1} **|** Playing \`${song.name}\` - \`${song.formattedDuration}\`\nRequested by: ${song.user}\n${status(queue)}`)
+    .setDescription(`${true1} **|** Playing \`${song.name}\` - \`${song.formattedDuration}\`\n${status(queue)}\nRequested by: ${song.user}`)
     .setColor("BLURPLE")
     .setFooter("▶")
     .setTimestamp() ] }))
