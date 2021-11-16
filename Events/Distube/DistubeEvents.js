@@ -5,7 +5,7 @@ const { true1, false1, arrow, reply1, reply2, thumbsup, thumbsdown, human, piano
 const status = queue => `Volume: \`${queue.volume}%\` | Filter: \`${queue.filters.join(", ") || "Off"}\` | Loop: \`${queue.repeatMode ? queue.repeatMode === 2 ? "All Queue" : "This Song" : "Off"}\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``
 client.distube
     .on("playSong", (queue, song) => queue.textChannel.send({ embeds: [new MessageEmbed()
-    .setAuthor("Playing a Music.")
+    .setAuthor("Playing")
     .setDescription(`${true1} **|** Playing \`${song.name}\` - \`${song.formattedDuration}\`\n${setting} **|** ${status(queue)}\n${human} **|** Requested by: ${song.user}`)
     .setColor("BLURPLE")
     .setFooter("▶")
@@ -27,17 +27,17 @@ client.distube
 
     .on("error", (channel, e) => {
         channel.send({ embeds: [new MessageEmbed()
-        .setAuthor("⚠ An error occured ⚠")
+        .setAuthor("⚠ An error occurred ⚠")
         .setColor("YELLOW")
         .setDescription(`${e}`)
         .setFooter("⛔")
         .setTimestamp()]})
     })
 
-    .on("empty", channel => channel.send(`${false1} **|** Voice channel is empty! Leaving the channel...`))
+    .on("empty", channel => channel.send({ content: `${false1} **|** Voice channel is empty! Leaving the channel...` }))
 
     .on("searchNoResult", message => message.channel.send({ embeds: [new MessageEmbed()
-        .setAuthor("⚠ An error occured ⚠")
+        .setAuthor("⚠ An error occurred ⚠")
         .setColor("YELLOW")
         .setDescription(`No result found!`)
         .setFooter("⛔")
