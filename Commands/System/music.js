@@ -97,7 +97,7 @@ module.exports = {
                 }  
             }
         } catch (e) {
-            errorEmbed.setDescription(`⚠ Alert: ${e}`)
+            errorEmbed.setDescription(`${e}`)
             return interaction.reply({ embeds: [errorEmbed] })
         }
     }
