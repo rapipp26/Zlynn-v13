@@ -11,10 +11,9 @@ const Table = new Ascii("Events Loaded");
 const event = require(file);
 
 
-if(!Events.includes(event.name) || !event.name) {
-const L = file.split("/");
-await Table.addRow(`${event.name || "MISSING"}`, `⛔ Event name is either invalid or missing: ${L[6] + `/` + L[7]}`);
-return;
+if (event.name) {
+    if(!Events.includes(event.name))
+    return Table.addRow(file.split("/")[7], "🔸 FAILED", "Event name is missing.");
 }
 
 if(event.once) {

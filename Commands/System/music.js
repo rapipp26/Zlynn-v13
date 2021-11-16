@@ -87,7 +87,7 @@ module.exports = {
                         return interaction.reply({ content: "⏯ Song has been resumed" })
                         case "autoplay" :
                         const autoplay = await queue.toggleAutoplay(VoiceChannel);
-                        return interaction.reply({ content: `🔄 AutoPlay: \`${autoplay ? "On" : "Off"}`})
+                        return interaction.reply({ content: `🔄 AutoPlay: \`${autoplay ? "On" : "Off"}\``})
                         case "queue" :
                         return interaction.reply({ embeds: [new MessageEmbed()
                         .setColor("DARK_AQUA")
