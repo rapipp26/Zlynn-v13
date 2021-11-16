@@ -43,7 +43,7 @@ module.exports = async (client) => {
     client.on("ready", async () => {
         const MainGuild = await client.guilds.cache.get("857527810137391114");
         const VinsYT = await client.guilds.cache.get("872848206638223410");
-        const btl = await client.guilds.cache.get("743391715544662067")
+        const Btl = await client.guilds.cache.get("743391715544662067")
 
         MainGuild.commands.set(CommandsArray).then(async (command) => {
             const Roles = (commandName) => {
@@ -66,6 +66,7 @@ module.exports = async (client) => {
 
             await MainGuild.commands.permissions.set({ fullPermissions });
         });
+
         VinsYT.commands.set(CommandsArray).then(async (command) => {
             const Roles = (commandName) => {
                 const cmdPerms = CommandsArray.find((c) => c.name === commandName).permission;
@@ -88,5 +89,26 @@ module.exports = async (client) => {
             await VinsYT.commands.permissions.set({ fullPermissions });
         });
 
+        Btl.commands.set(CommandsArray).then(async (command) => {
+            const Roles = (commandName) => {
+                const cmdPerms = CommandsArray.find((c) => c.name === commandName).permission;
+                if(!cmdPerms) return null;
+
+                return Btl.roles.cache.filter((r) => r.permissions.has(cmdPerms));
+            }
+
+            const fullPermissions = command.reduce((accumulator, r) => {
+                const roles = Roles(r.name);
+                if(!roles) return accumulator;
+
+                const permissions = roles.reduce((a, r) => {
+                    return [...a, {id: r.id, type: "ROLE", permission: true }]
+                }, []);
+
+                return [...accumulator, {id: r.id, permissions}]
+            }, []);
+
+            await Btl.commands.permissions.set({ fullPermissions });
+        });
     });
 }
