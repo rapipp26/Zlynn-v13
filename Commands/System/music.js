@@ -28,6 +28,7 @@ module.exports = {
                 { name: "pause", value: "pause"},
                 { name: "resume", value: "resume"},
                 { name: "stop", value: "stop"},
+                { name: "autoplay", value: "autoplay"},
         ]}]
         }
     ],
@@ -84,6 +85,9 @@ module.exports = {
                         case "resume" :
                         await queue.resume(VoiceChannel);
                         return interaction.reply({ content: "⏯ Song has been resumed" })
+                        case "autoplay" :
+                        const autoplay = await queue.toggleAutoplay(VoiceChannel);
+                        return interaction.reply({ content: `🔄 AutoPlay: \`${autoplay ? "On" : "Off"}`})
                         case "queue" :
                         return interaction.reply({ embeds: [new MessageEmbed()
                         .setColor("DARK_AQUA")
