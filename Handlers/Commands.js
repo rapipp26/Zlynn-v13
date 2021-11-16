@@ -43,6 +43,7 @@ module.exports = async (client) => {
     client.on("ready", async () => {
         const MainGuild = await client.guilds.cache.get("857527810137391114");
         const VinsYT = await client.guilds.cache.get("872848206638223410");
+        const btl = await client.guilds.cache.get("743391715544662067")
 
         MainGuild.commands.set(CommandsArray).then(async (command) => {
             const Roles = (commandName) => {
