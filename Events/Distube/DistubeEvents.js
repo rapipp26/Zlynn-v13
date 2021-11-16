@@ -6,14 +6,14 @@ const status = queue => `Volume: \`${queue.volume}%\` | Filter: \`${queue.filter
 client.distube
     .on("playSong", (queue, song) => queue.textChannel.send({ embeds: [new MessageEmbed()
     .setAuthor("Playing a Music.")
-    .setDescription(`${true1} **|** Playing \`${song.name}\` - Requested by: ${song.user}\n${status(queue)}\n\`${song.formattedDuration}\``)
+    .setDescription(`${true1} **|** Playing \`${song.name} - \`${song.formattedDuration}\`\nRequested by: ${song.user}\n${status(queue)}`)
     .setColor("BLURPLE")
     .setFooter("▶")
     .setTimestamp() ] }))
 
     .on("addSong", (queue, song) => queue.textChannel.send({ embeds: [new MessageEmbed()
     .setAuthor("Added new song to the queue.")
-    .setDescription(`${true1} **|** Added \`${song.name}\` -  To the queue by ${song.user}\n\`${song.formattedDuration}\``)
+    .setDescription(`${true1} **|** Added \`${song.name}\` - \`${song.formattedDuration}\`\nTo the queue by ${song.user}`)
     .setColor("BLURPLE")
     .setFooter("➕")
     .setTimestamp() ] }))
