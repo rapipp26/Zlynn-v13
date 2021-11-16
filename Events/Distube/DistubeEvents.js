@@ -20,7 +20,7 @@ client.distube
 
     .on("addList", (queue, playlist) => queue.textChannel.send({ embeds: [new MessageEmbed()
     .setAuthor("Added Playlist")
-    .setDescription(`${true1} **|* Added \`${playlist.name}\`\n${setting} **|** To the queue\n${status(queue)}`)
+    .setDescription(`${true1} **|** Added \`${playlist.name}\`\n${setting} **|** To the queue\n${status(queue)}`)
     .setColor("BLURPLE")
     .setFooter("➕")
     .setTimestamp()]}))
