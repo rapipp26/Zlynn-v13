@@ -20,7 +20,7 @@ module.exports = {
     async execute(interaction, client) {
         const target = interaction.options.getMember("target");
 
-        interaction.reply({ content: `https://api.leoapi.xyz/image/delete?image=${target.displayAvatarURL()}`})
+        interaction.reply({ content: `https://api.leoapi.xyz/image/delete?image=${target.avatarURL({ format: "PNG" })}`})
 
     }
 }
