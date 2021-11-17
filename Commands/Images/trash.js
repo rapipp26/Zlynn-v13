@@ -24,12 +24,12 @@ module.exports = {
         const errorEmbed = new MessageEmbed()
         .setColor("RED")
 
-    phin(`https://api.leoapi.xyz/image/delete?image=${target.displayAvatarURL()}`).then(res => {
+    phin(`https://api.leoapi.xyz/image/delete?image=${target.avatarURL()}`).then(res => {
     if (res.statusCode !== 200) {
         console.log('Bad status code')
         console.log(JSON.parse(res.body))
     }
-    fs.writeFile('./simpcard.png', res.body, (err) => {
+    fs.writeFile('./trash.png', res.body, (err) => {
         if (err) {
             errorEmbed.setDescription(`${false1} **|*** An error was occurred\n\`${err}\``)
             interaction.reply({ embeds: [errorEmbed] })
