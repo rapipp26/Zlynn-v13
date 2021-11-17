@@ -18,25 +18,9 @@ module.exports = {
      * @param {Client} client 
      */
     async execute(interaction, client) {
-        const phin = require('phin')
-        let fs = require('fs')
-        const target = interaction.options.getMember("target")
-        const errorEmbed = new MessageEmbed()
-        .setColor("RED")
+        const target = interaction.options.getMember("target");
 
-    phin(`https://api.leoapi.xyz/image/delete?image=${target.avatarURL()}`).then(res => {
-    if (res.statusCode !== 200) {
-        console.log('Bad status code')
-        console.log(JSON.parse(res.body))
-    }
-    fs.writeFile('./trash.png', res.body, (err) => {
-        if (err) {
-            errorEmbed.setDescription(`${false1} **|*** An error was occurred\n\`${err}\``)
-            interaction.reply({ embeds: [errorEmbed] })
-        } else {
-        interaction.reply({ files: ['./trash.png'] })
-        }
-    })
-})
+        interaction.reply({ content: `https://api.leoapi.xyz/image/delete?image=${target.displayAvatarURL()}`})
+
     }
 }
