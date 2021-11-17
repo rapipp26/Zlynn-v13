@@ -1,17 +1,17 @@
-const { CommandInteraction, MessageEmbed } = require('discord.js');
-const { true1, false1, arrow, reply1, reply2 } = require ('../../config.json');
+const { CommandInteraction, MessageEmbed, Client } = require('discord.js');
+const { true1, false1, arrow, reply1, reply2, thumbsup, thumbsdown, piano, human, setting } = require ('../../config.json');
 
 module.exports = { 
-    name: 'simpcard', 
-    description: 'Gives a simpcard to a simp',
+    name: 'delete', 
+    description: 'Delete your friends and throw them to trash',
     options: [
         {
             name: "target",
-            description: "Give target who simp",
+            description: "Target to delete",
             type: "USER",
             required: true
-        },
-    ] ,
+        }
+    ],
     /**
      * 
      * @param {CommandInteraction} interaction 
@@ -24,17 +24,17 @@ module.exports = {
         const errorEmbed = new MessageEmbed()
         .setColor("RED")
 
-    phin(`https://some-random-api.ml/canvas/simpcard?avatar=${target.displayAvatarURL()}`).then(res => {
+    phin(`https://api.leoapi.xyz/image/delete?image=${target.displayAvatarURL()}`).then(res => {
     if (res.statusCode !== 200) {
         console.log('Bad status code')
         console.log(JSON.parse(res.body))
     }
     fs.writeFile('./simpcard.png', res.body, (err) => {
         if (err) {
-            errorEmbed.setDescription(`${false1} **|*** An error was occured\n\`${err}\``)
+            errorEmbed.setDescription(`${false1} **|*** An error was occurred\n\`${err}\``)
             interaction.reply({ embeds: [errorEmbed] })
         } else {
-        interaction.reply({ files: ['./simpcard.png'] })
+        interaction.reply({ files: ['./trash.png'] })
         }
     })
 })

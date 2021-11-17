@@ -7,7 +7,7 @@ module.exports = {
     options: [
         {
             name: "target",
-            description: "The target to make avataar with gay overlay",
+            description: "The target to make avatar with gay overlay",
             type: "USER",
             required: true
         },
