@@ -13,7 +13,7 @@ module.exports = {
         choices: [
           { name: "Anime", value: "Anime" },
           { name: "Information", value: "Information" },
-          { name: "Overlay", value: "Overlay" },
+          { name: "Images", value: "Images" },
           { name: "Memes", value: "Memes" },
           { name: "System", value: "System" }
         ]
@@ -51,13 +51,13 @@ module.exports = {
         interaction.reply({ embeds: [embed], ephemeral: true })
       }
 
-      if(module === "Overlay") {
+      if(module === "Images") {
         const embed = new MessageEmbed()
-        .setAuthor("Overlay commands!")
+        .setAuthor("Images commands!")
         .setColor("BLURPLE")
         .setDescription("*Put overlays to your friend's profile picture, have fun using this commands :)*")
         .setFields(
-          { name: "📷 Commands", value: "\`\`\`/gay\`\`\`" }
+          { name: "📷 Commands", value: "\`\`\`/gay | /simpcard | /stupid | /blur | /youtube  \`\`\`" }
         )
         .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
         interaction.reply({ embeds: [embed], ephemeral: true })

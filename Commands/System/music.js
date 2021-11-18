@@ -41,7 +41,7 @@ module.exports = {
         const { options, member, guild, channel } = interaction;
         const VoiceChannel = member.voice.channel;
         const errorEmbed = new MessageEmbed()
-        .setTitle("⚠ An error occured ⚠")
+        .setTitle("⚠ An error occurred ⚠")
         .setColor("YELLOW")
         .setTimestamp();
 
@@ -92,9 +92,8 @@ module.exports = {
                         return interaction.reply({ embeds: [new MessageEmbed()
                         .setColor("DARK_AQUA")
                         .setAuthor(`Queue in ${interaction.guild.name}`)
-                        .setDescription(`${queue.songs.map(
-                            (song, id) => `\n**${id + 1}**. ${song.name} - \`${song.formattedDuration}\` `
-                        )}`)
+                        .setDescription(`${queue.songs.slice(0, 10).map(
+                            (song, id) => `\n**${id + 1}**. ${song.name} - \`${song.formattedDuration}\``)}`)
                         .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.avatarURL({ dynamic: true }))]});
                     }
                     return;
