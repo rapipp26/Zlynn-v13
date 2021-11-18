@@ -2,12 +2,12 @@ const { CommandInteraction, MessageEmbed, Client } = require('discord.js');
 const { true1, false1, arrow, reply1, reply2, thumbsup, thumbsdown, piano, human, setting } = require ('../../config.json');
 
 module.exports = { 
-    name: 'delete', 
-    description: 'Delete your friends and throw them to trash',
+    name: 'blur', 
+    description: 'Blur your friends avatar',
     options: [
         {
             name: "target",
-            description: "Target to delete",
+            description: "Target to blur",
             type: "USER",
             required: true
         }
@@ -24,17 +24,17 @@ module.exports = {
         const errorEmbed = new MessageEmbed()
         .setColor("RED")
 
-    phin(`https://api.leoapi.xyz/image/delete?image=${target.displayAvatarURL()}`).then(res => {
+    phin(`https://some-random-api.ml/canvas/pixelate?avatar=${target.displayAvatarURL()}`).then(res => {
     if (res.statusCode !== 200) {
         console.log('Bad status code')
         console.log(JSON.parse(res.body))
     }
-    fs.writeFile('./trash.png', res.body, (err) => {
+    fs.writeFile('./blur.png', res.body, (err) => {
         if (err) {
             errorEmbed.setDescription(`${false1} **|*** An error was occurred\n\`${err}\``)
             interaction.reply({ embeds: [errorEmbed] })
         } else {
-        interaction.reply({ files: ['./trash.png'] })
+        interaction.reply({ files: ['./blur.png'] })
         }
     })
 })
