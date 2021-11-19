@@ -9,7 +9,7 @@ module.exports = {
         required: true
       },
     ],
-    async execute(interaction, client) {
+    async execute(interaction) {
       const HypixelAPI = require('hypixel-api')
   
       const name = interaction.options.getString("player_name")
