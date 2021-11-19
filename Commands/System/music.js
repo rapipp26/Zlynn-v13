@@ -91,8 +91,9 @@ module.exports = {
                         case "queue" :
                         return interaction.reply({ embeds: [new MessageEmbed()
                         .setColor("DARK_AQUA")
-                        .setAuthor(`Queue in ${interaction.guild.name}`)
-                        .setDescription(`${queue.songs.slice(0, 10).map(
+                        .setAuthor(`Top 20 Songs in queue`)
+                        .setThumbnail(interaction.guild.iconURL({ dynamic: true }))
+                        .setDescription(`${queue.songs.slice(0, 20).map(
                             (song, id) => `\n**${id + 1}**. ${song.name} - \`${song.formattedDuration}\``)}`)
                         .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.avatarURL({ dynamic: true }))]});
                     }
