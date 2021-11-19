@@ -17,7 +17,7 @@ module.exports = {
       const client = new HypixelAPI('c3b371ae-1d00-490b-964d-7cd24577947a')
   
   
-      client.getPlayer(name, 'Ethanent').then((player) => {
+      client.getPlayer("GiYu13_", 'Ethanent').then((player) => {
       console.log(player)
   }).catch((err) => {
       console.error('Error! ' + err)
