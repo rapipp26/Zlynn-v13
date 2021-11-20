@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@distube/spotify": "^1.0.0",
+    "@iamtraction/google-translate": "^1.1.2",
     "@koenie06/discord.js-music": "^1.2.9",
     "ascii-table": "^0.0.9",
     "axios": "^0.24.0",

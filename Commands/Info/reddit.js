@@ -56,7 +56,7 @@ module.exports = {
             reply.react(`${thumbsdown}`);
         } catch (error) {
             if (error.response.data.message) {
-                embed.setTitle("⚠ An error occured ⚠")
+                embed.setTitle("⚠ An error occurred ⚠")
                     .setColor("YELLOW")
                     .setDescription(error.response.data.message)
                     .setFooter("🔍")
@@ -64,7 +64,7 @@ module.exports = {
                 return interaction.reply({embeds: [embed], ephemeral: true});
             }
 
-            embed.setTitle("⚠ An error occured ⚠")
+            embed.setTitle("⚠ An error occurred ⚠")
                 .setColor("YELLOW")
                 .setDescription(`The connection to the API could not be established.`)
                 .setFooter("🔍")

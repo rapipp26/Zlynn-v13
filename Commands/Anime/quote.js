@@ -32,6 +32,7 @@ module.exports = {
                     value: `${response.data.sentence}`
                 }
             )
+            .setColor("RANDOM")
             .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
             .setTimestamp()
             interaction.reply({ embeds: [embed] })
