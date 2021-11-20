@@ -36,15 +36,19 @@ module.exports = {
           value: "/giveaway start | /giveaway actions | /music play | /music volume | /music settings"
         }
       )
+      .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
       .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
       .setTimestamp();
 
-      const ss = new MessageButton()
-      .setStyle("LINK")
-      .setURL("https://discord.gg/Qev2exTvMd")
-      .setEmoji("<:Zlynn_Settings:910010008077496410>")
-      .setLabel("Support Server")
+      const ss = new MessageActionRow()
+      .addComponents(
+        new MessageButton()
+          .setStyle("LINK")
+          .setURL("https://discord.gg/Qev2exTvMd")
+          .setEmoji("<:Zlynn_Settings:910010008077496410>")
+          .setLabel("Support Server"),
+      );
 
-      interaction.reply({ fetchReply: true, embeds: [embed], components: ss })
+      interaction.reply({ fetchReply: true, embeds: [embed], components: [ss] })
     }
 }
