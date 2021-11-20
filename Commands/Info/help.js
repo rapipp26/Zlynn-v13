@@ -13,7 +13,7 @@ module.exports = {
 
       const embed = new MessageEmbed()
       .setAuthor("Commands information", client.user.avatarURL({ format: "png" }))
-      .setDescription("\`Hello fellas 👋, Here is all the available commands category. If you found something wrong about the commands, please report it to our support server below.\` ")
+      .setDescription("\`Hello fellas 👋, Here is all the available commands category. If you found something wrong about the commands, please report it to our support server below.\`\n ")
       .addFields(
         {
           name: "> 🍙・Anime Commands",
@@ -33,9 +33,10 @@ module.exports = {
         },
         {
           name: "> 📟・System Commands",
-          value: "/giveaway start | /giveaway actions | /music play | /music volume | /music settings"
+          value: "`/giveaway start | /giveaway actions | /music play | /music volume | /music settings`"
         }
       )
+      .setColor("GREEN")
       .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
       .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
       .setTimestamp();
