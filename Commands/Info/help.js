@@ -45,6 +45,6 @@ module.exports = {
       .setEmoji("<:Zlynn_Settings:910010008077496410>")
       .setLabel("Support Server")
 
-      interaction.reply({ fetchReply: true, embeds: [embed], components: [ss] })
+      interaction.reply({ fetchReply: true, embeds: [embed], components: ss })
     }
 }
