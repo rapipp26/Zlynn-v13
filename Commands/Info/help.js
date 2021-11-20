@@ -17,23 +17,23 @@ module.exports = {
       .addFields(
         {
           name: "> 🍙・Anime Commands",
-          value: "`/hug | /pat | /anime_quote | /wink`"
+          value: "```/hug | /pat | /anime_quote | /wink```"
         },
         {
           name: "> 📷・Image Commands",
-          value: "`/blur | /gay | /simpcard | /stupid | /youtube`"
+          value: "```/blur | /gay | /simpcard | /stupid | /youtube```"
         },
         {
           name: "> 📌・Information Commands",
-          value: "`/botinfo | /reddit | /zoo | /status`"
+          value: "```/botinfo | /reddit | /zoo | /status```"
         },
         {
           name: "> 🎉・Fun Commands",
-          value: "`/emojify | /wouldyourather`"
+          value: "```/emojify | /wouldyourather```"
         },
         {
           name: "> 📟・System Commands",
-          value: "`/giveaway start | /giveaway actions | /music play | /music volume | /music settings`"
+          value: "```/giveaway start | /giveaway actions | /music play | /music volume | /music settings```"
         }
       )
       .setColor("GREEN")
