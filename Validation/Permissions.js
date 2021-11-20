@@ -24,7 +24,7 @@ module.exports = {
         "SPEAK",
         "MUTE_MEMBERS",
         "DEAFEN_MEMBERS",
-        "MOVE_MEMBERS",
+        "MOVE_MEMBERS", 
         "USE_VAD",
         "CHANGE_NICKNAME",
         "MANAGE_NICKNAMES",	

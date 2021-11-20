@@ -11,8 +11,7 @@ module.exports = {
      */
     async execute(interaction, client) {
         const embed = new MessageEmbed()
-        .setAuthor("Information about me :3")
-        .setThumbnail(client.user.displayAvatarURL({ format: "png" }))
+        .setAuthor("Information about me :3", client.user.avatarURL({ format: "png" }))
         .setColor("BLURPLE")
         .setFields(
         {
