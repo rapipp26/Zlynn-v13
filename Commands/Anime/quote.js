@@ -1,6 +1,6 @@
 const { CommandInteraction, MessageEmbed, Client } = require('discord.js');
 const { true1, false1, arrow, reply1, reply2, thumbsup, thumbsdown, piano, human, setting } = require ('../../config.json');
-
+const axios = require("axios");
 module.exports = { 
     name: 'anime_quote', 
     description: 'Gets some quotes from and anime character',
