@@ -25,10 +25,10 @@ module.exports = {
         },
         {
           name: "> 📌・Information Commands",
-          value: "```/botinfo | /reddit | /zoo | /status```"
+          value: "```/botinfo | /reddit | /zoo | /status | /translate | /lyric```"
         },
         {
-          name: "> 🎉・Fun Commands",
+          name: "> 😅・Fun Commands",
           value: "```/emojify | /wouldyourather```"
         },
         {
@@ -46,7 +46,7 @@ module.exports = {
         new MessageButton()
           .setStyle("LINK")
           .setURL("https://discord.gg/Qev2exTvMd")
-          .setEmoji("<:Zlynn_Settings:910010008077496410>")
+          .setEmoji("<:Zlynn_Server:911608880436498453>")
           .setLabel("Support Server"),
       );
 
