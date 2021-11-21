@@ -58,15 +58,6 @@ module.exports = {
             await wait(4000);
             await interaction.editReply({ fetchReply: true, embeds: [embed], components: [ss] });
         } catch (error) {
-            if (error.response.data.message) {
-                embed.setTitle("⚠ An error occurred ⚠")
-                    .setColor("YELLOW")
-                    .setDescription(error.response.data.message)
-                    .setFooter("🔍")
-                    .setTimestamp();
-                return interaction.reply({embeds: [embed], ephemeral: true});
-            }
-
             embed.setTitle("⚠ An error occurred ⚠")
                 .setColor("YELLOW")
                 .setDescription(`The connection to the API could not be established.`)
