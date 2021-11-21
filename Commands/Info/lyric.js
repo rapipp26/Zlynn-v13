@@ -32,6 +32,8 @@ module.exports = {
                 {
                     name: "Song Title",
                     value: `${response.data.title}`
+                    ,
+                    inline: true
                 },
                 {
                     name: "Song Author",
@@ -39,20 +41,20 @@ module.exports = {
                     inline: true
                 },
             )
-            //.setThumbnail(response.data.thumbnail.genius)
+            .setThumbnail(response.data.thumbnail.genius)
             .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
             .setTimestamp();
 
-            //const ss = new MessageActionRow()
-            //.addComponents(
-            //  new MessageButton()
-            //    .setStyle("LINK")
-            //    .setURL(`${response.data.links.genius}`)
-            //    .setEmoji("🎵")
-            //    .setLabel("Lyrics"),
-            //);
+            const ss = new MessageActionRow()
+            .addComponents(
+              new MessageButton()
+                .setStyle("LINK")
+                .setURL(`${response.data.links.genius}`)
+                .setEmoji("🎵")
+                .setLabel("Lyrics"),
+            );
 
-            interaction.reply({ fetchReply: true, embeds: [embed] }) //components: [ss]
+            interaction.reply({ fetchReply: true, embeds: [embed], components: [ss] }) 
         } catch (error) {
             if (error.response.data.message) {
                 embed.setTitle("⚠ An error occurred ⚠")
