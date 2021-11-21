@@ -55,8 +55,7 @@ module.exports = {
             );
             
             await interaction.deferReply();
-            await wait(4000);
-            await interaction.editReply({ fetchReply: true, embeds: [embed], components: [ss] });
+            interaction.editReply({ fetchReply: true, embeds: [embed], components: [ss] });
         } catch (error) {
             embed.setTitle("⚠ An error occurred ⚠")
                 .setColor("YELLOW")
