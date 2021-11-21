@@ -27,6 +27,7 @@ module.exports = {
 
             embed.setAuthor("Song lyrics! 🎶", client.user.avatarURL({ format: "png" }))
             .setColor("DARK_BLUE")
+            .setDescription(`${response.data.lyrics}`)
             .addFields(
                 {
                     name: "Song Title",
@@ -37,10 +38,6 @@ module.exports = {
                     value: `${response.data.author}`,
                     inline: true
                 },
-                {
-                    name: "Song Lyric",
-                    value: `${response.data.lyrics}`
-                }
             )
             //.setThumbnail(response.data.thumbnail.genius)
             .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
