@@ -55,7 +55,6 @@ module.exports = {
             );
             
             await interaction.deferReply();
-            wait(1000);
             interaction.editReply({ fetchReply: true, embeds: [embed], components: [ss] });
         } catch (error) {
             embed.setTitle("⚠ An error occurred ⚠")
