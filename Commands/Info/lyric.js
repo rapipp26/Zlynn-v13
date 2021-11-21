@@ -20,7 +20,7 @@ module.exports = {
      */
     async execute(interaction, client) {
         const embed = new MessageEmbed();
-        const song = await interaction.options.getString("song_title");
+        const song = interaction.options.getString("song_title");
 
         try {
             const response = await axios.get(`https://some-random-api.ml/lyrics?title=${song}`)
@@ -42,20 +42,20 @@ module.exports = {
                     value: `${response.data.lyrics}`
                 }
             )
-            .setThumbnail(response.data.thumbnail.genius)
+            //.setThumbnail(response.data.thumbnail.genius)
             .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
             .setTimestamp();
 
-            const ss = new MessageActionRow()
-            .addComponents(
-              new MessageButton()
-                .setStyle("LINK")
-                .setURL(`${response.data.links.genius}`)
-                .setEmoji("🎵")
-                .setLabel("Lyrics"),
-            );
+            //const ss = new MessageActionRow()
+            //.addComponents(
+            //  new MessageButton()
+            //    .setStyle("LINK")
+            //    .setURL(`${response.data.links.genius}`)
+            //    .setEmoji("🎵")
+            //    .setLabel("Lyrics"),
+            //);
 
-            interaction.reply({ fetchReply: true, embeds: [embed], components: [ss] })
+            interaction.reply({ fetchReply: true, embeds: [embed] }) //components: [ss]
         } catch (error) {
             if (error.response.data.message) {
                 embed.setTitle("⚠ An error occurred ⚠")
