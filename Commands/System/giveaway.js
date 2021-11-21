@@ -1,6 +1,6 @@
 const { CommandInteraction, MessageEmbed } = require("discord.js");
 const ms = require("ms");
-const { true1, false1, arrow, reply1, reply2 } = require ('../../config.json');
+const { true1, false1, arrow, reply1, reply2 } = require ('../../Structures/config.json');
 
 module.exports = {
     name: "giveaway",

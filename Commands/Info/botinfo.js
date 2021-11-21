@@ -1,5 +1,5 @@
 const { CommandInteraction, MessageEmbed, Client } = require('discord.js');
-const { true1, false1, arrow, reply1, reply2, thumbsup, thumbsdown } = require ('../../config.json');
+const { true1, false1, arrow, reply1, reply2, thumbsup, thumbsdown } = require ('../../Structures/config.json');
 
 module.exports = { 
     name: 'botinfo', 

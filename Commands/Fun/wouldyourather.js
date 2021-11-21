@@ -1,6 +1,6 @@
 const { CommandInteraction, MessageEmbed }     = require("discord.js");
 const axios                                    = require("axios");
-const { true1, false1, arrow, reply1, reply2, thumbsdown, thumbsup } = require ('../../config.json');
+const { true1, false1, arrow, reply1, reply2, thumbsdown, thumbsup } = require ('../../Structures/config.json');
 
 module.exports = {
     name: "wouldyourather",

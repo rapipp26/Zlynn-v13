@@ -1,6 +1,6 @@
-const client = require("../../index");
+const client = require("../../Structures/index");
 const { MessageEmbed } = require("discord.js");
-const { true1, false1, arrow, reply1, reply2, thumbsup, thumbsdown, human, piano, setting } = require ('../../config.json');
+const { true1, false1, arrow, reply1, reply2, thumbsup, thumbsdown, human, piano, setting } = require ('../../Structures/config.json');
 
 const status = queue => `Volume: \`${queue.volume}%\` | Filter: \`${queue.filters.join(", ") || "Off"}\` | Loop: \`${queue.repeatMode ? queue.repeatMode === 2 ? "All Queue" : "This Song" : "Off"}\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``
 client.distube

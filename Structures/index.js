@@ -22,8 +22,8 @@ client.distube = new DisTube(client, {
 });
 module.exports = client;
 
-require("./mongo.js")(client);
-require("./Systems/GiveawaySys")(client);
+require("../mongo.js")(client);
+require("../Systems/GiveawaySys")(client);
 
 ["Events", "Commands"].forEach(handler => {
     require(`./Handlers/${handler}`)(client, PG, Ascii);

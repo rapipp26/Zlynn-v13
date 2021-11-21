@@ -1,5 +1,5 @@
 const { CommandInteraction, MessageEmbed, Client, MessageActionRow, MessageButton } = require('discord.js');
-const { true1, false1, arrow, reply1, reply2, thumbsup, thumbsdown, piano, human, setting } = require ('../../config.json');
+const { true1, false1, arrow, reply1, reply2, thumbsup, thumbsdown, piano, human, setting } = require ('../../Structures/config.json');
 const axios = require("axios");
 
 module.exports = { 

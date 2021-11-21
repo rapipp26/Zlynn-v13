@@ -1,5 +1,5 @@
 const { CommandInteraction, MessageEmbed } = require("discord.js");
-const { false1 } = require ("../../config.json");
+const { false1 } = require ("../../Structures/config.json");
 const axios = require("axios");
 
 module.exports = { 
