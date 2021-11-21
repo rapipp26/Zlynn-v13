@@ -53,8 +53,10 @@ module.exports = {
                 .setEmoji("🎵")
                 .setLabel("Lyrics"),
             );
-
-            interaction.reply({ fetchReply: true, embeds: [embed], components: [ss] }) 
+            
+            await interaction.deferReply();
+            await wait(4000);
+            await interaction.editReply({ fetchReply: true, embeds: [embed], components: [ss] });
         } catch (error) {
             if (error.response.data.message) {
                 embed.setTitle("⚠ An error occurred ⚠")
