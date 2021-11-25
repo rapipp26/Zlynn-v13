@@ -27,7 +27,7 @@ module.exports = {
             .addFields(
                 {
                     name: "Character",
-                    value: `${response.data.characther}`,
+                    value: `${response.data.character}`,
                     inline: true
                 },
                 {
