@@ -26,11 +26,11 @@ module.exports = {
         if (response.data.error) {
             embed.setTitle("⚠ An error occurred ⚠")
                 .setColor("YELLOW")
-                .setDescription(response.data.error)
+                .setDescription(`${response.data.error}`)
                 .setFooter("🔍")
                 .setTimestamp();
             interaction.reply({embeds: [embed], ephemeral: true});
-        };
+        }
         try {
             embed.setAuthor("Pokemon! 🐢", client.user.avatarURL({ format: "png" }))
             .setDescription(`${response.data.description}`)
