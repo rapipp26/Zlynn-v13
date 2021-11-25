@@ -17,7 +17,7 @@ module.exports = {
         "EMBED_LINKS",
         "ATTACH_FILES",
         "READ_MESSAGE_HISTORY",
-        "MENTION_EVERYONE",
+        "MENTION_EVERYONE", 
         "USE_EXTERNAL_EMOJIS",
         "VIEW_GUILD_INSIGHTS",	
         "CONNECT",
