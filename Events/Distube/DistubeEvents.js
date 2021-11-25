@@ -1,4 +1,4 @@
-const client = require("../../Structures/index");
+const client = require("../../index");
 const { MessageEmbed } = require("discord.js");
 const { true1, false1, arrow, reply1, reply2, thumbsup, thumbsdown, human, piano, setting } = require ('../../Structures/config.json');
 
