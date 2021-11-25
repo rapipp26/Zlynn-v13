@@ -1,6 +1,6 @@
 const { Client, Collection } = require("discord.js");
 const client = new Client({ intents: 32767 });
-const { token } = require("./config.json");
+const { token } = require("./Structures/config.json");
 
 const { promisify } = require("util");
 const { glob } = require("glob");
@@ -22,8 +22,8 @@ client.distube = new DisTube(client, {
 });
 module.exports = client;
 
-require("./mongo.js")(client);
-require("../Systems/GiveawaySys")(client);
+require("./Structures/mongo.js")(client);
+require("./Systems/GiveawaySys")(client);
 
 ["Events", "Commands"].forEach(handler => {
     require(`./Handlers/${handler}`)(client, PG, Ascii);
