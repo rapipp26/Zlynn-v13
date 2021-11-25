@@ -42,11 +42,11 @@ module.exports = {
                 .setTimestamp();
             interaction.reply({embeds: [embed]})
         } catch (error) {
-            console.log(error);
             embed.setTitle("⚠ An error occured ⚠")
             .setColor("YELLOW")
-            .setDescription("The API that we're using is probably undergoing maintenance.")
+            .setDescription(`${error}`)
             .setFooter("🚧")
+            .setTimestamp()
             interaction.reply({ embeds: [errorEmbed], ephemeral: true });
         }
     }

@@ -66,7 +66,7 @@ module.exports = {
 
             embed.setTitle("⚠ An error occurred ⚠")
                 .setColor("YELLOW")
-                .setDescription(`The connection to the API could not be established.`)
+                .setDescription(`${error}`)
                 .setFooter("🔍")
                 .setTimestamp();
             interaction.reply({embeds: [embed], ephemeral: true});

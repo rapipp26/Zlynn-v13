@@ -10,9 +10,17 @@ module.exports = {
      */
     async execute(interaction) {
         const embed     = new MessageEmbed();
+        const response = await axios.get(`https://api.leoapi.xyz/fun/wouldyourather`);
+        if (error.response.data.message) {
+            embed.setTitle("⚠ An error occured ⚠")
+                .setColor("YELLOW")
+                .setDescription(error.response.data.message)
+                .setFooter("🔍")
+                .setTimestamp();
+            return interaction.reply({embeds: [embed], ephemeral: true});
+        }
             
         try {
-            const response = await axios.get(`https://api.leoapi.xyz/fun/wouldyourather`);
             
             embed.setAuthor("Would you rather..? 🤨")
             .setColor("RANDOM")
@@ -23,18 +31,9 @@ module.exports = {
             message.react("1️⃣")
             message.react("2️⃣")
         } catch (error) {
-            if (error.response.data.message) {
-                embed.setTitle("⚠ An error occured ⚠")
-                    .setColor("YELLOW")
-                    .setDescription(error.response.data.message)
-                    .setFooter("🔍")
-                    .setTimestamp();
-                return interaction.reply({embeds: [embed], ephemeral: true});
-            }
-
             embed.setTitle("⚠ An error occured ⚠")
                 .setColor("YELLOW")
-                .setDescription(`The connection to the API could not be established.`)
+                .setDescription(`${error}`)
                 .setFooter("🔍")
                 .setTimestamp();
             interaction.reply({embeds: [embed], ephemeral: true});

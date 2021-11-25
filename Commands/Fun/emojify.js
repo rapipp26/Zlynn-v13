@@ -19,20 +19,21 @@ module.exports = {
     async execute(interaction) {
         const text = interaction.options.getString("text") || "";
         const embed     = new MessageEmbed();
+        const response = await axios.get(`https://api.leoapi.xyz/text/emojify?text=${text}`);
+
+        if (error.response.data.message) {
+            embed.setTitle("⚠ An error occurred ⚠")
+                .setColor("YELLOW")
+                .setDescription(error.response.data.message)
+                .setFooter("🔍")
+                .setTimestamp();
+            return interaction.reply({embeds: [embed], ephemeral: true});
+        }
             
         try {
-            const response = await axios.get(`https://api.leoapi.xyz/text/emojify?text=${text}`);
 
             interaction.reply({ content: `${response.data.emojified}`, fetchReply: true })
         } catch (error) {
-            if (error.response.data.message) {
-                embed.setTitle("⚠ An error occurred ⚠")
-                    .setColor("YELLOW")
-                    .setDescription(error.response.data.message)
-                    .setFooter("🔍")
-                    .setTimestamp();
-                return interaction.reply({embeds: [embed], ephemeral: true});
-            }
 
             embed.setTitle("⚠ An error occurred ⚠")
                 .setColor("YELLOW")

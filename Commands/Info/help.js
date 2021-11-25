@@ -25,10 +25,10 @@ module.exports = {
         },
         {
           name: "> 📌・Information Commands",
-          value: "```/botinfo | /reddit | /zoo | /status | /translate | /lyric```"
+          value: "```/botinfo | /reddit | /zoo | /status | /translate | /lyric | /hexcolor```"
         },
         {
-          name: "> 😅・Fun Commands",
+          name: "> 😂・Fun Commands",
           value: "```/emojify | /wouldyourather```"
         },
         {
