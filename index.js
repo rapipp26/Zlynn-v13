@@ -26,7 +26,7 @@ require("./Structures/mongo.js")(client);
 require("./Systems/GiveawaySys")(client);
 
 ["Events", "Commands"].forEach(handler => {
-    require(`./Handlers/${handler}`)(client, PG, Ascii);
+    require(`./Structures/Handlers/${handler}`)(client, PG, Ascii);
 });
 
 const handle = new Errorhandler(client, {
