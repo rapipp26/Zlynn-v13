@@ -21,7 +21,7 @@ module.exports = {
 
             if (interaction.isSelectMenu()) {
             if (interaction.customId === 'select') {
-                interaction.reply({ content: 'Gileee berhasil cuy' });
+                console.log(interaction)
             }
         }
 
