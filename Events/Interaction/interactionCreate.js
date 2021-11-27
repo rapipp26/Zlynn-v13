@@ -19,11 +19,12 @@ module.exports = {
 
             command.execute(interaction, client)
 
-            if (!interaction.isSelectMenu()) return;
+            if (interaction.isSelectMenu()) {
             if (interaction.customId === 'select') {
-                await interaction.update({ content: 'Something was selected!', components: [] });
+                interaction.update({ content: 'Something was selected!', components: [] });
             }
-            
+        }
+
         }
     }
 }
