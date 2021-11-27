@@ -30,7 +30,7 @@ module.exports = {
             .setFooter("❗")
             .setTimestamp()]})
 
-            if (error.response.data.message) {
+            if (response.data.error) {
                 embed.setTitle("⚠ An error occurred ⚠")
                     .setColor("YELLOW")
                     .setDescription(error.response.data.message)
