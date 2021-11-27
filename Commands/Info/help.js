@@ -17,7 +17,7 @@ module.exports = {
       .addFields(
         {
           name: "> 🍙・Anime Commands",
-          value: "```/hug | /pat | /anime_quote | /wink```"
+          value: "```/baka | /bite | /anime_quote | /blush | /cuddle | /dance | /slap```"
         },
         {
           name: "> 📷・Image Commands",
@@ -25,7 +25,7 @@ module.exports = {
         },
         {
           name: "> 📌・Information Commands",
-          value: "```/botinfo | /reddit | /zoo | /status | /translate | /lyric | /hexcolor```"
+          value: "```/botinfo | /reddit | /zoo | /status | /translate | /lyric | /hexcolor | /steam | /github```"
         },
         {
           name: "> 😂・Fun Commands",
