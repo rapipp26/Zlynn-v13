@@ -21,7 +21,6 @@ module.exports = {
 
             if (interaction.isSelectMenu()) {
             if (interaction.customId === 'select') {
-                await interaction.update({ content: 'Something was selected!' });
                 interaction.reply({ content: 'Gileee berhasil cuy' });
             }
         }
