@@ -18,6 +18,13 @@ module.exports = {
             ]}) && client.commands.delete(interaction.commandName);
 
             command.execute(interaction, client)
+
+            if (interaction.isSelectMenu()) {
+
+            if (interaction.customId === 'select') {
+                await interaction.update({ content: 'Something was selected!', components: [] });
+            }
+            }
         }
     }
 }
