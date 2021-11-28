@@ -9,7 +9,7 @@ module.exports = {
      * @param {CommandInteraction} interaction 
      * @param {Client} client 
      */
-    async execute(interaction, client) {
+    async execute(interaction) {
 		const row = new MessageActionRow()
 			.addComponents(
 				new MessageSelectMenu()
@@ -29,6 +29,6 @@ module.exports = {
 					]),
 			);
 
-            interaction.reply({ fetchReply: true, content: 'Test', components:[row] })
+            interaction.reply({ content: 'Test', components:[row] })
     }
 }
