@@ -21,11 +21,12 @@ module.exports = {
         }
 
         if (interaction.isSelectMenu()) {
+            console.log(interaction)
             if (interaction.customId === 'select') {
-                if(interaction.values === '1') {
+                if(interaction.value === '1') {
                     interaction.update({ content: "Lmao banget ngap 😱"})
                 }
-                if(interaction.values === '2') {
+                if(interaction.value === '2') {
                     interaction.update({ content: "Anjime banget ngap 😱"})
                 }
             }
