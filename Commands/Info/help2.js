@@ -24,7 +24,7 @@ module.exports = {
 				description: 'This is also a description',
 				value: '2',
 			},
-		]),
+		]);
 
 		const row = new MessageActionRow()
 			.addComponents([ menu ]);
