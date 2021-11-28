@@ -30,6 +30,9 @@ module.exports = {
                     interaction.update({ content: "Anjime banget ngap 😱"})
                 }
             }
+            setTimeout(() => {
+				interaction.update({ content: "Test", components: [] })
+			}, 3000)
         }
     }
 }
