@@ -20,7 +20,7 @@ module.exports = {
     async execute(interaction, client) {
         const phin = require('phin')
         let fs = require('fs')
-        const target = interaction.options.getMember("target")
+        const target = interaction.options.getUser("target")
         const errorEmbed = new MessageEmbed()
         .setColor("RED")
 

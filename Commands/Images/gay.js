@@ -18,8 +18,10 @@ module.exports = {
      * @param {Client} client 
      */
     async execute(interaction, client) {
-        const target = interaction.options.getMember("target")
-
+        const target = interaction.options.getUser("target")
+        const phin = require('phin')
+        let fs = require('fs')
+        
     phin(`https://some-random-api.ml/canvas/gay?avatar=${target.avatarURL({ format: "png" })}`).then(res => {
     if (res.statusCode !== 200) {
         console.log('Bad status code')
