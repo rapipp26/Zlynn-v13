@@ -10,24 +10,24 @@ module.exports = {
      * @param {Client} client 
      */
     async execute(interaction) {
+		const menu = new MessageSelectMenu()
+		.setCustomId('select')
+		.setPlaceholder('Nothing selected')
+		.addOptions([
+			{
+				label: 'Select me',
+				description: 'This is a description',
+				value: '1',
+			},
+			{
+				label: 'You can select me too',
+				description: 'This is also a description',
+				value: '2',
+			},
+		]),
+
 		const row = new MessageActionRow()
-			.addComponents(
-				new MessageSelectMenu()
-					.setCustomId('select')
-					.setPlaceholder('Nothing selected')
-					.addOptions([
-						{
-							label: 'Select me',
-							description: 'This is a description',
-							value: 'first_option',
-						},
-						{
-							label: 'You can select me too',
-							description: 'This is also a description',
-							value: 'second_option',
-						},
-					]),
-			);
+			.addComponents([ menu ]);
 
             interaction.reply({ content: 'Test', components:[row] })
     }
