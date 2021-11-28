@@ -22,6 +22,7 @@ module.exports = {
 
         if (interaction.isSelectMenu()) {
             if (interaction.customId === 'select') {
+                console.log(interaction)
                 interaction.update({ content: "anjime work 😱😱"})
             }
         }
