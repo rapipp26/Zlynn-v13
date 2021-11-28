@@ -19,13 +19,20 @@ module.exports = {
      */
     async execute(interaction, client) {
         const target = interaction.options.getMember("target")
-        
-        const embed = new MessageEmbed()
-        .setAuthor("Pride flag is strict...")
-        .setColor("RANDOM")
-        .setImage(`https://some-random-api.ml/canvas/gay?avatar=${target.displayAvatarURL()}`)
-        .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
-        .setTimestamp()
-        interaction.reply({ embeds: [embed] })
+
+    phin(`https://some-random-api.ml/canvas/gay?avatar=${target.avatarURL({ format: "png" })}`).then(res => {
+    if (res.statusCode !== 200) {
+        console.log('Bad status code')
+        console.log(JSON.parse(res.body))
+    }
+    fs.writeFile('./gay.png', res.body, (err) => {
+        if (err) {
+            errorEmbed.setDescription(`${false1} **|*** An error was occurred\n\`${err}\``)
+            interaction.reply({ embeds: [errorEmbed] })
+        } else {
+        interaction.reply({ files: ['./gay.png'] })
+        }
+    })
+})
     }
 }

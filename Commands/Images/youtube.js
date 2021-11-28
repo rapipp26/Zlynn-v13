@@ -24,7 +24,7 @@ module.exports = {
         const errorEmbed = new MessageEmbed()
         .setColor("RED")
 
-    phin(`https://some-random-api.ml/canvas/youtube-comment?avatar=${interaction.user.target.avatarURL({ format: "png" })}&username=${interaction.user.username}&comment=${comment}`).then(res => {
+    phin(`https://some-random-api.ml/canvas/youtube-comment?avatar=${interaction.user.avatarURL({ format: "png" })}&username=${interaction.user.username}&comment=${comment}`).then(res => {
     if (res.statusCode !== 200) {
         console.log('Bad status code')
         console.log(JSON.parse(res.body))

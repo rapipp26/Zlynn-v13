@@ -24,7 +24,7 @@ module.exports = {
         const errorEmbed = new MessageEmbed()
         .setColor("RED")
 
-    phin(`https://some-random-api.ml/canvas/simpcard?avatar=${target.target.avatarURL({ format: "png" })}`).then(res => {
+    phin(`https://some-random-api.ml/canvas/simpcard?avatar=${target.avatarURL({ format: "png" })}`).then(res => {
     if (res.statusCode !== 200) {
         console.log('Bad status code')
         console.log(JSON.parse(res.body))
