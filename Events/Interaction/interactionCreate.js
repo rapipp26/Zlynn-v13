@@ -31,7 +31,7 @@ module.exports = {
                 }
             }
             setTimeout(() => {
-				interaction.update({ content: "Test", components: [] })
+				interaction.editReply({ content: "Test", components: [] })
 			}, 3000)
         }
     }
