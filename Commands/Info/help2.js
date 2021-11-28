@@ -31,8 +31,8 @@ module.exports = {
 
             interaction.reply({ content: 'Test', components:[row] })
 
-			setTimeout(async () => {
-				menu.setDisabled(true)
+			setTimeout(() => {
+				row.components[0].setDisabled(true)
 			}, 3000)
     }
 }
