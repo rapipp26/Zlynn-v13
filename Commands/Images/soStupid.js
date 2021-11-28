@@ -20,11 +20,11 @@ module.exports = {
     async execute(interaction, client) {
         const phin = require('phin')
         let fs = require('fs')
-        const target = interaction.options.getMember("target")
+        const target = interaction.options.getUser("target")
         const errorEmbed = new MessageEmbed()
         .setColor("RED")
 
-    phin(`https://some-random-api.ml/canvas/its-so-stupid?avatar=${target.displayAvatarURL()}&dog=im+stupid`).then(res => {
+    phin(`https://some-random-api.ml/canvas/its-so-stupid?avatar=${target.avatarURL({ format: "png" })}&dog=im+stupid`).then(res => {
     if (res.statusCode !== 200) {
         console.log('Bad status code')
         console.log(JSON.parse(res.body))
