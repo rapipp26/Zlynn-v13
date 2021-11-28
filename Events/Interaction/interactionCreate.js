@@ -18,13 +18,12 @@ module.exports = {
             ]}) && client.commands.delete(interaction.commandName);
 
             command.execute(interaction, client)
-
-            if (interaction.isSelectMenu()) {
-            if (interaction.customId === 'select') {
-                console.log(interaction)
-            }
         }
 
+        if (interaction.isSelectMenu()) {
+            if (interaction.customId === 'select') {
+                interaction.update({ content: "anjime work 😱😱"})
+            }
         }
     }
 }
