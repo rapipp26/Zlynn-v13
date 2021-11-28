@@ -30,5 +30,9 @@ module.exports = {
 			.addComponents([ menu ]);
 
             interaction.reply({ content: 'Test', components:[row] })
+
+			setTimeout(async () => {
+				menu.setDisabled(true)
+			}, 3000)
     }
 }
