@@ -31,31 +31,38 @@ module.exports = {
                     .addFields(
                         {
                             name: "/baka",
-                            value: "```/baka [target]```"
+                            value: "```/baka [target]```",
+                            inline: true
                         },
                         {
                             name: "/bite",
-                            value: "```/bite [target]```"
+                            value: "```/bite [target]```",
+                            inline: true
                         },
                         {
                             name: "/blush",
-                            value: "```/blush [target]```"
+                            value: "```/blush [target]```",
+                            inline: true
                         },
                         {
                             name: "/cuddle",
-                            value: "```/cuddle [target]```"
+                            value: "```/cuddle [target]```",
+                            inline: true
                         },
                         {
                             name: "/dance",
-                            value: "```/dance [target]```"
+                            value: "```/dance [target]```",
+                            inline: true
                         },
                         {
                             name: "/anime_quote",
-                            value: "```/anime_quote```"
+                            value: "```/anime_quote```",
+                            inline: true
                         },
                         {
                             name: "/slap",
-                            value: "```/slap [target]```"
+                            value: "```/slap [target]```",
+                            inline: true
                         },
                     )
                     .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
@@ -71,15 +78,18 @@ module.exports = {
                     .addFields(
                         {
                             name: "/emojify",
-                            value: "```/emojify (text)```"
+                            value: "```/emojify (text)```",
+                            inline: true
                         },
                         {
                             name: "/pokemon",
-                            value: "```/pokemon (name)```"
+                            value: "```/pokemon (name)```",
+                            inline: true
                         },
                         {
                             name: "/wouldyourather",
-                            value: "```/wouldyourather```"
+                            value: "```/wouldyourather```",
+                            inline: true
                         },
                     )
                     .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
@@ -95,23 +105,28 @@ module.exports = {
                     .addFields(
                         {
                             name: "/blur",
-                            value: "```/blur (user)```"
+                            value: "```/blur (user)```",
+                            inline: true
                         },
                         {
                             name: "/gay",
-                            value: "```/gay (user)```"
+                            value: "```/gay (user)```",
+                            inline: true
                         },
                         {
                             name: "/simpcard",
-                            value: "```/simpcard (user)```"
+                            value: "```/simpcard (user)```",
+                            inline: true
                         },
                         {
                             name: "/stupid",
-                            value: "```/stupid (user)"
+                            value: "```/stupid (user)```",
+                            inline: true
                         },
                         {
                             name: "/youtube",
-                            value: "```/youtube (text)```"
+                            value: "```/youtube (text)```",
+                            inline: true
                         }
                     )
                     .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
@@ -127,43 +142,53 @@ module.exports = {
                     .addFields(
                         {
                             name: "/botinfo",
-                            value: "```/botinfo ```"
+                            value: "```/botinfo ```",
+                            inline: true
                         },
                         {
                             name: "/github",
-                            value: "```/github (name)```"
+                            value: "```/github (name)```",
+                            inline: true
                         },
                         {
                             name: "/help",
-                            value: "```/help ```"
+                            value: "```/help ```",
+                            inline: true
                         },
                         {
                             name: "/hexcolor",
-                            value: "```/stupid (color code)```"
+                            value: "```/stupid (color code)```",
+                            inline: true
                         },
                         {
                             name: "/lyric",
-                            value: "```/lyric (song title)```"
+                            value: "```/lyric (song title)```",
+                            inline: true
                         },
                         {
                             name: "/status",
-                            value: "```/status```"
+                            value: "```/status```",
+                            inline: true
                         },
                         {
                             name: "/reddit",
-                            value: "```/reddit (subreddit)```"
+                            value: "```/reddit (subreddit)```",
+                            inline: true
                         },
                         {
                             name: "/steam",
-                            value: "```/steam (app/game name)```"
+                            value: "```/steam (app/game name)```",
+                            inline: true
                         },
                         {
                             name: "/translate",
-                            value: "```/translate (text) (language)```"
+                            value: "```/translate (text) (language)```",
+                            inline: true
                         },
                         {
                             name: "/zoo",
-                            value: "```/zoo {animal}```"
+                            value: "```/zoo {animal}```",
+                            inline: true
                         },
                     )
                     .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
@@ -173,27 +198,47 @@ module.exports = {
                 }
                 if(interaction.values[0] === '5') {
                     const embed5 = new MessageEmbed()
-                    .setAuthor("System commands! ○( ＾皿＾)っ Hehehe…", client.user.avatarURL({ format: "png" }))
+                    .setAuthor("System commands! ○( ＾皿＾)っ ", client.user.avatarURL({ format: "png" }))
                     .setColor("BLURPLE")
                     .setDescription("`[]` : Optional\n`()` : Required\n`{}` : Choices")
                     .addFields(
                         {
                             name: "/giveaway start",
-                            value: "```/giveaway (duration) (winners) (prize) [channel]```"
+                            value: "```/giveaway (duration) (winners) (prize) [channel]```",
+                            inline: true
                         },
                         {
                             name: "/pokemon",
-                            value: "```/pokemon (name)```"
+                            value: "```/pokemon (name)```",
+                            inline: true
                         },
                         {
                             name: "/wouldyourather",
-                            value: "```/wouldyourather```"
+                            value: "```/wouldyourather```",
+                            inline: true
                         },
                     )
                     .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
                     .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
                     .setTimestamp();
                     interaction.update({ embeds: [embed5] })
+                }
+                if(interaction.values[0] === "6") {
+                    const embed6 = new MessageEmbed()
+                    .setAuthor("Moderation commands! φ(゜▽゜*)♪", client.user.avatarURL({ format: "png" }))
+                    .setColor("BLURPLE")
+                    .setDescription("`[]` : Optional\n`()` : Required\n`{}` : Choices")
+                    .addFields(
+                        {
+                            name: "/purge",
+                            value: "```/purge (amount) [target]```",
+                            inline: true
+                        },
+                    )
+                    .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
+                    .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
+                    .setTimestamp();
+                    interaction.update({ embeds: [embed6] })
                 }
             }
             const menu = new MessageSelectMenu()

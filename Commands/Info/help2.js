@@ -44,11 +44,17 @@ module.exports = {
 				description: 'Moderate server and listening to music using this module.',
 				value: '5',
 			},
+			{
+				label: 'Moderation',
+				emoji: "🧥",
+				description: 'Use this module to punish someone',
+				value: '6',
+			},
 		]);
 
 		const row = new MessageActionRow()
 			.addComponents([ menu ]);
 
-            interaction.reply({ components:[row] })
+            interaction.reply({ content: "Please select a module.", components:[row] })
     }
 }
