@@ -1,4 +1,4 @@
-const { Client, CommandInteraction, MessageEmbed } = require("discord.js");
+const { Client, CommandInteraction, MessageEmbed, MessageActionRow, MessageSelectMenu } = require("discord.js");
 const { true1, false1, arrow, reply1, reply2 } = require ("../../Structures/config.json")
 
 module.exports = {
@@ -30,9 +30,17 @@ module.exports = {
                     interaction.update({ content: "Anjime banget ngap 😱"})
                 }
             }
+            const rowDis = new MessageActionRow()
+			.addComponents([
+				new MessageSelectMenu()
+				.setCustomId("anjime")
+				.setPlaceholder("Select Module")
+				.setDisabled(true)
+			]);
+
             setTimeout(() => {
-				interaction.editReply({ content: "Test", components: [] })
-			}, 3000)
+				interaction.editReply({ content: "Test", components: [rowDis] })
+			}, 30000)
         }
     }
 }
