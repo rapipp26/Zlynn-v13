@@ -2,7 +2,7 @@ const { CommandInteraction, MessageEmbed, Client, MessageActionRow, MessageSelec
 const config = require ('../../Structures/config.json');
 
 module.exports = { 
-    name: 'help2', 
+    name: 'help', 
     description: 'New help command with menu',
     /**
      * 
@@ -49,10 +49,6 @@ module.exports = {
 		const row = new MessageActionRow()
 			.addComponents([ menu ]);
 
-            interaction.reply({ content: 'Test', components:[row] })
-
-			setTimeout(() => {
-				row.components[0].setDisabled(true)
-			}, 15000)
+            interaction.reply({ components:[row] })
     }
 }

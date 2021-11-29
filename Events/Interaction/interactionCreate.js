@@ -139,7 +139,7 @@ module.exports = {
                         },
                         {
                             name: "/hexcolor",
-                            value: "```/stupid (color code)"
+                            value: "```/stupid (color code)```"
                         },
                         {
                             name: "/lyric",
@@ -213,7 +213,7 @@ module.exports = {
 
             setTimeout(() => {
 				interaction.editReply({ components: [row] })
-			}, 15000)
+			}, 30000)
         }
     }
 }
