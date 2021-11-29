@@ -3,8 +3,8 @@ const config = require ('../../Structures/config.json');
 const anime = require("anime-actions");
 
 module.exports = { 
-    name: 'waifu', 
-    description: 'Send a ur waifu gift',
+    name: 'sad', 
+    description: 'Send a sad gift',
     /**
      * 
      * @param {CommandInteraction} interaction 
@@ -13,8 +13,8 @@ module.exports = {
     async execute(interaction, client) {
 
             const embed = new MessageEmbed()
-            .setAuthor(`${interaction.user.tag} waifu is... `, client.user.avatarURL({ format: "png" }))
-            .setImage(await anime.smile())
+            .setAuthor(`${interaction.user.tag} needs support (っ °Д °;)っ`, client.user.avatarURL({ format: "png" }))
+            .setImage(await anime.cry())
             .setColor("RANDOM")
             .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
             .setTimestamp()

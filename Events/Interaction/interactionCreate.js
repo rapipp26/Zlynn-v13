@@ -69,6 +69,14 @@ module.exports = {
                             name: "/anime_wallpaper",
                             value: "```/anime_wallpaper```"
                         },
+                        {
+                            name: "/hug",
+                            value: "```/hug [target]```"
+                        },
+                        {
+                            name: "/sad",
+                            value: "```/sad```"
+                        },
                     )
                     .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
                     .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
