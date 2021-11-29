@@ -55,7 +55,7 @@ module.exports = {
                 interaction.reply({ embed: [Response] })
             })
         } else {
-            await channel.bulkDelete(Amount, true),then((messages) => {
+            await channel.bulkDelete(Amount, true),then(messages => {
                 Response.setDescription(`${config.true1} **|** *Cleared \`${messages.size}\` messages from this channel (〃￣︶￣)人*`)
                 interaction.reply({ embeds: [Response] })
             })
