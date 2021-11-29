@@ -36,7 +36,7 @@ module.exports = {
                 .setDescription(`${error}`)
                 .setFooter("🔍")
                 .setTimestamp();
-            interaction.reply({embeds: [embed], ephemeral: true});
+            interaction.editReply({embeds: [embed], ephemeral: true});
         }
     }
 }
