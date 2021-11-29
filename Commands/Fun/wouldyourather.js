@@ -27,9 +27,10 @@ module.exports = {
             .addFields( { name: "Option 1", value: `${response.data.option_1}`}, { name: "Option 2", value: `${response.data.option_2}`} )
             .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
             .setTimestamp()
-            const message = await interaction.reply({ embeds: [embed], fetchReply: true })
-            message.react("1️⃣")
-            message.react("2️⃣")
+            await interaction.reply({ embeds: [embed] }).then((m) => {
+                m.react("1️⃣")
+                m.react("2️⃣")
+            })
         } catch (error) {
             embed.setTitle("⚠ An error occured ⚠")
                 .setColor("YELLOW")
