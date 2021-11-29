@@ -56,6 +56,12 @@ module.exports = {
             })
         } else {
             await channel.bulkDelete(Amount, true).then(messages => {
+                if(messages.size === "0") return interaction.reply({ embed: [new MessageEmbed()
+                    .setTitle("⚠ An error occurred ⚠")
+                    .setColor("YELLOW")
+                    .setDescription(`You cannot purge message older than 14 days.`)
+                    .setFooter("🔍")
+                    .setTimestamp()]});
                 Response.setDescription(`${config.true1} **|** *Cleared \`${messages.size}\` messages from this channel (〃￣︶￣)人*`)
                 interaction.reply({ embeds: [Response] })
             })

@@ -57,6 +57,18 @@ module.exports = {
                             name: "/slap",
                             value: "```/slap [target]```"
                         },
+                        {
+                            name: "/bonk",
+                            value: "```/bonk [target]```"
+                        },
+                        {
+                            name: "/waifu",
+                            value: "```/waifu```"
+                        },
+                        {
+                            name: "/anime_wallpaper",
+                            value: "```/anime_wallpaper```"
+                        },
                     )
                     .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
                     .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
@@ -182,13 +194,17 @@ module.exports = {
                             value: "```/giveaway (duration) (winners) (prize) [channel]```"
                         },
                         {
-                            name: "/pokemon",
-                            value: "```/pokemon (name)```"
+                            name: "/music play",
+                            value: "```/music play (query)```"
                         },
                         {
-                            name: "/wouldyourather",
-                            value: "```/wouldyourather```"
+                            name: "/music volume",
+                            value: "```/music volume (percent)```"
                         },
+                        {
+                            name: "/music settings",
+                            value: "```/music volume {options}```"
+                        }
                     )
                     .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
                     .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
@@ -233,3 +249,4 @@ module.exports = {
         }
     }
 }
+
