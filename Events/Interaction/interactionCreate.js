@@ -30,16 +30,28 @@ module.exports = {
                     interaction.update({ content: "Anjime banget ngap 😱"})
                 }
             }
-            const rowDis = new MessageActionRow()
-			.addComponents([
-				new MessageSelectMenu()
-				.setCustomId("anjime")
-				.setPlaceholder("Select Module")
-				.setDisabled(true)
-			]);
+            const menu = new MessageSelectMenu()
+            .setCustomId('select')
+            .setPlaceholder('Nothing selected')
+            .setDisabled(true)
+            .addOptions([
+                {
+                    label: 'Select me',
+                    description: 'This is a description',
+                    value: '1',
+                },
+                {
+                    label: 'You can select me too',
+                    description: 'This is also a description',
+                    value: '2',
+                },
+            ]);
+    
+            const row = new MessageActionRow()
+                .addComponents([ menu ]);
 
             setTimeout(() => {
-				interaction.editReply({ content: "Test", components: [rowDis] })
+				interaction.editReply({ content: "Test", components: [row] })
 			}, 3000)
         }
     }
