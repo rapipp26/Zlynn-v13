@@ -27,6 +27,7 @@ module.exports = {
                     const embed1 = new MessageEmbed()
                     .setAuthor("Anime commands! ヾ(≧▽≦*)o", client.user.avatarURL({ format: "png" }))
                     .setColor("BLURPLE")
+                    .setDescription("`[]` : Optional\n`()` : Required\n`{}` : Choices")
                     .addFields(
                         {
                             name: "/baka",
@@ -63,16 +64,136 @@ module.exports = {
                     interaction.update({ embeds: [embed1] })
                 }
                 if(interaction.values[0] === '2') {
-                    interaction.update({ content: "Anjime banget ngap 😱"})
+                    const embed2 = new MessageEmbed()
+                    .setAuthor("Fun commands! (*^▽^*)", client.user.avatarURL({ format: "png" }))
+                    .setColor("BLURPLE")
+                    .setDescription("`[]` : Optional\n`()` : Required\n`{}` : Choices")
+                    .addFields(
+                        {
+                            name: "/emojify",
+                            value: "```/emojify (text)```"
+                        },
+                        {
+                            name: "/pokemon",
+                            value: "```/pokemon (name)```"
+                        },
+                        {
+                            name: "/wouldyourather",
+                            value: "```/wouldyourather```"
+                        },
+                    )
+                    .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
+                    .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
+                    .setTimestamp();
+                    interaction.update({ embeds: [embed2] })
                 }
                 if(interaction.values[0] === '3') {
-                    interaction.update({ content: "Anjime banget ngap 😱"})
+                    const embed3 = new MessageEmbed()
+                    .setAuthor("Images commands! (✿◡‿◡)", client.user.avatarURL({ format: "png" }))
+                    .setColor("BLURPLE")
+                    .setDescription("`[]` : Optional\n`()` : Required\n`{}` : Choices")
+                    .addFields(
+                        {
+                            name: "/blur",
+                            value: "```/blur (user)```"
+                        },
+                        {
+                            name: "/gay",
+                            value: "```/gay (user)```"
+                        },
+                        {
+                            name: "/simpcard",
+                            value: "```/simpcard (user)```"
+                        },
+                        {
+                            name: "/stupid",
+                            value: "```/stupid (user)"
+                        },
+                        {
+                            name: "/youtube",
+                            value: "```/youtube (text)```"
+                        }
+                    )
+                    .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
+                    .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
+                    .setTimestamp();
+                    interaction.update({ embeds: [embed3] })
                 }
                 if(interaction.values[0] === '4') {
-                    interaction.update({ content: "Anjime banget ngap 😱"})
+                    const embed4 = new MessageEmbed()
+                    .setAuthor("Information commands! (❁´◡`❁))", client.user.avatarURL({ format: "png" }))
+                    .setColor("BLURPLE")
+                    .setDescription("`[]` : Optional\n`()` : Required\n`{}` : Choices")
+                    .addFields(
+                        {
+                            name: "/botinfo",
+                            value: "```/botinfo ```"
+                        },
+                        {
+                            name: "/github",
+                            value: "```/github (name)```"
+                        },
+                        {
+                            name: "/help",
+                            value: "```/help ```"
+                        },
+                        {
+                            name: "/hexcolor",
+                            value: "```/stupid (color code)"
+                        },
+                        {
+                            name: "/lyric",
+                            value: "```/lyric (song title)```"
+                        },
+                        {
+                            name: "/status",
+                            value: "```/status```"
+                        },
+                        {
+                            name: "/reddit",
+                            value: "```/reddit (subreddit)```"
+                        },
+                        {
+                            name: "/steam",
+                            value: "```/steam (app/game name)```"
+                        },
+                        {
+                            name: "/translate",
+                            value: "```/translate (text) (language)```"
+                        },
+                        {
+                            name: "/zoo",
+                            value: "```/zoo {animal}```"
+                        },
+                    )
+                    .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
+                    .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
+                    .setTimestamp();
+                    interaction.update({ embeds: [embed4] })
                 }
                 if(interaction.values[0] === '5') {
-                    interaction.update({ content: "Anjime banget ngap 😱"})
+                    const embed5 = new MessageEmbed()
+                    .setAuthor("System commands! ○( ＾皿＾)っ Hehehe…", client.user.avatarURL({ format: "png" }))
+                    .setColor("BLURPLE")
+                    .setDescription("`[]` : Optional\n`()` : Required\n`{}` : Choices")
+                    .addFields(
+                        {
+                            name: "/giveaway start",
+                            value: "```/giveaway (duration) (winners) (prize) [channel]```"
+                        },
+                        {
+                            name: "/pokemon",
+                            value: "```/pokemon (name)```"
+                        },
+                        {
+                            name: "/wouldyourather",
+                            value: "```/wouldyourather```"
+                        },
+                    )
+                    .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
+                    .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
+                    .setTimestamp();
+                    interaction.update({ embeds: [embed5] })
                 }
             }
             const menu = new MessageSelectMenu()
@@ -91,7 +212,7 @@ module.exports = {
                 .addComponents([ menu ]);
 
             setTimeout(() => {
-				interaction.editReply({ content: "Test", components: [row] })
+				interaction.editReply({ components: [row] })
 			}, 15000)
         }
     }
