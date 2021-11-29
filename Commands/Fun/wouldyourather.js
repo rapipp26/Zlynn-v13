@@ -18,7 +18,7 @@ module.exports = {
                 .setDescription(`${response.data.error}`)
                 .setFooter("🔍")
                 .setTimestamp();
-            return interaction.reply({embeds: [embed], ephemeral: true});
+            interaction.reply({embeds: [embed], ephemeral: true});
         }
             
         try {
@@ -27,10 +27,9 @@ module.exports = {
             .addFields( { name: "Option 1", value: `${response.data.option_1}`}, { name: "Option 2", value: `${response.data.option_2}`} )
             .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
             .setTimestamp()
-            await interaction.reply({ embeds: [embed] }).then((m) => {
-                m.react("1️⃣")
-                m.react("2️⃣")
-            })
+            const m = await interaction.reply({ embeds: [embed] })
+            m.react("1️⃣")
+            m.react("2️⃣")
         } catch (error) {
             embed.setTitle("⚠ An error occured ⚠")
                 .setColor("YELLOW")
