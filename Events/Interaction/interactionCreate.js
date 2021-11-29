@@ -21,7 +21,10 @@ module.exports = {
         }
 
         if (interaction.isSelectMenu()) {
-            console.log(interaction)
+            const { message, user } = interaction;
+            const userId = user.id;
+            const authorId = message.interaction.user.id;
+                if (userId === authorId) {
             if (interaction.customId === 'select') {
                 if(interaction.values[0] === '1') {
                     const embed1 = new MessageEmbed()
@@ -236,6 +239,9 @@ module.exports = {
                     interaction.update({ embeds: [embed6] })
                 }
             }
+        } else {
+            interaction.reply({ content: "Please use your own help command", ephemeral: true })
+        }
             const menu = new MessageSelectMenu()
             .setCustomId('kontol')
             .setPlaceholder('Select Module')
