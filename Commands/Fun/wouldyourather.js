@@ -11,17 +11,17 @@ module.exports = {
     async execute(interaction) {
         const embed     = new MessageEmbed();
         const response = await axios.get(`https://api.leoapi.xyz/fun/wouldyourather`);
-        if (error.response.data.message) {
+
+        if (response.data.error) {
             embed.setTitle("⚠ An error occured ⚠")
                 .setColor("YELLOW")
-                .setDescription(error.response.data.message)
+                .setDescription(`${response.data.error}`)
                 .setFooter("🔍")
                 .setTimestamp();
             return interaction.reply({embeds: [embed], ephemeral: true});
         }
             
         try {
-            
             embed.setAuthor("Would you rather..? 🤨")
             .setColor("RANDOM")
             .addFields( { name: "Option 1", value: `${response.data.option_1}`}, { name: "Option 2", value: `${response.data.option_2}`} )

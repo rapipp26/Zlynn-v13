@@ -29,7 +29,7 @@ module.exports = {
         },
         {
           name: "> 😂・Fun Commands",
-          value: "```/emojify | /wouldyourather```"
+          value: "```/emojify | /wouldyourather | /pokemon```"
         },
         {
           name: "> 📟・System Commands",

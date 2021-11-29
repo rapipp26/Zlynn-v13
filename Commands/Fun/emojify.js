@@ -21,10 +21,10 @@ module.exports = {
         const embed     = new MessageEmbed();
         const response = await axios.get(`https://api.leoapi.xyz/text/emojify?text=${text}`);
 
-        if (error.response.data.message) {
-            embed.setTitle("⚠ An error occurred ⚠")
+        if (response.data.error) {
+            embed.setTitle("⚠ An error occured ⚠")
                 .setColor("YELLOW")
-                .setDescription(error.response.data.message)
+                .setDescription(`${response.data.error}`)
                 .setFooter("🔍")
                 .setTimestamp();
             return interaction.reply({embeds: [embed], ephemeral: true});
