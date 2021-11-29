@@ -107,7 +107,7 @@ module.exports = {
                         },
                         {
                             name: "/stupid",
-                            value: "```/stupid (user)"
+                            value: "```/stupid (user)```"
                         },
                         {
                             name: "/youtube",
@@ -228,7 +228,7 @@ module.exports = {
                 .addComponents([ menu ]);
 
             setTimeout(() => {
-				interaction.editReply({ components: [row] })
+				interaction.editReply({ content: "Session Expired", components: [row] })
 			}, 30000)
         }
     }
