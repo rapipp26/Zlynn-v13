@@ -15,14 +15,34 @@ module.exports = {
 		.setPlaceholder('Nothing selected')
 		.addOptions([
 			{
-				label: 'Select me',
-				description: 'This is a description',
+				label: 'Anime',
+				emoji: "🍙",
+				description: 'Gives action to your friends or get some motivation from anime characters!',
 				value: '1',
 			},
 			{
-				label: 'You can select me too',
-				description: 'This is also a description',
+				label: 'Fun',
+				emoji: "😂",
+				description: "Do some fun with your friend using this module.",
 				value: '2',
+			},
+			{
+				label: 'Images',
+				emoji: "📷",
+				description: 'Make fun of your friend\'s or your avatar.',
+				value: '3',
+			},
+			{
+				label: 'Information',
+				emoji: "📣",
+				description: 'Get some information about something using this module.',
+				value: '4',
+			},
+			{
+				label: 'System',
+				emoji: "👔",
+				description: 'Moderate server and listening to music using this module.',
+				value: '5',
 			},
 		]);
 
@@ -33,6 +53,6 @@ module.exports = {
 
 			setTimeout(() => {
 				row.components[0].setDisabled(true)
-			}, 3000)
+			}, 15000)
     }
 }

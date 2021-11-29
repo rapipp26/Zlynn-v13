@@ -24,26 +24,66 @@ module.exports = {
             console.log(interaction)
             if (interaction.customId === 'select') {
                 if(interaction.values[0] === '1') {
-                    interaction.update({ content: "Lmao banget ngap 😱"})
+                    const embed1 = new MessageEmbed()
+                    .setAuthor("Anime commands! ヾ(≧▽≦*)o", client.user.avatarURL({ format: "png" }))
+                    .setColor("BLURPLE")
+                    .addFields(
+                        {
+                            name: "/baka",
+                            value: "```/baka [target]```"
+                        },
+                        {
+                            name: "/bite",
+                            value: "```/bite [target]```"
+                        },
+                        {
+                            name: "/blush",
+                            value: "```/blush [target]```"
+                        },
+                        {
+                            name: "/cuddle",
+                            value: "```/cuddle [target]```"
+                        },
+                        {
+                            name: "/dance",
+                            value: "```/dance [target]```"
+                        },
+                        {
+                            name: "/anime_quote",
+                            value: "```/anime_quote```"
+                        },
+                        {
+                            name: "/slap",
+                            value: "```/slap [target]```"
+                        },
+                    )
+                    .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
+                    .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
+                    .setTimestamp();
+                    interaction.update({ embeds: [embed1] })
                 }
                 if(interaction.values[0] === '2') {
                     interaction.update({ content: "Anjime banget ngap 😱"})
                 }
+                if(interaction.values[0] === '3') {
+                    interaction.update({ content: "Anjime banget ngap 😱"})
+                }
+                if(interaction.values[0] === '4') {
+                    interaction.update({ content: "Anjime banget ngap 😱"})
+                }
+                if(interaction.values[0] === '5') {
+                    interaction.update({ content: "Anjime banget ngap 😱"})
+                }
             }
             const menu = new MessageSelectMenu()
-            .setCustomId('select')
-            .setPlaceholder('Nothing selected')
+            .setCustomId('kontol')
+            .setPlaceholder('Select Module')
             .setDisabled(true)
             .addOptions([
                 {
                     label: 'Select me',
                     description: 'This is a description',
                     value: '1',
-                },
-                {
-                    label: 'You can select me too',
-                    description: 'This is also a description',
-                    value: '2',
                 },
             ]);
     
@@ -52,7 +92,7 @@ module.exports = {
 
             setTimeout(() => {
 				interaction.editReply({ content: "Test", components: [row] })
-			}, 3000)
+			}, 15000)
         }
     }
 }
