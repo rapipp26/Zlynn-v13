@@ -31,38 +31,31 @@ module.exports = {
                     .addFields(
                         {
                             name: "/baka",
-                            value: "```/baka [target]```",
-                            inline: true
+                            value: "```/baka [target]```"
                         },
                         {
                             name: "/bite",
-                            value: "```/bite [target]```",
-                            inline: true
+                            value: "```/bite [target]```"
                         },
                         {
                             name: "/blush",
-                            value: "```/blush [target]```",
-                            inline: true
+                            value: "```/blush [target]```"
                         },
                         {
                             name: "/cuddle",
-                            value: "```/cuddle [target]```",
-                            inline: true
+                            value: "```/cuddle [target]```"
                         },
                         {
                             name: "/dance",
-                            value: "```/dance [target]```",
-                            inline: true
+                            value: "```/dance [target]```"
                         },
                         {
                             name: "/anime_quote",
-                            value: "```/anime_quote```",
-                            inline: true
+                            value: "```/anime_quote```"
                         },
                         {
                             name: "/slap",
-                            value: "```/slap [target]```",
-                            inline: true
+                            value: "```/slap [target]```"
                         },
                     )
                     .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
@@ -78,18 +71,15 @@ module.exports = {
                     .addFields(
                         {
                             name: "/emojify",
-                            value: "```/emojify (text)```",
-                            inline: true
+                            value: "```/emojify (text)```"
                         },
                         {
                             name: "/pokemon",
-                            value: "```/pokemon (name)```",
-                            inline: true
+                            value: "```/pokemon (name)```"
                         },
                         {
                             name: "/wouldyourather",
-                            value: "```/wouldyourather```",
-                            inline: true
+                            value: "```/wouldyourather```"
                         },
                     )
                     .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
@@ -105,28 +95,23 @@ module.exports = {
                     .addFields(
                         {
                             name: "/blur",
-                            value: "```/blur (user)```",
-                            inline: true
+                            value: "```/blur (user)```"
                         },
                         {
                             name: "/gay",
-                            value: "```/gay (user)```",
-                            inline: true
+                            value: "```/gay (user)```"
                         },
                         {
                             name: "/simpcard",
-                            value: "```/simpcard (user)```",
-                            inline: true
+                            value: "```/simpcard (user)```"
                         },
                         {
                             name: "/stupid",
-                            value: "```/stupid (user)```",
-                            inline: true
+                            value: "```/stupid (user)"
                         },
                         {
                             name: "/youtube",
-                            value: "```/youtube (text)```",
-                            inline: true
+                            value: "```/youtube (text)```"
                         }
                     )
                     .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
@@ -142,53 +127,43 @@ module.exports = {
                     .addFields(
                         {
                             name: "/botinfo",
-                            value: "```/botinfo ```",
-                            inline: true
+                            value: "```/botinfo ```"
                         },
                         {
                             name: "/github",
-                            value: "```/github (name)```",
-                            inline: true
+                            value: "```/github (name)```"
                         },
                         {
                             name: "/help",
-                            value: "```/help ```",
-                            inline: true
+                            value: "```/help ```"
                         },
                         {
                             name: "/hexcolor",
-                            value: "```/stupid (color code)```",
-                            inline: true
+                            value: "```/stupid (color code)```"
                         },
                         {
                             name: "/lyric",
-                            value: "```/lyric (song title)```",
-                            inline: true
+                            value: "```/lyric (song title)```"
                         },
                         {
                             name: "/status",
-                            value: "```/status```",
-                            inline: true
+                            value: "```/status```"
                         },
                         {
                             name: "/reddit",
-                            value: "```/reddit (subreddit)```",
-                            inline: true
+                            value: "```/reddit (subreddit)```"
                         },
                         {
                             name: "/steam",
-                            value: "```/steam (app/game name)```",
-                            inline: true
+                            value: "```/steam (app/game name)```"
                         },
                         {
                             name: "/translate",
-                            value: "```/translate (text) (language)```",
-                            inline: true
+                            value: "```/translate (text) (language)```"
                         },
                         {
                             name: "/zoo",
-                            value: "```/zoo {animal}```",
-                            inline: true
+                            value: "```/zoo {animal}```"
                         },
                     )
                     .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
@@ -204,18 +179,15 @@ module.exports = {
                     .addFields(
                         {
                             name: "/giveaway start",
-                            value: "```/giveaway (duration) (winners) (prize) [channel]```",
-                            inline: true
+                            value: "```/giveaway (duration) (winners) (prize) [channel]```"
                         },
                         {
                             name: "/pokemon",
-                            value: "```/pokemon (name)```",
-                            inline: true
+                            value: "```/pokemon (name)```"
                         },
                         {
                             name: "/wouldyourather",
-                            value: "```/wouldyourather```",
-                            inline: true
+                            value: "```/wouldyourather```"
                         },
                     )
                     .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
@@ -232,7 +204,6 @@ module.exports = {
                         {
                             name: "/purge",
                             value: "```/purge (amount) [target]```",
-                            inline: true
                         },
                     )
                     .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
