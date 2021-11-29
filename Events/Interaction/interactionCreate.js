@@ -39,8 +39,8 @@ module.exports = {
 			]);
 
             setTimeout(() => {
-				interaction.editReply({ content: "Test", components: [rowDis] })
-			}, 30000)
+				interaction.update({ content: "Test", components: [rowDis] })
+			}, 3000)
         }
     }
 }
