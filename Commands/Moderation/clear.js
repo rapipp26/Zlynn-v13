@@ -27,7 +27,7 @@ module.exports = {
         const Amount = options.getNumber("amount");
         const Target = options.getMember("target")
 
-        const Messages = await channel.messages.fetc();
+        const Messages = await channel.messages.fetch();
 
         const Response = new MessageEmbed()
         .setColor("LUMINOUS_VIVID_PINK")
