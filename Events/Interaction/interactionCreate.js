@@ -1,5 +1,6 @@
 const { Client, CommandInteraction, MessageEmbed, MessageActionRow, MessageSelectMenu } = require("discord.js");
 const { true1, false1, arrow, reply1, reply2 } = require ("../../Structures/config.json")
+const config = require('../../Structures/config.json');
 
 module.exports = {
     name: "interactionCreate",
@@ -240,7 +241,7 @@ module.exports = {
                 }
             }
         } else {
-            interaction.reply({ content: "Please use your own help command", ephemeral: true })
+            interaction.reply({ content: `Execute your own help command please... ${config.piano}`, ephemeral: true })
         }
             const menu = new MessageSelectMenu()
             .setCustomId('kontol')
