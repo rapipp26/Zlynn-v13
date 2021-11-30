@@ -1,4 +1,3 @@
-const axios = require('axios');
 const { CommandInteraction, MessageEmbed, Client } = require('discord.js');
 const config = require ('../../Structures/config.json');
 
@@ -19,8 +18,8 @@ module.exports = {
      * @param {Client} client 
      */
     async execute(interaction, client) {
-        const c = await interaction.options.getString("country");
-        const response2 = await axios.get(`https://disease.sh/v3/covid-19/all`)
+        const axios = require('axios');
+        const c = await interaction.options.getString("country") || "";
         const embed = new MessageEmbed()
 
         try {
@@ -36,21 +35,21 @@ module.exports = {
                 +
                 "\n\n"
                 +
-                `[ Total Cases ] : ${response2.data.cases.toLocaleString()}`
-                `[ Today Cases ] : ${response2.data.todayCases.toLocaleString()}`
+                `[ Total Cases ] : ${response2.data.cases}`
+                `[ Today Cases ] : ${response2.data.todayCases}`
                 +
                 "\n"
                 +
-                `[ Total Deaths ] : ${response2.data.deaths.toLocaleString()}`
-                `[ Today Deaths] : ${response2.data.todayDeaths.toLocaleString()}`
+                `[ Total Deaths ] : ${response2.data.deaths}`
+                `[ Today Deaths] : ${response2.data.todayDeaths}`
                 +
-                `[ Total Recovered ] : ${response2.data.recovered.toLocaleString()}`
-                `[ Today Recovered] : ${response2.data.todayRecovered.toLocaleString()}`
+                `[ Total Recovered ] : ${response2.data.recovered}`
+                `[ Today Recovered] : ${response2.data.todayRecovered}`
                 +
-                `[ Active ] : ${response2.data.active.toLocaleString()}`
-                `[ Critical] : ${response2.data.critical.toLocaleString()}`
+                `[ Active ] : ${response2.data.active}`
+                `[ Critical] : ${response2.data.critical}`
                 +
-                `[ World Population ] : ${response2.data.population.toLocaleString()}`
+                `[ World Population ] : ${response2.data.population}`
                 `\`\`\``
             )
             .addField("Last Updated", `<t:${parseInt(response2.data.updated)}:F>`)
@@ -60,7 +59,7 @@ module.exports = {
             const response = await axios.get(`https://disease.sh/v3/covid-19/countries/${country}`)
         }
     } catch (error) {
-                    embed.setTitle("⚠ An error occurred ⚠")
+                embed.setTitle("⚠ An error occurred ⚠")
                 .setColor("YELLOW")
                 .setDescription(`${error}`)
                 .setFooter("🔍")
