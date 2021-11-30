@@ -73,6 +73,8 @@ module.exports = {
             .addField("Last Updated", `<t:${parseInt(response2.data.updated)}:F>`)
             .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
             .setTimestamp();
+
+            interaction.reply({ embeds: [embed] })
     } catch (error) {
                 embed.setTitle("⚠ An error occurred ⚠")
                 .setColor("YELLOW")
