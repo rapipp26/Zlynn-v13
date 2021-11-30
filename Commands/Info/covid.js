@@ -28,6 +28,7 @@ module.exports = {
 
             embed.setAuthor("Covid Cases Worldwide 🦠", client.user.avatarURL({ format: "png" }))
             .setColor("DARK_BLUE")
+            .setThumbnail("https://c.tenor.com/Aqe8V3wni4QAAAAC/covid19-coronavirus.gif")
             .addFields(
                 {
                     name: "Total Cases",
@@ -59,7 +60,7 @@ module.exports = {
                 },
                 {
                     name: "Last Updated",
-                    value: `<t:${parseInt(response2.data.updated)}:F>`
+                    value: `<t:${parseInt(response2.data.updated / 1000 )}:F>`
                 },
             )
             .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
