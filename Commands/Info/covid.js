@@ -24,7 +24,8 @@ module.exports = {
 
         try {
         if(!c) {
-            const response2 = await axios.get(`https://disease.sh/v3/covid-19/all`)
+            const response2 = await axios.get(`https://disease.sh/v3/covid-19/all`);
+            console.log(response2.data)
 
             embed.setAuthor("Covid-19 Information ^0^", client.user.avatarURL({ format: "png" }))
             .setColor("DARK_BLUE")
