@@ -23,7 +23,6 @@ module.exports = {
         const embed = new MessageEmbed()
 
         try {
-        if(!c) {
             const response2 = await axios.get(`https://disease.sh/v3/covid-19/all`);
             console.log(response2.data.cases)
 
@@ -56,9 +55,6 @@ module.exports = {
             .addField("Last Updated", `<t:${parseInt(response2.data.updated)}:F>`)
             .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
             .setTimestamp();
-        } else if(c) {
-            const response = await axios.get(`https://disease.sh/v3/covid-19/countries/${country}`)
-        }
     } catch (error) {
                 embed.setTitle("⚠ An error occurred ⚠")
                 .setColor("YELLOW")
