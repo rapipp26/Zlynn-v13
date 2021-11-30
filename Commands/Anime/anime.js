@@ -123,17 +123,17 @@ module.exports = {
                     .addFields(
                         {
                             name: "Character",
-                            value: `${response.data.character}`,
+                            value: `${r1.data.character}`,
                             inline: true
                         },
                         {
                             name: "Anime",
-                            value: `${response.data.anime}`,
+                            value: `${r1.data.anime}`,
                             inline: true
                         }, 
                         {
                             name: "Sentence",
-                            value: `${response.data.sentence}`
+                            value: `${r1.data.sentence}`
                         }
                     )
                     interaction.reply({ embeds: [embed] })
