@@ -31,46 +31,37 @@ module.exports = {
             .addFields(
                 {
                     name: "Total Cases",
-                    value: `${response2.data.cases}`,
-                    inline: true
+                    value: `\`\`\`${response2.data.cases.toLocaleString()}\`\`\``
                 },
                 {
                     name: "Today Cases",
-                    value: `${response2.data.todayCases}`,
-                    inline: true
+                    value: `\`\`\`${response2.data.todayCases.toLocaleString()}\`\`\``
                 },
                 {
                     name: "Total Death",
-                    value: `${response2.data.deaths}`,
-                    inline: true
+                    value: `\`\`\`${response2.data.deaths.toLocaleString()}\`\`\``
                 },
                 {
                     name: "Today Deaths",
-                    value: `${response2.data.todayDeaths}`,
-                    inline: true
+                    value: `\`\`\`${response2.data.todayDeaths.toLocaleString()}\`\`\``
                 },
                 {
                     name: "Active",
-                    value: `${response2.data.active}`,
-                    inline: true
+                    value: `\`\`\`${response2.data.active.toLocaleString()}\`\`\``
                 },
                 {
                     name: "Critical",
-                    value: `${response2.data.critical}`,
-                    inline: true
+                    value: `\`\`\`${response2.data.critical.toLocaleString()}\`\`\``
                 },
                 {
                     name: "World Population",
-                    value: `${response2.data.population}`,
-                    inline: true
+                    value: `\`\`\`${response2.data.population.toLocaleString()}\`\`\``
                 },
                 {
                     name: "Last Updated",
-                    value: `<t:${parseInt(response2.data.updated)}:F>`,
-                    inline: true
+                    value: `<t:${parseInt(response2.data.updated)}:F>`
                 },
             )
-            .addField("Last Updated", `<t:${parseInt(response2.data.updated)}:F>`)
             .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
             .setTimestamp();
 
