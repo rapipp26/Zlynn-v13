@@ -20,11 +20,13 @@ module.exports = {
      */
     async execute(interaction, client) {
         const c = await interaction.options.getString("country");
-        const response = await axios.get(`https://disease.sh/v3/covid-19/countries/${country}`)
         const response2 = await axios.get(`https://disease.sh/v3/covid-19/all`)
         const embed = new MessageEmbed()
 
+        try {
         if(!c) {
+            const response2 = await axios.get(`https://disease.sh/v3/covid-19/all`)
+
             embed.setAuthor("Covid-19 Information ^0^", client.user.avatarURL({ format: "png" }))
             .setColor("DARK_BLUE")
             .setDescription(
@@ -55,7 +57,15 @@ module.exports = {
             .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
             .setTimestamp();
         } else if(c) {
-            return
+            const response = await axios.get(`https://disease.sh/v3/covid-19/countries/${country}`)
         }
+    } catch (error) {
+        embed.setTitle("⚠ An error occurred ⚠")
+        .setColor("YELLOW")
+        .setDescription(`${error}`)
+        .setFooter("🔍")
+        .setTimestamp();
+    interaction.reply({embeds: [embed], ephemeral: true});
+    }
     }
 }
