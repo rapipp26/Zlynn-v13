@@ -12,6 +12,11 @@ module.exports = {
             type: "SUB_COMMAND"
         },
         {
+            name: "dance",
+            description: "Send a dance gif",
+            type: "SUB_COMMAND"
+        },
+        {
             name: "bite",
             description: "Send a bite gif",
             type: "SUB_COMMAND"
@@ -70,63 +75,45 @@ module.exports = {
     async execute(interaction, client) {
         const subc = interaction.options.getSubcommand();
         const embed = new MessageEmbed()
+        .setColor("RANDOM")
+        .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
+        .setTimestamp()
 
         try {
             switch(subc) {
                 case "baka" : {
                     embed.setAuthor("Baka! >,<", client.user.avatarURL({ format: "png" }))
                     .setImage(await anime.baka())
-                    .setColor("RANDOM")
-                    .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
-                    .setTimestamp()
                     interaction.reply({ embeds: [embed] })
                 }
                 case "bite" : {
                     embed.setAuthor("Yummy~ 🦷", client.user.avatarURL({ format: "png" }))
                     .setImage(await anime.bite())
-                    .setColor("RANDOM")
-                    .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
-                    .setTimestamp()
                     interaction.reply({ embeds: [embed] })
                 }
                 case "blush" : {
                     embed.setAuthor("Shy~ (/▽＼)", client.user.avatarURL({ format: "png" }))
                     .setImage(await anime.blush())
-                    .setColor("RANDOM")
-                    .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
-                    .setTimestamp()
                     interaction.reply({ embeds: [embed] })
                 }
                 case "bonk" : {
                     embed.setAuthor("Bonk! 🪓😡", client.user.avatarURL({ format: "png" }))
                     .setImage(await anime.bonk())
-                    .setColor("RANDOM")
-                    .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
-                    .setTimestamp()
                     interaction.reply({ embeds: [embed] })
                 }
                 case "cuddle" : {
                     embed.setAuthor("Ahh yes~ §(*￣▽￣*)§", client.user.avatarURL({ format: "png" }))
                     .setImage(await anime.cuddle())
-                    .setColor("RANDOM")
-                    .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
-                    .setTimestamp()
                     interaction.reply({ embeds: [embed] })
                 }
                 case "dance" : {
                     embed.setAuthor("Letsgoo~ 💃🕺", client.user.avatarURL({ format: "png" }))
                     .setImage(await anime.dance())
-                    .setColor("RANDOM")
-                    .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
-                    .setTimestamp()
                     interaction.reply({ embeds: [embed] })
                 }
                 case "hug" : {
                     embed.setAuthor("So comfy~ (∪.∪ )...zzz", client.user.avatarURL({ format: "png" }))
                     .setImage(await anime.hug())
-                    .setColor("RANDOM")
-                    .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
-                    .setTimestamp()
                     interaction.reply({ embeds: [embed] })
                 }
                 case "quote" : {
@@ -149,48 +136,33 @@ module.exports = {
                             value: `${response.data.sentence}`
                         }
                     )
-                    .setColor("RANDOM")
-                    .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
-                    .setTimestamp()
                     interaction.reply({ embeds: [embed] })
                 }
                 case "sad" : {
                     embed.setAuthor("Crying~ 😢", client.user.avatarURL({ format: "png" }))
                     .setImage(await anime.cry())
-                    .setColor("RANDOM")
-                    .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
-                    .setTimestamp()
                     interaction.reply({ embeds: [embed] })
                 }
                 case "slap" : {
                     embed.setAuthor("You naughty!! 😡🤚", client.user.avatarURL({ format: "png" }))
                     .setImage(await anime.slap())
-                    .setColor("RANDOM")
-                    .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
-                    .setTimestamp()
                     interaction.reply({ embeds: [embed] })
                 }
                 case "waifu" : {
                     embed.setAuthor("Here's your waifu 💘", client.user.avatarURL({ format: "png" }))
                     .setImage(await anime.smile())
-                    .setColor("RANDOM")
-                    .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
-                    .setTimestamp()
                     interaction.reply({ embeds: [embed] })
                 }
                 case "wallpaper" : {
                     embed.setAuthor("Here's your wallpaper 🖼", client.user.avatarURL({ format: "png" }))
                     .setImage(await anime.wallpaper())
-                    .setColor("RANDOM")
-                    .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
-                    .setTimestamp()
                     interaction.reply({ embeds: [embed] })
                 }
             }
         } catch (e) {
             embed.setTitle("⚠ An error occurred ⚠")
             .setColor("YELLOW")
-            .setDescription(`${error}`)
+            .setDescription(`${e}`)
             .setFooter("🔍")
             .setTimestamp();
         interaction.editReply({embeds: [embed], ephemeral: true});
