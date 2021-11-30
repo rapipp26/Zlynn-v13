@@ -240,9 +240,7 @@ module.exports = {
                     interaction.update({ embeds: [embed6] })
                 }
             }
-        } else {
-            interaction.reply({ content: `Execute your own help command please... ${config.piano}`, ephemeral: true })
-        }
+        } else return;
             const menu = new MessageSelectMenu()
             .setCustomId('kontol')
             .setPlaceholder('Select Module')
@@ -259,7 +257,7 @@ module.exports = {
                 .addComponents([ menu ]);
 
             setTimeout(() => {
-				interaction.editReply({ content: "Session Expired", components: [row] })
+				interaction.editReply({ content: `${config.false1} **|** *This message is now inactive.*`, components: [row] })
 			}, 30000)
         }
     }
