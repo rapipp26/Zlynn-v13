@@ -36,21 +36,21 @@ module.exports = {
                 +
                 "\n\n"
                 +
-                `[ Total Cases ] : ${response2.data.cases.toLocaleString()}`
+                `[ Total Cases ] : ${response2.data.cases}`
                 `[ Today Cases ] : ${response2.data.todayCases}`
                 +
                 "\n"
                 +
-                `[ Total Deaths ] : ${response2.data.deaths.toLocaleString()}`
+                `[ Total Deaths ] : ${response2.data.deaths}`
                 `[ Today Deaths] : ${response2.data.todayDeaths.toLocaleString()}`
                 +
-                `[ Total Recovered ] : ${response2.data.recovered.toLocaleString()}`
-                `[ Today Recovered] : ${response2.data.todayRecovered.toLocaleString()}`
+                `[ Total Recovered ] : ${response2.data.recovered}`
+                `[ Today Recovered] : ${response2.data.todayRecovered}`
                 +
-                `[ Active ] : ${response2.data.active.toLocaleString()}`
-                `[ Critical] : ${response2.data.critical.toLocaleString()}`
+                `[ Active ] : ${response2.data.active}`
+                `[ Critical] : ${response2.data.critical}`
                 +
-                `[ World Population ] : ${response2.data.population.toLocaleString()}`
+                `[ World Population ] : ${response2.data.population}`
                 `\`\`\``
             )
             .addField("Last Updated", `<t:${parseInt(response2.data.updated)}:F>`)
