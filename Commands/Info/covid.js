@@ -12,7 +12,7 @@ module.exports = {
         },
         {
             name: "country",
-            description: "Shows covid-19 at the procided country",
+            description: "Shows covid-19 at the provided country",
             type: "SUB_COMMAND",
             options:[{ name: "country_name", description: "Provide the country", type: "STRING", required: true }]
         },
@@ -119,10 +119,9 @@ module.exports = {
                             name: "Last Updated",
                             value: `<t:${parseInt(resp.data.updated / 1000 )}:F>`
                         },
-                    );
-                    const flag = await axios.get(`${resp.data.flag}`)
-                    const att = new MessageAttachment(flag.data.link, "country.png")
-                    interaction.reply({ embeds: [embed], files: [att] })
+                    )
+                    .setImage(`${resp.data.flag}`)
+                    interaction.reply({ embeds: [embed] })
 
                     
                 }
