@@ -3,12 +3,12 @@ const mongoose = require("mongoose");
 const schema = mongoose.Schema({
     guildId: {
         type: String, 
-        required: truncate
+        required: true
     },
 
     userId: {
         type: String,
-        required: truncate
+        required: true
     },
 
     coins: {
