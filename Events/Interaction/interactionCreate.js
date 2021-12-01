@@ -158,6 +158,14 @@ module.exports = {
                             value: "```/github (name)```"
                         },
                         {
+                            name: "/covid all",
+                            value: "```cs\n# No Usage\n```"
+                        },
+                        {
+                            name: "/covid country",
+                            value: "```/covid country (country name)```"
+                        },
+                        {
                             name: "/help",
                             value: "```cs\n# No Usage\n```"
                         },

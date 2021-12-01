@@ -120,10 +120,8 @@ module.exports = {
                             value: `<t:${parseInt(resp.data.updated / 1000 )}:F>`
                         },
                     )
-                    .setImage(`${resp.data.flag}`)
+                    .setImage(`${resp.data.countryInfo.flag}`)
                     interaction.reply({ embeds: [embed] })
-
-                    
                 }
             }
     } catch (error) {
