@@ -25,16 +25,16 @@ module.exports = {
             type: "SUB_COMMAND",
             options: [
                 {
-                    name: "target",
-                    description: "Provide the user to check their balance",
-                    type: "USER",
-                    required: false
-                },
-                {
                     name: "amount",
                     description: "Provide the amount to add",
                     type: "INTEGER",
                     required: true
+                },
+                {
+                    name: "target",
+                    description: "Provide the user to check their balance",
+                    type: "USER",
+                    required: false
                 },
             ]
         },
@@ -44,16 +44,16 @@ module.exports = {
             type: "SUB_COMMAND",
             options: [
                 {
-                    name: "target",
-                    description: "Provide the user to check their balance",
-                    type: "USER",
-                    required: false
-                },
-                {
                     name: "amount",
                     description: "Provide the amount to remove",
                     type: "INTEGER",
                     required: true
+                },
+                {
+                    name: "target",
+                    description: "Provide the user to check their balance",
+                    type: "USER",
+                    required: false
                 },
             ]
         }
