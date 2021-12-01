@@ -165,7 +165,7 @@ module.exports = {
             .setDescription(`${e}`)
             .setFooter("🔍")
             .setTimestamp();
-        interaction.editReply({embeds: [embed], ephemeral: true});
+        interaction.reply({embeds: [embed], ephemeral: true});
         }
     }
 }
