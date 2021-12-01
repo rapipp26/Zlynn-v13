@@ -37,8 +37,7 @@ module.exports = {
                     required: true
                 },
             ]
-        }
-        ,
+        },
         {
             name: "remove",
             description: "Remove balance from a member",

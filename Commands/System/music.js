@@ -34,7 +34,7 @@ module.exports = {
     ],
     /**
      * 
-     * @param {CommandInteraction} interacrion 
+     * @param {CommandInteraction} interaction 
      * @param {Client} client 
      */
     async execute(interaction, client) {
