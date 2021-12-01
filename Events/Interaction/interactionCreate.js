@@ -34,52 +34,52 @@ module.exports = {
                     .setDescription("`[]` : Optional\n`()` : Required\n`{}` : Choices")
                     .addFields(
                         {
-                            name: "/baka",
-                            value: "```/baka [target]```"
+                            name: "/anime baka",
+                            value: "```cs\n# No Usage\n```"
                         },
                         {
-                            name: "/bite",
-                            value: "```/bite [target]```"
+                            name: "/anime bite",
+                            value: "```cs\n# No Usage\n```"
                         },
                         {
-                            name: "/blush",
-                            value: "```/blush [target]```"
+                            name: "/anime blush",
+                            value: "```cs\n# No Usage\n```"
                         },
                         {
-                            name: "/cuddle",
-                            value: "```/cuddle [target]```"
+                            name: "/anime cuddle",
+                            value: "```cs\n# No Usage\n```"
                         },
                         {
-                            name: "/dance",
-                            value: "```/dance [target]```"
+                            name: "/anime dance",
+                            value: "```cs\n# No Usage\n```"
                         },
                         {
-                            name: "/anime_quote",
-                            value: "```/anime_quote```"
+                            name: "/anime quote",
+                            value: "```cs\n# No Usage\n```"
                         },
                         {
-                            name: "/slap",
-                            value: "```/slap [target]```"
+                            name: "/anime slap",
+                            value: "```cs\n# No Usage\n```"
                         },
                         {
-                            name: "/bonk",
-                            value: "```/bonk [target]```"
+                            name: "/anime bonk",
+                            value: "```cs\n# No Usage\n```"
                         },
                         {
-                            name: "/waifu",
-                            value: "```/waifu```"
+                            name: "/anime waifu",
+                            value: "```cs\n# No Usage\n```"
                         },
                         {
-                            name: "/anime_wallpaper",
-                            value: "```/anime_wallpaper```"
+                            name: "/anime wallpaper",
+                            value: "```cs\n# No Usage\n```"
                         },
                         {
-                            name: "/hug",
-                            value: "```/hug [target]```"
+                            name: "/anime hug",
+                            value: "```cs\n# No Usage\n```"
                         },
                         {
-                            name: "/sad",
-                            value: "```/sad```"
+                            name: "/anime sad",
+                            value: "```cs\n# No Usage\n```"
                         },
                     )
                     .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
@@ -103,7 +103,7 @@ module.exports = {
                         },
                         {
                             name: "/wouldyourather",
-                            value: "```/wouldyourather```"
+                            value: "```cs\n# No Usage\n```"
                         },
                     )
                     .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
@@ -151,7 +151,7 @@ module.exports = {
                     .addFields(
                         {
                             name: "/botinfo",
-                            value: "```/botinfo ```"
+                            value: "```cs\n# No Usage\n```"
                         },
                         {
                             name: "/github",
@@ -159,7 +159,7 @@ module.exports = {
                         },
                         {
                             name: "/help",
-                            value: "```/help ```"
+                            value: "```cs\n# No Usage\n```"
                         },
                         {
                             name: "/hexcolor",
@@ -171,7 +171,7 @@ module.exports = {
                         },
                         {
                             name: "/status",
-                            value: "```/status```"
+                            value: "```cs\n# No Usage\n```"
                         },
                         {
                             name: "/reddit",
@@ -262,4 +262,3 @@ module.exports = {
         }
     }
 }
-
