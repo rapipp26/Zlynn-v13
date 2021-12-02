@@ -81,7 +81,7 @@ module.exports = {
         let data;
         try {
             data = await schema.findOne({ userId: target.id })
-            if(!data) data = schema.create({ userId: target.id })
+            if(!data) data = await schema.create({ userId: target.id })
         } catch (e) {
         //    errembed.setTitle("⚠ An error occurred ⚠")
         //    .setColor("YELLOW")
