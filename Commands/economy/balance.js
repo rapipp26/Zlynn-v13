@@ -66,7 +66,7 @@ module.exports = {
     async execute(interaction, client) {
         let subc = interaction.options.getSubcommand();
         let target = interaction.options.getUser("target");
-        let Amount = interaction.options.getNumber("amount")
+        let Amount = interaction.options.getNumber("amount");
         if(!target) target = interaction.user;
 
 
@@ -82,40 +82,38 @@ module.exports = {
             data = await schema.findOne({ guildId: interaction.guild.id, userId: target.id })
             if(!data) data = schema.create({ guildId: interaction.guild.id, userId: target.id })
         } catch (e) {
-            errembed.setTitle("⚠ An error occurred ⚠")
-            .setColor("YELLOW")
-            .setDescription(`${e}`)
-            .setFooter("🔍")
-            .setTimestamp();
-        interaction.reply({embeds: [embed], ephemeral: true});
+        //    errembed.setTitle("⚠ An error occurred ⚠")
+        //    .setColor("YELLOW")
+        //    .setDescription(`${e}`)
+        //    .setFooter("🔍")
+        //    .setTimestamp();
+        //interaction.reply({embeds: [embed], ephemeral: true});
         }
 
-        switch(subc) {
-            case "check" : {
-                embed.setAuthor(`${target.tag}'s balance`)
-                .addField("Balance", `${data.coins}`)
-                .setThumbnail(target.avatarURL({ dynamic: true }))
-                interaction.reply({ embeds: [embed] })
-            }
-            
-            case "add" : {
-                data.coins += Amount;
-                await data.save();
-                embed.setAuthor(`${target.tag}'s balance`)
-                .addField("Balance", `+ ${Amount}`)
-                .setThumbnail(target.avatarURL({ dynamic: true }))
-                interaction.reply({ embeds: [embed] })
-            }
+        if(subc == 'check') {
+            embed.setAuthor(`${target.tag}'s balance`)
+            .addField("Balance", `${data.coins}`)
+            .setThumbnail(target.avatarURL({ dynamic: true }))
+            interaction.reply({ embeds: [embed] })
+        }
+        
+        else if(subc == 'add') {
+            data.coins += Amount;
+            await data.save();
+            embed.setAuthor(`${target.tag}'s balance`)
+            .addField("Balance", `+ ${Amount}`)
+            .setThumbnail(target.avatarURL({ dynamic: true }))
+            interaction.reply({ embeds: [embed] })
+        }
 
-            case "remove" : {
-                if(Amount > data.coins) return interaction.reply({ content: `The amount assigned is more than the user's balance, their balance ${data.coins}`, ephemeral: true })
-                data.coins -= Amount
-                await data.save()
-                embed.setAuthor(`${target.tag}'s balance`)
-                .addField("Balance", `- ${Amount}`)
-                .setThumbnail(target.avatarURL({ dynamic: true }))
-                interaction.reply({ embeds: [embed] })
-            }
+        else if(subc == 'remove') {
+            if(Amount > data.coins) return interaction.reply({ content: `The amount assigned is more than the user's balance, their balance ${data.coins}`, ephemeral: true })
+            data.coins -= Amount
+            await data.save()
+            embed.setAuthor(`${target.tag}'s balance`)
+            .addField("Balance", `- ${Amount}`)
+            .setThumbnail(target.avatarURL({ dynamic: true }))
+            interaction.reply({ embeds: [embed] })
+        }
         }
     }
-}
