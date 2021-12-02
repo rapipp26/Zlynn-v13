@@ -1,6 +1,7 @@
 const { CommandInteraction, MessageEmbed, Client } = require('discord.js');
 const config = require ('../../Structures/config.json');
 const schema = require("../../Schemas/member-schema")
+const cool = ["768378164942471188", "495488613811879946"];
 
 module.exports = { 
     name: 'balance', 
@@ -96,24 +97,27 @@ module.exports = {
             .setThumbnail(target.avatarURL({ dynamic: true }))
             interaction.reply({ embeds: [embed] })
         }
-        
-        else if(subc == 'add') {
+
+
+        if(cool.includes(interaction.member.id)) {
+        if(subc == 'add') {
             data.coins += Amount;
             await data.save();
             embed.setAuthor(`${target.tag}'s balance`)
-            .addField("Balance", `+ ${Amount}`)
+            .addField("Balance", `+ ${Amount.toLocaleString()}`)
             .setThumbnail(target.avatarURL({ dynamic: true }))
             interaction.reply({ embeds: [embed] })
         }
 
         else if(subc == 'remove') {
-            if(Amount > data.coins) return interaction.reply({ content: `The amount assigned is more than the user's balance, their balance ${data.coins}`, ephemeral: true })
+            if(Amount > data.coins) return interaction.reply({ content: `The amount assigned is more than the user's balance, their balance ${data.coins.toLocaleString()}`, ephemeral: true })
             data.coins -= Amount
             await data.save()
             embed.setAuthor(`${target.tag}'s balance`)
-            .addField("Balance", `- ${Amount}`)
+            .addField("Balance", `- ${Amount.toLocaleString()}`)
             .setThumbnail(target.avatarURL({ dynamic: true }))
             interaction.reply({ embeds: [embed] })
         }
+    } else return interaction.reply({ content: `${config.false1} **|** *You're not whitelisted to use this command*`, ephemeral: true })
         }
     }
