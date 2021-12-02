@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 
 const schema = mongoose.Schema({
-    guildId: {
-        type: String, 
-        required: true
-    },
 
     userId: {
         type: String,

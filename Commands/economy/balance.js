@@ -80,8 +80,8 @@ module.exports = {
 
         let data;
         try {
-            data = await schema.findOne({ guildId: interaction.guild.id, userId: target.id })
-            if(!data) data = schema.create({ guildId: interaction.guild.id, userId: target.id })
+            data = await schema.findOne({ userId: target.id })
+            if(!data) data = schema.create({ userId: target.id })
         } catch (e) {
         //    errembed.setTitle("⚠ An error occurred ⚠")
         //    .setColor("YELLOW")
