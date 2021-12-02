@@ -77,47 +77,47 @@ module.exports = {
         .setTimestamp();
         const errembed = new MessageEmbed();
 
-
-        let data;
         try {
+        let data;
             data = await schema.findOne({ userId: target.id })
             if(!data) data = await schema.create({ userId: target.id })
-        } catch (e) {
-        //    errembed.setTitle("⚠ An error occurred ⚠")
-        //    .setColor("YELLOW")
-        //    .setDescription(`${e}`)
-        //    .setFooter("🔍")
-        //    .setTimestamp();
-        //interaction.reply({embeds: [embed], ephemeral: true});
-        }
 
-        if(subc == 'check') {
+        switch(subc) {
+            case "check" :
             embed.setAuthor(`${target.tag}'s balance`)
-            .addField("Balance", `${data.coins}`)
+            .addField("Balance", `${data.coins.toLocaleString()}`)
             .setThumbnail(target.avatarURL({ dynamic: true }))
             interaction.reply({ embeds: [embed] })
-        }
+            break;
 
-
-        if(cool.includes(interaction.member.id)) {
-        if(subc == 'add') {
+            case "add" :
+            if(!cool.includes(interaction.member.id)) return interaction.reply({ content: `${config.false1} **|** You do not have premission to use this command.`, ephemeral: true})
             data.coins += Amount;
             await data.save();
             embed.setAuthor(`${target.tag}'s balance`)
             .addField("Balance", `+ ${Amount.toLocaleString()}`)
             .setThumbnail(target.avatarURL({ dynamic: true }))
             interaction.reply({ embeds: [embed] })
-        }
+            break;
 
-        else if(subc == 'remove') {
+            case "remove" :
+            if(!cool.includes(interaction.member.id)) return interaction.reply({ content: `${config.false1} **|** You do not have premission to use this command.`, ephemeral: true})
             if(Amount > data.coins) return interaction.reply({ content: `The amount assigned is more than the user's balance, their balance ${data.coins.toLocaleString()}`, ephemeral: true })
             data.coins -= Amount
             await data.save()
             embed.setAuthor(`${target.tag}'s balance`)
             .addField("Balance", `- ${Amount.toLocaleString()}`)
             .setThumbnail(target.avatarURL({ dynamic: true }))
-            interaction.reply({ embeds: [embed] })
-        }
-    } else return interaction.reply({ content: `${config.false1} **|** *You're not whitelisted to use this command*`, ephemeral: true })
+            interaction.reply({ embeds: [embed] })    
+            break;
+        };
+} catch (e) {
+        errembed.setTitle("⚠ An error occurred ⚠")
+        .setColor("YELLOW")
+        .setDescription(`${e}`)
+        .setFooter("🔍")
+        .setTimestamp();
+    interaction.reply({embeds: [embed], ephemeral: true});
         }
     }
+}
