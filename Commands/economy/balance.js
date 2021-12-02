@@ -27,7 +27,7 @@ module.exports = {
                 {
                     name: "amount",
                     description: "Provide the amount to add",
-                    type: "INTEGER",
+                    type: "NUMBER",
                     required: true
                 },
                 {
@@ -46,7 +46,7 @@ module.exports = {
                 {
                     name: "amount",
                     description: "Provide the amount to remove",
-                    type: "INTEGER",
+                    type: "NUMBER",
                     required: true
                 },
                 {
@@ -66,7 +66,7 @@ module.exports = {
     async execute(interaction, client) {
         let subc = interaction.options.getSubcommand();
         let target = interaction.options.getUser("target");
-        let Amount = interaction.options.getInteger("amount")
+        let Amount = interaction.options.getNumber("amount")
         if(!target) target = interaction.user;
 
 
@@ -87,32 +87,32 @@ module.exports = {
             .setDescription(`${e}`)
             .setFooter("🔍")
             .setTimestamp();
-        interaction.editReply({embeds: [embed], ephemeral: true});
+        interaction.reply({embeds: [embed], ephemeral: true});
         }
 
         switch(subc) {
             case "check" : {
-                embed.setAuthor(`${target.id}'s balance`)
-                .addField("Balance", `${data.coins.toLocaleString()}`)
+                embed.setAuthor(`${target.tag}'s balance`)
+                .addField("Balance", `${data.coins}`)
                 .setThumbnail(target.avatarURL({ dynamic: true }))
                 interaction.reply({ embeds: [embed] })
             }
             
             case "add" : {
-                data.coins += Amount
-                await data.save()
-                embed.setAuthor(`${target.id}'s balance`)
-                .addField("Balance", `+ ${Amount.toLocaleString()}`)
+                data.coins += Amount;
+                await data.save();
+                embed.setAuthor(`${target.tag}'s balance`)
+                .addField("Balance", `+ ${Amount}`)
                 .setThumbnail(target.avatarURL({ dynamic: true }))
                 interaction.reply({ embeds: [embed] })
             }
 
             case "remove" : {
-                if(Amount > data.coins) return interaction.reply({ content: `The amount assigned is more than the user's balance, their balance ${data.coins.toLocaleString()}`, ephemeral: true })
+                if(Amount > data.coins) return interaction.reply({ content: `The amount assigned is more than the user's balance, their balance ${data.coins}`, ephemeral: true })
                 data.coins -= Amount
                 await data.save()
-                embed.setAuthor(`${target.id}'s balance`)
-                .addField("Balance", `- ${Amount.toLocaleString()}`)
+                embed.setAuthor(`${target.tag}'s balance`)
+                .addField("Balance", `- ${Amount}`)
                 .setThumbnail(target.avatarURL({ dynamic: true }))
                 interaction.reply({ embeds: [embed] })
             }
