@@ -17,7 +17,7 @@ async execute(message, client) {
 
       const embed = new MessageEmbed()
       .setTitle("⚠ Warning ⚠")
-      .setDescription(`${config.false1} **|** Your message is blacklisted in ${message.guild}`)
+      .setDescription(`Your message is blacklisted in **${message.guild}**`)
       .setColor("RED")
       .setFooter("❗")
       .setTimestamp();
