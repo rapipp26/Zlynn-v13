@@ -14,8 +14,7 @@ module.exports = {
         const Response = new MessageEmbed()
             .setColor("BLURPLE")
             .setAuthor("My information! >\"< ")
-            .setDescription(`**Client**: \`🟢 ONLINE\` - \`${client.ws.ping}ms\`\n **Uptime**: <t:${parseInt(client.readyTimestamp / 1000)}:R>\n
-            **Database**: \`${switchTo(connection.readyState)}\` \n \n **Program**: \n🔋・**Node.js**: \`${process.version}\`\n${config.logo}・**Discord.js**: \`${require("discord.js").version}\`\n🧰・**MongoDB**: \`${require("mongoose").version}\`\n⏱・**Mongoose**: \`${require("mongoose").version}`)
+            .setDescription(`╭**Client**: \`🟢 ONLINE\` - \`${client.ws.ping}ms\`\n︱**Database**: \`${switchTo(connection.readyState)}\`\n╰**Uptime**: <t:${parseInt(client.readyTimestamp / 1000)}:R> \n \n **Program**: \n🔋・**Node.js**: \`${process.version}\`\n${config.logo}・**Discord.js**: \`${require("discord.js").version}\`\n🧰・**MongoDB**: \`${require("mongoose").version}\`\n⏱・**Mongoose**: \`${require("mongoose").version}\``)
             .addField("**__Commands__**", `\`${client.commands.size}\` commands loaded.`, true)
             .addField("**__Guilds__**", `\`${client.guilds.cache.size}\` guilds connected.`, true)
             .addField("**__Users__**", `\`${client.users.cache.size}\` users connected.`, true)
