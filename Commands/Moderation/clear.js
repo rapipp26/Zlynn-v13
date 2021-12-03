@@ -5,7 +5,7 @@ const { execute } = require('../Info/help2');
 module.exports = { 
     name: 'purge', 
     description: 'Deletes a specified number of message from a channel or user',
-    permissions: "MANAGE_MESSAGES",
+    permission: "MANAGE_MESSAGES",
     options: [
         {
             name: "amount",
