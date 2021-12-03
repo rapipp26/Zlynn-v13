@@ -16,12 +16,14 @@ async execute(message, client) {
       }
 
       const embed = new MessageEmbed()
-      .setDescription(`${config.false1} **|** *We deleted your message because its contains the *blacklisted word* from this server.`)
+      .setDescription(`${config.false1} **|** *We deleted your message because its contains the *blacklisted word* from the server.*`)
       .setColor("RED")
+      .setFooter(message.guild.name)
+      .setTimestamp();
 
       if(GuildData.BLW.some(word => message.content.toLowerCase().includes(word))) {
         message.delete()
-        message.channel.send({ embeds: [embed], content:`${message.author}` })
+        message.author.send({ embeds: [embed] })
       }
     }
 

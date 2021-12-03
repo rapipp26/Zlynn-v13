@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 const config = require("../../Structures/config.json");
 
 module.exports = {
-  name: "badword",
+  name: "blacklist_word",
   description: "Blacklist a specified word.",
   permission: "ADMINISTRATOR",
   options: [{
@@ -36,16 +36,16 @@ module.exports = {
       const choice = options.getString("action")
       const word = options.getString("word")
       const embed = new MessageEmbed()
-      .setDescription(`${config.false1} **|** *This word is already in the blacklisted word list ψ(｀∇´)ψ*`)
+      .setDescription(`${config.false1} **|** *This word is already in the blacklisted word list*`)
       .setColor("RED")
       const embed2 = new MessageEmbed()
-      .setDescription(`${config.true1} **|** *Successfully added \`${word}\` to the blacklisted word list φ(゜▽゜*)♪*`)
+      .setDescription(`${config.true1} **|** *Successfully added \`${word}\` to the blacklisted word list*`)
       .setColor("GREEN")
       const embed3 = new MessageEmbed()
-      .setDescription(`${config.false1} **|** *This word is not in the blacklisted word list ψ(｀∇´)ψ*`)
+      .setDescription(`${config.false1} **|** *This word is not in the blacklisted word list*`)
       .setColor("RED")
       const embed4 = new MessageEmbed()
-      .setDescription(`${config.true1} **|** *Successfully removed **That Word** from the blacklisted word list φ(゜▽゜*)♪*`)
+      .setDescription(`${config.true1} **|** *Successfully removed \`${word}\` from the blacklisted word list*`)
       .setColor("GREEN")
 
       let data;
@@ -61,21 +61,21 @@ module.exports = {
       if(choice == 'add') {
         const wordToBeAdded = word.toLowerCase()
 
-        if(data.BLW.includes(wordToBeAdded)) return interaction.reply({ embeds: [embed] })
+        if(data.BLW.includes(wordToBeAdded)) return interaction.reply({ embeds: [embed], ephemeral: true  })
 
-        await interaction.reply({ embeds: [embed2] })
+        await interaction.reply({ embeds: [embed2], ephemeral: true  })
         data.BLW.push(wordToBeAdded)
         await data.save()
       }
 
       if(choice == 'remove') {
         const wordToBeAdded = word.toLowerCase()
-        if(!data.BLW.includes(wordToBeAdded)) return interaction.reply({ embeds: [embed3] })
+        if(!data.BLW.includes(wordToBeAdded)) return interaction.reply({ embeds: [embed3], ephemeral: true })
         let array = data.BLW
         
         array = array.filter(x => x !== wordToBeAdded)
         data.BLW = array
-        await interaction.reply({ embeds: [embed4] })
+        await interaction.reply({ embeds: [embed4], ephemeral: true  })
 
         await data.save()
 

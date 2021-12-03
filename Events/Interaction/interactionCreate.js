@@ -224,6 +224,10 @@ module.exports = {
                         {
                             name: "/music settings",
                             value: "```/music volume {options}```"
+                        },
+                        {
+                            name: "/blacklist_word",
+                            value: "```/blacklist_word {action} (word)```"
                         }
                     )
                     .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
