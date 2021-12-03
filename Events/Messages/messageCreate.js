@@ -16,9 +16,10 @@ async execute(message, client) {
       }
 
       const embed = new MessageEmbed()
-      .setDescription(`${config.false1} **|** Your message is blacklisted from the server.`)
+      .setTitle("⚠ Warning ⚠")
+      .setDescription(`${config.false1} **|** Your message is blacklisted in ${message.guild}`)
       .setColor("RED")
-      .setFooter(message.guild.name)
+      .setFooter("❗")
       .setTimestamp();
 
       if(GuildData.BLW.some(word => message.content.toLowerCase().includes(word))) {
