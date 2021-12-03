@@ -16,7 +16,7 @@ async execute(message, client) {
       }
 
       const embed = new MessageEmbed()
-      .setDescription(`${config.false1} **|** *We deleted your message because its contains the *blacklisted word* from the server.*`)
+      .setDescription(`${config.false1} **|** Your message is blacklisted from the server.`)
       .setColor("RED")
       .setFooter(message.guild.name)
       .setTimestamp();
