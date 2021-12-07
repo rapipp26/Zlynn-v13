@@ -41,6 +41,7 @@ module.exports = async (client, PG, Ascii) => {
         const VinsYT = await client.guilds.cache.get("872848206638223410");
         const Btl = await client.guilds.cache.get("743391715544662067");
         const ajemi = await client.guilds.cache.get("802548382505238598");
+        const alabi = await client.guilds.cache.get("776809722254458900");
 
         MainGuild.commands.set(CommandsArray).then(async (command) => {
             const Roles = (commandName) => {
@@ -128,6 +129,27 @@ module.exports = async (client, PG, Ascii) => {
             }, []);
     
             await ajemi.commands.permissions.set({ fullPermissions });
+        });
+        alabi.commands.set(CommandsArray).then(async (command) => {
+            const Roles = (commandName) => {
+                const cmdPerms = CommandsArray.find((c) => c.name === commandName).permission;
+                if(!cmdPerms) return null;
+    
+                return alabi.roles.cache.filter((r) => r.permissions.has(cmdPerms));
+            }
+    
+            const fullPermissions = command.reduce((accumulator, r) => {
+                const roles = Roles(r.name);
+                if(!roles) return accumulator;
+    
+                const permissions = roles.reduce((a, r) => {
+                    return [...a, {id: r.id, type: "ROLE", permission: true }]
+                }, []);
+    
+                return [...accumulator, {id: r.id, permissions}]
+            }, []);
+    
+            await alabi.commands.permissions.set({ fullPermissions });
         });
     });
 }

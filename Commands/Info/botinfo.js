@@ -1,4 +1,4 @@
-const { CommandInteraction, Client, MessageEmbed, Guild } = require("discord.js");
+const { CommandInteraction, Client, MessageEmbed, Guild, MessageActionRow, MessageButton } = require("discord.js");
 const { connection } = require("mongoose");
 const config = require("../../Structures/config.json")
 
@@ -21,6 +21,15 @@ module.exports = {
             .setThumbnail(client.user.avatarURL({ format: "png", dynamic: true, size: 1024 }))
             .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
             .setTimestamp();
+
+        const row = new MessageActionRow()
+        .addComponents([
+            new MessageButton()
+            .setStyle("LINK")
+            .setLabel("Support Server")
+            .setEmoji(`${config.server}`)
+            .setURL("https://discord.gg/Qev2exTvMd")
+        ])
 
         interaction.reply({ embeds: [Response], ephemeral: true });
     }
