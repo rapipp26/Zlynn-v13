@@ -31,7 +31,7 @@ module.exports = {
             .setURL("https://discord.gg/Qev2exTvMd")
         ])
 
-        interaction.reply({ embeds: [Response], ephemeral: true });
+        interaction.reply({ embeds: [Response], components: [row] });
     }
 };
 

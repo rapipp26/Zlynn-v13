@@ -171,7 +171,7 @@ module.exports = {
                         },
                         {
                             name: "/hexcolor",
-                            value: "```/stupid (color code)```"
+                            value: "```/hexcolor (color code)```"
                         },
                         {
                             name: "/lyric",
