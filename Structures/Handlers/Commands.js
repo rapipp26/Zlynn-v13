@@ -48,7 +48,7 @@ module.exports = async (client, PG, Ascii) => {
                 const cmdPerms = CommandsArray.find((c) => c.name === commandName).permission;
                 if(!cmdPerms) return null;
 
-                return MainGuild.roles.cache.filter((r) => r.permissions.has(cmdPerms));
+                return MainGuild.roles.cache.filter((r) => r.permissions.has(cmdPerms) && !r.managed).first(10); 
             }
 
             const fullPermissions = command.reduce((accumulator, r) => {
@@ -70,7 +70,7 @@ module.exports = async (client, PG, Ascii) => {
                 const cmdPerms = CommandsArray.find((c) => c.name === commandName).permission;
                 if(!cmdPerms) return null;
 
-                return VinsYT.roles.cache.filter((r) => r.permissions.has(cmdPerms));
+                return VinsYT.roles.cache.filter((r) => r.permissions.has(cmdPerms) && !r.managed).first(10); 
             }
 
             const fullPermissions = command.reduce((accumulator, r) => {
@@ -92,7 +92,7 @@ module.exports = async (client, PG, Ascii) => {
                 const cmdPerms = CommandsArray.find((c) => c.name === commandName).permission;
                 if(!cmdPerms) return null;
 
-                return Btl.roles.cache.filter((r) => r.permissions.has(cmdPerms));
+                return Btl.roles.cache.filter((r) => r.permissions.has(cmdPerms) && !r.managed).first(10); 
             }
 
             const fullPermissions = command.reduce((accumulator, r) => {
@@ -114,7 +114,7 @@ module.exports = async (client, PG, Ascii) => {
                 const cmdPerms = CommandsArray.find((c) => c.name === commandName).permission;
                 if(!cmdPerms) return null;
     
-                return ajemi.roles.cache.filter((r) => r.permissions.has(cmdPerms));
+                return ajemi.roles.cache.filter((r) => r.permissions.has(cmdPerms) && !r.managed).first(10); 
             }
     
             const fullPermissions = command.reduce((accumulator, r) => {
@@ -135,7 +135,7 @@ module.exports = async (client, PG, Ascii) => {
                 const cmdPerms = CommandsArray.find((c) => c.name === commandName).permission;
                 if(!cmdPerms) return null;
     
-                return alabi.roles.cache.filter((r) => r.permissions.has(cmdPerms));
+                return alabi.roles.cache.filter((r) => r.permissions.has(cmdPerms) && !r.managed).first(10); 
             }
     
             const fullPermissions = command.reduce((accumulator, r) => {
