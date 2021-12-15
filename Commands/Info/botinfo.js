@@ -18,7 +18,6 @@ module.exports = {
             .addField("**__Commands__**", `\`${client.commands.size}\` commands loaded.`, true)
             .addField("**__Guilds__**", `\`${client.guilds.cache.size}\` guilds connected.`, true)
             .addField("**__Users__**", `\`${client.users.cache.size}\` users connected.`, true)
-            .addField("**__Memory__**",`\`${process.memoryUsage().heapUsed / 1024 / 1024}\``, true)
             .setThumbnail(client.user.avatarURL({ format: "png", dynamic: true, size: 1024 }))
             .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
             .setTimestamp();
