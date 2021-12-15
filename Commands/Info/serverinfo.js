@@ -62,7 +62,7 @@ module.exports = {
                 ・Static : ${guild.emojis.cache.filter((e) => !e.animated).size}
                 ・Stickers : ${guild.stickers.cache.size}
 
-                ・Emojis & Stickers Total : ${stickers.cache.size + emojis.cache.size}
+                ・Emojis & Stickers Total : ${guild.stickers.cache.size + guild.emojis.cache.size}
                 `
             },
             {
