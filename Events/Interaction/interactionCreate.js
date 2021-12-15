@@ -118,25 +118,9 @@ module.exports = {
                     .setDescription("`[]` : Optional\n`()` : Required\n`{}` : Choices")
                     .addFields(
                         {
-                            name: "/blur",
-                            value: "```/blur (user)```"
+                            name: "No Image Commands atm.",
+                            value: "``cs\n# Image commands is currently under maintenance.```"
                         },
-                        {
-                            name: "/gay",
-                            value: "```/gay (user)```"
-                        },
-                        {
-                            name: "/simpcard",
-                            value: "```/simpcard (user)```"
-                        },
-                        {
-                            name: "/stupid",
-                            value: "```/stupid (user)```"
-                        },
-                        {
-                            name: "/youtube",
-                            value: "```/youtube (text)```"
-                        }
                     )
                     .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
                     .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
@@ -223,7 +207,7 @@ module.exports = {
                         },
                         {
                             name: "/music settings",
-                            value: "```/music volume {options}```"
+                            value: "```/music settings {options}```"
                         },
                         {
                             name: "/blacklist_word",
