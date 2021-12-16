@@ -21,6 +21,53 @@ module.exports = {
             command.execute(interaction, client)
         }
 
+        if(interaction.isButton()) {
+            if (interaction.customId === 'previous') {
+                await interaction.deferUpdate();
+
+                i0 = i0 - 10;
+                i1 = i1 - 10;
+                page = page - 1;
+
+                let description =
+                    `**_Roles :_**\n` +
+                    interaction.guild.roles.cache
+                        .sort((a, b) => b.position - a.position)
+                        .map(r => r)
+                        .slice(i0, i1)
+                        .join("\n");
+
+                embed.setTitle(`Page・${page}`)
+                embed.setDescription(description)
+                embed.setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
+                embed.setTimestamp();
+                
+                await interaction.editReply({ embeds: [embed], components: [buttons] });
+            }
+            if (interaction.customId === 'next') {
+                await interaction.deferUpdate();
+
+                i0 = i0 + 10;
+                i1 = i1 + 10;
+                page = page + 1;
+
+                let description =
+                    `**_Roles :_**\n` +
+                    interaction.guild.roles.cache
+                        .sort((a, b) => b.position - a.position)
+                        .map(r => r)
+                        .slice(i0, i1)
+                        .join("\n");
+
+                embed.setTitle(`Page・${page}`)
+                embed.setDescription(description)
+                embed.setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
+                embed.setTimestamp();
+
+                await interaction.editReply({ embeds: [embed], components: [buttons] });
+            }
+        }
+
         if (interaction.isSelectMenu()) {
             const { message, user } = interaction;
             const userId = user.id;
@@ -119,7 +166,7 @@ module.exports = {
                     .addFields(
                         {
                             name: "No Image Commands atm.",
-                            value: "``cs\n# Image commands is currently under maintenance.```"
+                            value: "```cs\n# Image commands is currently under maintenance.```"
                         },
                     )
                     .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
