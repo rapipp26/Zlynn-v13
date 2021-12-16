@@ -37,6 +37,52 @@ module.exports = {
                 .setStyle("PRIMARY")
                 .setLabel("►")
         )
+        client.on("interactionCreate", async interaction => {
+            if (interaction.customId === 'previous') {
+                await interaction.deferUpdate();
+
+                i0 = i0 - 10;
+                i1 = i1 - 10;
+                page = page - 1;
+
+                let description =
+                    `**_Roles :_**\n` +
+                    interaction.guild.roles.cache
+                        .sort((a, b) => b.position - a.position)
+                        .map(r => r)
+                        .slice(i0, i1)
+                        .join("\n");
+
+                embed.setTitle(`Page・${page}`)
+                embed.setDescription(description)
+                embed.setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
+                embed.setTimestamp();
+                
+                await interaction.editReply({ embeds: [embed], components: [buttons] });
+            }
+            if (interaction.customId === 'next') {
+                await interaction.deferUpdate();
+
+                i0 = i0 + 10;
+                i1 = i1 + 10;
+                page = page + 1;
+
+                let description =
+                    `**_Roles :_**\n` +
+                    interaction.guild.roles.cache
+                        .sort((a, b) => b.position - a.position)
+                        .map(r => r)
+                        .slice(i0, i1)
+                        .join("\n");
+
+                embed.setTitle(`Page・${page}`)
+                embed.setDescription(description)
+                embed.setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
+                embed.setTimestamp();
+
+                await interaction.editReply({ embeds: [embed], components: [buttons] });
+            }
+        })
         interaction.followUp({ embeds: [embed], components: [buttons] });
     }
 }
