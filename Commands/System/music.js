@@ -23,12 +23,15 @@ module.exports = {
             type: "SUB_COMMAND",
             options: [{ name: "options", description: "Select an option", type: "STRING", required: true,
             choices: [
-                { name: "queue", value: "queue"},
-                { name: "skip", value: "skip"},
-                { name: "pause", value: "pause"},
-                { name: "resume", value: "resume"},
-                { name: "stop", value: "stop"},
-                { name: "autoplay", value: "autoplay"},
+                { name: "🔢 View Queue", value: "queue"},
+                { name: "⏭️ Skip Song", value: "skip"},
+                { name: "⏸️ Pause Song", value: "pause"},
+                { name: "▶️ Resume Song", value: "resume"},
+                { name: "⏹️ Stop Music", value: "stop"},
+                { name: "🔀 Shuffle Queue", value: "shuffle"},
+                { name: "🔃 Toggle AutoPlay Modes", value: "AutoPlay"},
+                { name: "🈁 Add a Related Song", value: "RelatedSong"},
+                { name: "🔁 Toggle Repeat Modes", value: "RepeatMode"},
         ]}]
         }
     ],
@@ -75,19 +78,36 @@ module.exports = {
                     switch(options.getString("options")) {
                         case "skip" : 
                         await queue.skip(VoiceChannel);
-                        return interaction.reply({ content: "⏩ Song has been skipped." })
+                        return interaction.reply({ content: "⏩ Song has been skipped." });
+
                         case "stop" :
                         await queue.stop(VoiceChannel);
-                        return interaction.reply({ content: "⏹ Music has been stopped" })
+                        return interaction.reply({ content: "⏹ Music has been stopped." });
+
                         case "pause" :
                         await queue.pause(VoiceChannel);
-                        return interaction.reply({ content: "⏸ Song has been paused" })
+                        return interaction.reply({ content: "⏸ Song has been paused." });
+
                         case "resume" :
                         await queue.resume(VoiceChannel);
-                        return interaction.reply({ content: "⏯ Song has been resumed" })
-                        case "autoplay" :
-                        const autoplay = await queue.toggleAutoplay(VoiceChannel);
-                        return interaction.reply({ content: `🔄 AutoPlay: \`${autoplay ? "On" : "Off"}\``})
+                        return interaction.reply({ content: "⏯ Song has been resumed." });
+
+                        case "shuffle" :
+                        await queue.shuffle(VoiceChannel);
+                        return interaction.reply({ content: "🔀 The queue has been shuffled." });
+
+                        case "AutoPlay" :
+                        let mode = await queue.toggleAutoplay(VoiceChannel);
+                        return interaction.reply({ content: `🔃 Autoplay mode is set to : ${mode ? "On" : "Off"}` });
+
+                        case "RelatedSong" :
+                        await queue.addRelatedSong(VoiceChannel);
+                        return interaction.reply({ content: "🈁 A related song has been added to the queue." });
+
+                        case "RepeatMode" :
+                        let mode2 = client.distube.setRepeatMode(queue);
+                        return interaction.reply({ content: `🔃 Repeat mode is set to : ${mode2 = mode2 ? mode2 == 2 ? "Queue" : "Song" : "Off" }` });
+
                         case "queue" :
                         return interaction.reply({ embeds: [new MessageEmbed()
                         .setColor("DARK_AQUA")
