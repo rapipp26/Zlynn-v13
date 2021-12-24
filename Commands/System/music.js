@@ -33,6 +33,21 @@ module.exports = {
                 { name: "🈁 Add a Related Song", value: "RelatedSong"},
                 { name: "🔁 Toggle Repeat Modes", value: "RepeatMode"},
         ]}]
+        },
+        {
+            name: "filters",
+            description: "Select a filter for music",
+            type: "SUB_COMMAND",
+            options: [{ name: "filters", description: "Select an option", type: "STRING", required: true,
+            choices: [
+                { name: "3️⃣ 3d", value: "3d"},
+                { name: "🎸 Bass Boost", value: "skip"},
+                { name: "✨ Echo", value: "echo"},
+                { name: "🎤 Karaoke", value: "karaoke"},
+                { name: "🌙 Night Core", value: "nightcore"},
+                { name: "🌊 Vapor Wave", value: "vaporwave"},
+                { name: "🚫 Off", value: "false"},
+        ]}]
         }
     ],
     /**
@@ -48,7 +63,6 @@ module.exports = {
         .setColor("YELLOW")
         .setTimestamp();
 
-
         if(!VoiceChannel)
         return interaction.reply({ embeds: [errorEmbed.setDescription("You must be in a voice channel to be able to use the music commands").setFooter("🎤")] })
 
@@ -56,6 +70,8 @@ module.exports = {
         return interaction.reply({ embeds: [errorEmbed.setDescription(`I'm already playing music in <#${guild.me.voice.channelId}>`).setFooter("🎤")] })
 
         try {
+            const queue = await client.distube.getQueue(VoiceChannel);
+
             switch(options.getSubcommand()) {
                 case "play" : {
                     client.distube.playVoiceChannel( VoiceChannel, options.getString("query"), { textChannel: channel, member: member });
@@ -70,8 +86,6 @@ module.exports = {
                     return interaction.reply({ content: `📶 Volume has been set to \`${Volume}%\``});
                 } 
                 case "settings" : {
-                    const queue = await client.distube.getQueue(VoiceChannel);
-
                     if(!queue) 
                     return interaction.reply({ embeds: [errorEmbed.setDescription("There is no queue").setFooter("⛔")] })
 
@@ -118,7 +132,42 @@ module.exports = {
                         .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.avatarURL({ dynamic: true }))]});
                     }
                     return;
-                }  
+                }
+                case "filters" : {
+                    if(!queue) 
+                    return interaction.reply({ embeds: [errorEmbed.setDescription("There is no queue").setFooter("⛔")] })
+
+                    switch(options.getString("filters")) {
+                        case "false" : {
+                            queue.setFilter(false);
+                            return interaction.reply({ content: "🚫 All filters has been **disabled**" });
+                        }
+                        case "3d" : {
+                            queue.setFilter(`3d`);
+                            return interaction.reply({ content: "3️⃣ 3d filter has been **enabled**" });
+                        }
+                        case "bassboost" : {
+                            queue.setFilter(`bassboost`);
+                            return interaction.reply({ content: "🎸 Bass Boost filter has been **enabled**" });
+                        }
+                        case "echo" : {
+                            queue.setFilter(`echo`);
+                            return interaction.reply({ content: "✨ Echo filter has been **enabled**" });
+                        }
+                        case "nightcore" : {
+                            queue.setFilter(`nightcore`);
+                            return interaction.reply({ content: "🌙 Nightcore filter has been **enabled**" });
+                        }
+                        case "karaoke" : {
+                            queue.setFilter(`karaoke`);
+                            return interaction.reply({ content: "🎤 Karaoke filter has been **enabled**" });
+                        }
+                        case "vaporwave" : {
+                            queue.setFilter(`vaporwave`);
+                            return interaction.reply({ content: "🌊 Vapor Wave has been **enabled**" });
+                        }
+                    }
+                }
             }
         } catch (e) {
             errorEmbed.setDescription(`${e}`)

@@ -81,42 +81,42 @@ module.exports = {
 
         try {
             switch(subc) {
-                case "baka" : {
+                case "baka" : 
                     embed.setAuthor("Baka! >,<", client.user.avatarURL({ format: "png" }))
                     .setImage(await anime.baka())
-                    interaction.reply({ embeds: [embed] })
-                }
-                case "bite" : {
+                    return interaction.reply({ embeds: [embed] })
+                
+                case "bite" : 
                     embed.setAuthor("Yummy~ 🦷", client.user.avatarURL({ format: "png" }))
                     .setImage(await anime.bite())
-                    interaction.reply({ embeds: [embed] })
-                }
-                case "blush" : {
+                    return interaction.reply({ embeds: [embed] })
+                
+                case "blush" : 
                     embed.setAuthor("Shy~ (/▽＼)", client.user.avatarURL({ format: "png" }))
                     .setImage(await anime.blush())
-                    interaction.reply({ embeds: [embed] })
-                }
-                case "bonk" : {
+                    return interaction.reply({ embeds: [embed] })
+                
+                case "bonk" : 
                     embed.setAuthor("Bonk! 🪓😡", client.user.avatarURL({ format: "png" }))
                     .setImage(await anime.bonk())
-                    interaction.reply({ embeds: [embed] })
-                }
-                case "cuddle" : {
+                    return interaction.reply({ embeds: [embed] })
+                
+                case "cuddle" : 
                     embed.setAuthor("Ahh yes~ §(*￣▽￣*)§", client.user.avatarURL({ format: "png" }))
                     .setImage(await anime.cuddle())
-                    interaction.reply({ embeds: [embed] })
-                }
-                case "dance" : {
+                    return interaction.reply({ embeds: [embed] })
+                
+                case "dance" : 
                     embed.setAuthor("Letsgoo~ 💃🕺", client.user.avatarURL({ format: "png" }))
                     .setImage(await anime.dance())
-                    interaction.reply({ embeds: [embed] })
-                }
-                case "hug" : {
+                    return interaction.reply({ embeds: [embed] })
+                
+                case "hug" : 
                     embed.setAuthor("So comfy~ (∪.∪ )...zzz", client.user.avatarURL({ format: "png" }))
                     .setImage(await anime.hug())
-                    interaction.reply({ embeds: [embed] })
-                }
-                case "quote" : {
+                    return interaction.reply({ embeds: [embed] })
+                
+                case "quote" : 
                     const r1 = await axios.get(`https://some-random-api.ml/animu/quote`);
 
                     embed.setAuthor("Anime quotes <3!", client.user.avatarURL({ format: "png" }))
@@ -137,27 +137,27 @@ module.exports = {
                         }
                     )
                     interaction.reply({ embeds: [embed] })
-                }
-                case "sad" : {
+                
+                case "sad" : 
                     embed.setAuthor("Crying~ 😢", client.user.avatarURL({ format: "png" }))
                     .setImage(await anime.cry())
-                    interaction.reply({ embeds: [embed] })
-                }
-                case "slap" : {
+                    return interaction.reply({ embeds: [embed] })
+                
+                case "slap" : 
                     embed.setAuthor("You naughty!! 😡🤚", client.user.avatarURL({ format: "png" }))
                     .setImage(await anime.slap())
-                    interaction.reply({ embeds: [embed] })
-                }
-                case "waifu" : {
+                    return interaction.reply({ embeds: [embed] })
+                
+                case "waifu" : 
                     embed.setAuthor("Here's your waifu 💘", client.user.avatarURL({ format: "png" }))
                     .setImage(await anime.smile())
-                    interaction.reply({ embeds: [embed] })
-                }
-                case "wallpaper" : {
+                    return interaction.reply({ embeds: [embed] })
+                
+                case "wallpaper" : 
                     embed.setAuthor("Here's your wallpaper 🖼", client.user.avatarURL({ format: "png" }))
                     .setImage(await anime.wallpaper())
-                    interaction.reply({ embeds: [embed] })
-                }
+                    return interaction.reply({ embeds: [embed] })
+                
             }
         } catch (e) {
             embed.setTitle("⚠ An error occurred ⚠")
