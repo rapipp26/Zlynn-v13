@@ -32,6 +32,7 @@ module.exports = {
                 { name: "🔃 Toggle AutoPlay Modes", value: "AutoPlay"},
                 { name: "🈁 Add a Related Song", value: "RelatedSong"},
                 { name: "🔁 Toggle Repeat Modes", value: "RepeatMode"},
+                { name: "⏮️ Previous Song ", value: "previous"}
         ]}]
         },
         {
@@ -41,12 +42,13 @@ module.exports = {
             options: [{ name: "filters", description: "Select an option", type: "STRING", required: true,
             choices: [
                 { name: "3️⃣ 3d", value: "3d"},
-                { name: "🎸 Bass Boost", value: "skip"},
+                { name: "🎸 Bass Boost", value: "bassboost"},
                 { name: "✨ Echo", value: "echo"},
                 { name: "🎤 Karaoke", value: "karaoke"},
                 { name: "🌙 Night Core", value: "nightcore"},
                 { name: "🌊 Vapor Wave", value: "vaporwave"},
                 { name: "🚫 Off", value: "false"},
+                { name: "🎊 Surround", value: "surround" }
         ]}]
         }
     ],
@@ -120,7 +122,11 @@ module.exports = {
 
                         case "RepeatMode" :
                         let mode2 = client.distube.setRepeatMode(queue);
-                        return interaction.reply({ content: `🔃 Repeat mode is set to : ${mode2 = mode2 ? mode2 == 2 ? "Queue" : "Song" : "Off" }` });
+                        return interaction.reply({ content: `🔃 Repeat mode has been set to : **${mode2 = mode2 ? mode2 == 2 ? "Queue" : "Song" : "Off" }**` });
+
+                        case "previous" :
+                            await queue.previous(VoiceChannel);
+                            return interaction.reply({ content: `⏮️ Playing previous song.` });
 
                         case "queue" :
                         return interaction.reply({ embeds: [new MessageEmbed()
@@ -164,7 +170,11 @@ module.exports = {
                         }
                         case "vaporwave" : {
                             queue.setFilter(`vaporwave`);
-                            return interaction.reply({ content: "🌊 Vapor Wave has been **enabled**" });
+                            return interaction.reply({ content: "🌊 Vapor Wave filter has been **enabled**" });
+                        }
+                        case "surround" : {
+                            queue.setFilter(`surround`);
+                            return interaction.reply({ content: "🎊 Surround filter has been **enabled**" });
                         }
                     }
                 }

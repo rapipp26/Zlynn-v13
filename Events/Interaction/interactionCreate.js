@@ -210,6 +210,10 @@ module.exports = {
                             value: "```/music settings {options}```"
                         },
                         {
+                            name: "/music filters",
+                            value: "```/music filters {filters}```"
+                        },
+                        {
                             name: "/blacklist_word",
                             value: "```/blacklist_word {action} (word)```"
                         }
