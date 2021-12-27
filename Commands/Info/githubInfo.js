@@ -4,6 +4,7 @@ const config = require ('../../Structures/config.json');
 
 module.exports = { 
     name: 'github', 
+    cooldown: 10,
     description: 'Get github information by providing they\'re name',
     options: [
         {

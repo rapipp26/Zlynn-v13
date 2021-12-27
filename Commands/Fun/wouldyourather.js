@@ -5,6 +5,7 @@ const { true1, false1, arrow, reply1, reply2, thumbsdown, thumbsup } = require (
 module.exports = {
     name: "wouldyourather",
     description: 'Gives a "Would you rather" question',
+    cooldown: 10,
     /**
      * @param {CommandInteraction} interaction 
      */

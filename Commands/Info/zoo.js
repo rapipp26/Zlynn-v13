@@ -5,6 +5,7 @@ const axios = require("axios");
 module.exports = { 
     name: "zoo", 
     description: "Gives images and facts about certain animals.",
+    cooldown: 10,
     options: [
         {
             name: "animal",

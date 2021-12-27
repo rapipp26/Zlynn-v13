@@ -5,6 +5,7 @@ const config = require ('../../Structures/config.json');
 module.exports = { 
     name: 'pokemon', 
     description: 'Gets pokemon information by providing the name',
+    cooldown: 10,
     options: [
         {
             name: "name",

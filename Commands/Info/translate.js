@@ -5,6 +5,7 @@ const translate = require('@iamtraction/google-translate')
 module.exports = { 
     name: 'translate', 
     description: 'Translate a language that you dont understand',
+    cooldown: 10,
     options: [
         {
             name: "text",

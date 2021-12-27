@@ -5,6 +5,7 @@ const config = require("../../Structures/config.json");
 module.exports = {
   name: "blacklist_word",
   description: "Blacklist a specified word.",
+  cooldown: 5,
   permission: "ADMINISTRATOR",
   options: [{
     name: "action",

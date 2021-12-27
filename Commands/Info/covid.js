@@ -3,6 +3,7 @@ const config = require ('../../Structures/config.json');
 
 module.exports = { 
     name: 'covid', 
+    cooldown: 10,
     description: 'Information about covid in worldwide or specified country.',
     options: [
         {
@@ -31,7 +32,7 @@ module.exports = {
 
         try {
             switch(subc) {
-                case "all" : {
+                case "all" : 
                     const response2 = await axios.get(`https://disease.sh/v3/covid-19/all`);
         
                     embed.setAuthor("Covid Cases Worldwide 🦠", client.user.avatarURL({ format: "png" }))
@@ -71,10 +72,9 @@ module.exports = {
                             value: `<t:${parseInt(response2.data.updated / 1000 )}:F>`
                         },
                     )
-        
-                    interaction.reply({ embeds: [embed] })
-                }
-                case "country" : {
+                    return interaction.reply({ embeds: [embed] });
+                
+                case "country" : 
                     const cnt = await interaction.options.getString("country_name")
                     const resp = await axios.get(`https://disease.sh/v3/covid-19/countries/${cnt}`)
 
@@ -121,8 +121,7 @@ module.exports = {
                         },
                     )
                     .setImage(`${resp.data.countryInfo.flag}`)
-                    interaction.reply({ embeds: [embed] })
-                }
+                    return interaction.reply({ embeds: [embed] });
             }
     } catch (error) {
                 embed.setTitle("⚠ An error occurred ⚠")

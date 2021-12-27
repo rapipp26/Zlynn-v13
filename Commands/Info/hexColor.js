@@ -3,6 +3,7 @@ const config = require ('../../Structures/config.json');
 
 module.exports = { 
     name: 'hexcolor', 
+    cooldown: 10,
     description: 'Get info from the provided hex color',
     options: [
         {

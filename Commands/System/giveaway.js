@@ -6,6 +6,7 @@ module.exports = {
     name: "giveaway",
     description: "A complete giveaway system.",
     permission: "VIEW_AUDIT_LOG",
+    cooldown: 10,
     options: [
         {
             name: "start",

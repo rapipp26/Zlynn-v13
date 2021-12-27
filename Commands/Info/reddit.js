@@ -4,6 +4,7 @@ const { true1, false1, arrow, reply1, reply2, thumbsdown, thumbsup } = require (
 
 module.exports = {
     name: "reddit",
+    cooldown: 10,
     description: "Request random content from Reddit via subreddits.",
     options: [
         {

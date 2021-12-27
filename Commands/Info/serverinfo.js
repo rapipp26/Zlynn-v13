@@ -4,6 +4,7 @@ const config = require ('../../Structures/config.json');
 module.exports = { 
     name: 'serverinfo', 
     description: 'Server Information',
+    cooldown: 10,
     /**
      * 
      * @param {CommandInteraction} interaction 

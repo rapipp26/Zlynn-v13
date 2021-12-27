@@ -6,6 +6,7 @@ module.exports = {
     name: 'purge', 
     description: 'Deletes a specified number of message from a channel or user',
     permission: "MANAGE_MESSAGES",
+    cooldown: 5,
     options: [
         {
             name: "amount",

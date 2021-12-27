@@ -5,6 +5,7 @@ const axios = require("axios");
 module.exports = { 
     name: 'anime', 
     description: 'Get some gifs, picture, and sentence from an anime character',
+    cooldown: 10,
     options: [
         {
             name: "baka",

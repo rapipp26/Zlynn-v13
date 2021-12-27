@@ -4,6 +4,7 @@ const config = require ('../../Structures/config.json');
 module.exports = { 
     name: 'steam', 
     description: 'Get steam games or app by providing the name',
+    cooldown: 10,
     options: [
         {
             name: "name",

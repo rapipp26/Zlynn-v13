@@ -4,6 +4,7 @@ const config = require("../../Structures/config.json")
 
 module.exports = {
     name: "botinfo",
+    cooldown: 10,
     description: "Shows the bot's status",
     /**
      * 

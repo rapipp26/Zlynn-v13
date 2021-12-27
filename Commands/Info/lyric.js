@@ -4,6 +4,7 @@ const axios = require("axios");
 
 module.exports = { 
     name: 'lyric', 
+    cooldown: 10,
     description: 'Find provided song title lyrics',
     options: [
         {

@@ -3,6 +3,7 @@ const config = require ('../../Structures/config.json');
 
 module.exports = { 
     name: 'help', 
+    cooldown: 10,
     description: 'New help command with menu',
     /**
      * 

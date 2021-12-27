@@ -5,6 +5,7 @@ const { true1, false1, arrow, reply1, reply2, thumbsdown, thumbsup } = require (
 module.exports = {
     name: "emojify",
     description: 'Gives the emoji from the text that you typed',
+    cooldown: 10,
     options: [
         {
             name: "text",
