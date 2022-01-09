@@ -165,11 +165,11 @@ module.exports = {
 
                         case "queue" :
                         return interaction.reply({ embeds: [new MessageEmbed()
-                        .setColor("DARK_AQUA")
-                        .setAuthor(`Top 20 Songs in queue`)
+                        .setColor("DARK_VIVID_PINK")
+                        .setAuthor(`Top 10 Songs in ${guild.name} Queue`)
                         .setThumbnail(interaction.guild.iconURL({ dynamic: true }))
-                        .setDescription(`${queue.songs.slice(0, 20).map(
-                            (song, id) => `\n**${id + 1}**. ${song.name} - \`${song.formattedDuration}\``)}`)
+                        .setDescription(`${queue.songs.join(0, 10).map(
+                            (song, id) => `\n**${id + 1}**. [${song.name}](${song.url})・\`${song.formattedDuration}\` - ${song.user}`)}`)
                         .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.avatarURL({ dynamic: true }))]});
                     }
                     return;
