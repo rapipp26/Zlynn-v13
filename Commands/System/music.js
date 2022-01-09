@@ -168,7 +168,7 @@ module.exports = {
                         .setColor("DARK_VIVID_PINK")
                         .setAuthor(`Top 10 Songs in ${guild.name} Queue`)
                         .setThumbnail(interaction.guild.iconURL({ dynamic: true }))
-                        .setDescription(`${queue.songs.join(0, 10).map(
+                        .setDescription(`${queue.songs.slice(0, 10).join(
                             (song, id) => `\n**${id + 1}**. [${song.name}](${song.url})・\`${song.formattedDuration}\` - ${song.user}`)}`)
                         .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.avatarURL({ dynamic: true }))]});
                     }
@@ -250,7 +250,7 @@ module.exports = {
             }
         } catch (e) {
             errorEmbed.setDescription(`${e}`)
-            return interaction.reply({ embeds: [errorEmbed] })
+            return interaction.reply({ embeds: [errorEmbed], ephemeral: true  })
         }
     }
 }
