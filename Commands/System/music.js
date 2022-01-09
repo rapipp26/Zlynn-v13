@@ -168,7 +168,7 @@ module.exports = {
                         .setColor("DARK_VIVID_PINK")
                         .setAuthor(`Top 10 Songs in ${guild.name} Queue`)
                         .setThumbnail(interaction.guild.iconURL({ dynamic: true }))
-                        .setDescription(`${queue.songs.slice(0, 10).join(
+                        .setDescription(`${queue.songs.slice(0, 10).map(
                             (song, id) => `\n**${id + 1}**. [${song.name}](${song.url})・\`${song.formattedDuration}\` - ${song.user}`)}`)
                         .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.avatarURL({ dynamic: true }))]});
                     }
