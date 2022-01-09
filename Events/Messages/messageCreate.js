@@ -7,7 +7,11 @@ name: "messageCreate",
 async execute(message, client) {
   if (message.author.bot) return false;
 
-  if(message.mentions.has(client.user)) return message.reply({ content: "Hi!, this bot only support \`Slash Commands\` use \`/help\` to get the commands list"})
+  if(message.mentions.has(client.user)) return message.reply({ content: "Hi!, this bot only support \`Slash Commands\` use \`/help\` to get the commands list"}).then((m) => {
+    setTimeout(() => {
+      m.delete();
+    }, 10000)
+  })
 
         let GuildData;
       try {
