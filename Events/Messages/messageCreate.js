@@ -5,9 +5,9 @@ const GuildSchema = require("../../Schemas/blacklistwordDB")
 module.exports = {
 name: "messageCreate",
 async execute(message, client) {
+  if (message.author.bot) return false;
 
-
-  if(message.includes(client.user)) return message.reply({ content: "Hi!, this bot only support \`Slash Commands\` use \`/help\` to get the commands list"})
+  if(message.mentions.includes(client.user)) return message.reply({ content: "Hi!, this bot only support \`Slash Commands\` use \`/help\` to get the commands list"})
 
         let GuildData;
       try {
