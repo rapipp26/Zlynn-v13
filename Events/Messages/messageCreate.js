@@ -7,7 +7,7 @@ name: "messageCreate",
 async execute(message, client) {
   if (message.author.bot) return false;
 
-  if(message.mentions.includes(client.user)) return message.reply({ content: "Hi!, this bot only support \`Slash Commands\` use \`/help\` to get the commands list"})
+  if(message.mentions.has(client.user)) return message.reply({ content: "Hi!, this bot only support \`Slash Commands\` use \`/help\` to get the commands list"})
 
         let GuildData;
       try {
