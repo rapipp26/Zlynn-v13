@@ -1,4 +1,5 @@
 const config = require("../../Structures/config.json")
+const { Client, CommandInteraction, MessageEmbed, MessageActionRow, MessageSelectMenu, Collection } = require("discord.js");
 
 module.exports = {
     name: "interactionCreate",
