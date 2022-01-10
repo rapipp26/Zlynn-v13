@@ -89,7 +89,7 @@ module.exports = {
         .setTitle("⚠ An error occurred ⚠")
         .setColor("YELLOW")
         .setTimestamp();
-
+ 
         if(!VoiceChannel)
         return interaction.reply({ embeds: [errorEmbed.setDescription("You must be in a voice channel to be able to use the music commands").setFooter("🎤")] })
 
@@ -168,7 +168,7 @@ module.exports = {
                         .setColor("DARK_VIVID_PINK")
                         .setAuthor(`Top 10 Songs in ${guild.name} Queue`, guild.iconURL({ dynamic: true }))
                         .setDescription(`${queue.songs.slice(0, 10).map(
-                            (song, id) => `\n**${id + 1}**. [${song.name}](${song.url})・\`${song.formattedDuration}\` - ${song.user}`)}`)
+                            (song, id) => `\n**${id + 1}**. [${song.name}](${song.url})・\`${song.formattedDuration}\` - ${song.user}\n`)}`)
                         .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.avatarURL({ dynamic: true }))]});
                     }
                     return;
