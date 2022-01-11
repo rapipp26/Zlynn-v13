@@ -6,21 +6,21 @@ const status = queue => `Volume: \`${queue.volume}%\` | Filter: \`${queue.filter
 client.distube
     .on("playSong", (queue, song) => queue.textChannel.send({ embeds: [new MessageEmbed()
     .setAuthor("Now Playing")
-    .setDescription(`${true1} **|** Playing \`${song.name}\` - \`${song.formattedDuration}\`\n${setting} **|** ${status(queue)}\n${human} **|** Requested by: ${song.user}`)
+    .setDescription(`${client.emojis.true1} **|** Playing \`${song.name}\` - \`${song.formattedDuration}\`\n${client.emojis.setting} **|** ${status(queue)}\n${client.emojis.human} **|** Requested by: ${song.user}`)
     .setColor("BLURPLE")
     .setFooter("▶")
     .setTimestamp() ] }))
 
     .on("addSong", (queue, song) => queue.textChannel.send({ embeds: [new MessageEmbed()
     .setAuthor("Added to queue")
-    .setDescription(`${true1} **|** Added \`${song.name}\` - \`${song.formattedDuration}\`\n${human} **|** To the queue by ${song.user}`)
+    .setDescription(`${client.emojis.true1} **|** Added \`${song.name}\` - \`${song.formattedDuration}\`\n${client.emojis.human} **|** To the queue by ${song.user}`)
     .setColor("BLURPLE")
     .setFooter("➕")
     .setTimestamp() ] }))
 
     .on("addList", (queue, playlist) => queue.textChannel.send({ embeds: [new MessageEmbed()
     .setAuthor("Added Playlist")
-    .setDescription(`${true1} **|** Added \`${playlist.name}\` To the queue\n${setting} **|** ${status(queue)}`)
+    .setDescription(`${client.emojis.true1} **|** Added \`${playlist.name}\` To the queue\n${client.emojis.setting} **|** ${status(queue)}`)
     .setColor("BLURPLE")
     .setFooter("➕")
     .setTimestamp()]}))
@@ -34,7 +34,7 @@ client.distube
         .setTimestamp()]})
     })
 
-    .on("empty", queue => queue.textChannel.send({ content: `${false1} **|** Voice channel is empty! Leaving the channel...` }))
+    .on("empty", queue => queue.textChannel.send({ content: `${client.emojis.false1} **|** Voice channel is empty! Leaving the channel...` }))
 
     .on("searchNoResult", message => message.channel.send({ embeds: [new MessageEmbed()
         .setAuthor("⚠ An error occurred ⚠")

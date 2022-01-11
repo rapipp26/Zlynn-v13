@@ -115,10 +115,10 @@ module.exports = {
                         winMessage: "Congratulations, {winners}! You won **{this.prize}**!\n{this.messageURL}"
                     }
                 }).then(async () => {
-                    successEmbed.setDescription(`${true1} **|** Giveaway was succesfully started.`)
+                    successEmbed.setDescription(`${client.emojis.true1} **|** Giveaway was succesfully started.`)
                     return interaction.reply({ embeds: [successEmbed], ephemeral: true })
                 }).catch((err) => {
-                    errorEmbed.setDescription(`${false1} **|** An error was occured\n\`${err}\``)
+                    errorEmbed.setDescription(`${client.emojis.false1} **|** An error was occured\n\`${err}\``)
                     return interaction.reply({ embeds: [errorEmbed], ephemeral: true })
                 })
             }
@@ -131,17 +131,17 @@ module.exports = {
                 const giveaway = client.giveawaysManager.giveaways.find((g) => g.guildId === interaction.guildId && g.messageId === messageId)
 
                 if (!giveaway) {
-                    errorEmbed.setDescription(`${false1} **|** Unable to find the giveaway with the message id : ${messageId} in this guild`);
+                    errorEmbed.setDescription(`${client.emojis.false1} **|** Unable to find the giveaway with the message id : ${messageId} in this guild`);
                     return interaction.reply({ embeds: [errorEmbed], ephemeral: true })
                 }
 
                 switch(choice) {
                     case "end" : {
                         client.giveawaysManager.end(messageId).then(() => {
-                            successEmbed.setDescription(`${true1} **|** Giveaway was ended`)
+                            successEmbed.setDescription(`${client.emojis.true1} **|** Giveaway was ended`)
                             return interaction.reply({ embeds: [successEmbed], ephemeral: true })
                         }).catch((err) => {
-                            errorEmbed.setDescription(`${false1} **|** An error was occured\n\`${err}\``)
+                            errorEmbed.setDescription(`${client.emojis.false1} **|** An error was occured\n\`${err}\``)
                             return interaction.reply({ embeds: [errorEmbed], ephemeral: true })
                         });
                    }
@@ -149,10 +149,10 @@ module.exports = {
 
                    case "pause" : {
                     client.giveawaysManager.pause(messageId).then(() => {
-                        successEmbed.setDescription(`${true1} **|** Giveaway has been paused`)
+                        successEmbed.setDescription(`${client.emojis.true1} **|** Giveaway has been paused`)
                         return interaction.reply({ embeds: [successEmbed], ephemeral: true })
                     }).catch((err) => {
-                        errorEmbed.setDescription(`${false1} **|** An error was occured\n\`${err}\``)
+                        errorEmbed.setDescription(`${client.emojis.false1} **|** An error was occured\n\`${err}\``)
                         return interaction.reply({ embeds: [errorEmbed], ephemeral: true })
                     });
                    }
@@ -160,10 +160,10 @@ module.exports = {
 
                    case "unpause" : {
                     client.giveawaysManager.unpause(messageId).then(() => {
-                        successEmbed.setDescription(`${true1} **|** Giveaway has been unpaused`)
+                        successEmbed.setDescription(`${client.emojis.true1} **|** Giveaway has been unpaused`)
                         return interaction.reply({ embeds: [successEmbed], ephemeral: true })
                     }).catch((err) => {
-                        errorEmbed.setDescription(`${false1} **|** An error was occured\n\`${err}\``)
+                        errorEmbed.setDescription(`${client.emojis.false1} **|** An error was occured\n\`${err}\``)
                         return interaction.reply({ embeds: [errorEmbed], ephemeral: true })
                     });
                    }
@@ -171,10 +171,10 @@ module.exports = {
 
                    case "reroll" : {
                     client.giveawaysManager.reroll(messageId).then(() => {
-                        successEmbed.setDescription(`${true1} **|** Giveaway was rerolled`)
+                        successEmbed.setDescription(`${client.emojis.true1} **|** Giveaway was rerolled`)
                         return interaction.reply({ embeds: [successEmbed], ephemeral: true })
                     }).catch((err) => {
-                        errorEmbed.setDescription(`${false1} **|** An error was occured\n\`${err}\``)
+                        errorEmbed.setDescription(`${client.emojis.false1} **|** An error was occured\n\`${err}\``)
                         return interaction.reply({ embeds: [errorEmbed], ephemeral: true })
                     });
                    }
@@ -182,10 +182,10 @@ module.exports = {
 
                    case "delete" : {
                     client.giveawaysManager.delete(messageId).then(() => {
-                        successEmbed.setDescription(`${true1} **|** Giveaway was deleted`)
+                        successEmbed.setDescription(`${client.emojis.true1} **|** Giveaway was deleted`)
                         return interaction.reply({ embeds: [successEmbed], ephemeral: true })
                     }).catch((err) => {
-                        errorEmbed.setDescription(`${false1} **|** An error was occured\n\`${err}\``)
+                        errorEmbed.setDescription(`${client.emojis.false1} **|** An error was occured\n\`${err}\``)
                         return interaction.reply({ embeds: [errorEmbed], ephemeral: true })
                     });
                 }

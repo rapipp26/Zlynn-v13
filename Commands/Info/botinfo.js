@@ -28,7 +28,7 @@ module.exports = {
             new MessageButton()
             .setStyle("LINK")
             .setLabel("Support Server")
-            .setEmoji(`${config.server}`)
+            .setEmoji(`${client.emojis.server}`)
             .setURL("https://discord.gg/Qev2exTvMd")
         ])
 

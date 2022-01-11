@@ -1,6 +1,6 @@
 const { Client, Collection } = require("discord.js");
 const client = new Client({ intents: 32767 });
-const { token } = require("./Structures/config.json");
+const config = require("./Structures/config.json");
 
 const { promisify } = require("util");
 const { glob } = require("glob");
@@ -10,6 +10,7 @@ const Ascii = require("ascii-table");
 const Errorhandler = require('discord-error-handler')
 
 client.commands = new Collection();
+client.emojis = config.emoji;
 
 const { DisTube } = require("distube");
 const { SpotifyPlugin } = require("@distube/spotify");
@@ -36,4 +37,4 @@ const handle = new Errorhandler(client, {
       handle.createrr(client, undefined, undefined, error)
     })
 
-client.login(token)
+client.login(config.token)

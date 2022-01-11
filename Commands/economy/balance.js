@@ -87,29 +87,26 @@ module.exports = {
             embed.setAuthor(`${target.tag}'s balance`)
             .addField("Balance", `${data.coins.toLocaleString()}`)
             .setThumbnail(target.avatarURL({ dynamic: true }))
-            interaction.reply({ embeds: [embed] })
-            break;
+            return interaction.reply({ embeds: [embed] })
 
             case "add" :
-            if(!cool.includes(interaction.member.id)) return interaction.reply({ content: `${config.false1} **|** You do not have premission to use this command.`, ephemeral: true})
+            if(!cool.includes(interaction.member.id)) return interaction.reply({ content: `${client.emojis.false1} **|** You do not have premission to use this command.`, ephemeral: true})
             data.coins += Amount;
             await data.save();
             embed.setAuthor(`${target.tag}'s balance`)
             .addField("Balance", `+ ${Amount.toLocaleString()}`)
             .setThumbnail(target.avatarURL({ dynamic: true }))
-            interaction.reply({ embeds: [embed] })
-            break;
+            return interaction.reply({ embeds: [embed] })
 
             case "remove" :
-            if(!cool.includes(interaction.member.id)) return interaction.reply({ content: `${config.false1} **|** You do not have premission to use this command.`, ephemeral: true})
+            if(!cool.includes(interaction.member.id)) return interaction.reply({ content: `${client.emojis.false1} **|** You do not have premission to use this command.`, ephemeral: true})
             if(Amount > data.coins) return interaction.reply({ content: `The amount assigned is more than the user's balance, their balance ${data.coins.toLocaleString()}`, ephemeral: true })
             data.coins -= Amount
             await data.save()
             embed.setAuthor(`${target.tag}'s balance`)
             .addField("Balance", `- ${Amount.toLocaleString()}`)
             .setThumbnail(target.avatarURL({ dynamic: true }))
-            interaction.reply({ embeds: [embed] })    
-            break;
+            return interaction.reply({ embeds: [embed] })    
         };
 } catch (e) {
         errembed.setTitle("⚠ An error occurred ⚠")
