@@ -51,7 +51,7 @@ module.exports = {
 
             interaction.reply({ content: "Please select a button.", components: [row, row2] })
 
-			const collector = message.createMessageComponentCollector({ componentType: 'BUTTON', time: 15000 });
+			const collector = interaction.message.createMessageComponentCollector({ componentType: 'BUTTON', time: 15000 });
 
 			collector.on('collect', i => {
 				switch(i.customId) {
