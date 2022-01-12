@@ -98,13 +98,13 @@ module.exports = {
 
                 case "add" :
                 if(!cool.includes(user.id)) return interaction.reply({ content: `${client.config.false1} Only developers can use this command.`});
-                const embed = new MessageEmbed()
+                const embed2 = new MessageEmbed()
                 .setDescription(`${user} aka my developer has been adding ${amount.toLocaleString()} to your bank!`)
                 .setColor("GREEN")
                 docs.bank += amount
                 await docs.save();
                 try {
-                    target.send({ embeds: [embed] })
+                    target.send({ embeds: [embed2] })
                 } catch (e) {
                     return interaction.reply({ content: `${client.config.false1} I cant dm this user.`, ephemeral: true })
                 }
