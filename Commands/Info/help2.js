@@ -10,7 +10,7 @@ module.exports = {
      * @param {CommandInteraction} interaction 
      * @param {Client} client 
      */
-    async execute(interaction) {
+    async execute(interaction, client) {
 
 		const b1 = new MessageButton()
 		.setLabel("Anime")
