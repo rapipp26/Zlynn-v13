@@ -16,6 +16,8 @@ module.exports = {
         const userId = user.id;
         const authorId = message.interaction.user.id;
 
+        await interaction.deferReply();
+
             if (userId === authorId) {
               switch(interaction.values[0]) {
                   case "1" :
