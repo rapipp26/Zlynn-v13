@@ -31,6 +31,13 @@ module.exports = {
                     .setFooter("🔞")
                     .setTimestamp();
                 return interaction.reply({embeds: [embed], ephemeral: true});
+            } else if (error.response.data.message) {
+                embed.setTitle("⚠ An error occurred ⚠")
+                    .setColor("YELLOW")
+                    .setDescription(`${error.response.data.message}`)
+                    .setFooter("🔍")
+                    .setTimestamp();
+                return interaction.reply({embeds: [embed], ephemeral: true});
             }
             
             embed.setColor("RANDOM")
@@ -56,15 +63,6 @@ module.exports = {
             reply.react(`${thumbsup}`);
             reply.react(`${thumbsdown}`);
         } catch (error) {
-            if (error.response.data.message) {
-                embed.setTitle("⚠ An error occurred ⚠")
-                    .setColor("YELLOW")
-                    .setDescription(error.response.data.message)
-                    .setFooter("🔍")
-                    .setTimestamp();
-                return interaction.reply({embeds: [embed], ephemeral: true});
-            }
-
             embed.setTitle("⚠ An error occurred ⚠")
                 .setColor("YELLOW")
                 .setDescription(`${error}`)
