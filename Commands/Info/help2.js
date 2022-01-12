@@ -21,7 +21,7 @@ module.exports = {
 		.setLabel("Fun")
 		.setEmoji("😂")
 		.setCustomId("2")
-		.setStyle("SUCCESS"),
+		.setStyle("SUCCESS")
 		const b3 = new MessageButton()
 		.setLabel("Images")
 		.setEmoji("📷")
