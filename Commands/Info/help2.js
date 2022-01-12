@@ -110,8 +110,8 @@ module.exports = {
 								value: "```cs\n# No Usage\n```"
 							},
 						)
-						await interaction.editReply({ embeds: [embed] });
-						b1.setDisabled(true)
+						await interaction.update({ embeds: [embed] });
+						return b1.setDisabled(true)
 						case "2" : 
 						const embed2 = new MessageEmbed()
 						.setAuthor("Fun commands! (*^▽^*)", client.user.avatarURL({ format: "png" }))
@@ -131,8 +131,8 @@ module.exports = {
 								value: "```cs\n# No Usage\n```"
 							},
 						)
-						await interaction.editReply({ embeds: [embed2] });
-						b2.setDisabled(true)
+						await interaction.update({ embeds: [embed2] });
+						return b2.setDisabled(true)
 						case "3" :
 							const embed3 = new MessageEmbed()
 							.setAuthor("Images commands! (✿◡‿◡)", client.user.avatarURL({ format: "png" }))
@@ -147,8 +147,8 @@ module.exports = {
 							.setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
 							.setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
 							.setTimestamp();
-							await interaction.editReply({ embeds: [embed3] })
-							b3.setDisabled(true)
+							await interaction.update({ embeds: [embed3] });
+							return b3.setDisabled(true)
 						case "4" :
 							const embed4 = new MessageEmbed()
 							.setAuthor("Information commands! (❁´◡`❁))", client.user.avatarURL({ format: "png" }))
@@ -207,8 +207,8 @@ module.exports = {
 							.setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
 							.setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
 							.setTimestamp();
-							await interaction.editReply({ embeds: [embed4] })
-							b4.setDisabled(true)
+							await interaction.update({ embeds: [embed4] });
+							return b4.setDisabled(true)
 							case "5" :
 								const embed5 = new MessageEmbed()
 								.setAuthor("System commands! ○( ＾皿＾)っ ", client.user.avatarURL({ format: "png" }))
@@ -243,8 +243,8 @@ module.exports = {
 								.setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
 								.setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
 								.setTimestamp();
-								await interaction.editReply({ embeds: [embed5] })
-								b5.setDisabled(true)
+								await interaction.update({ embeds: [embed5] });
+								return b5.setDisabled(true)
 								case "6" :
 									const embed6 = new MessageEmbed()
 									.setAuthor("Moderation commands! φ(゜▽゜*)♪", client.user.avatarURL({ format: "png" }))
@@ -259,8 +259,8 @@ module.exports = {
 									.setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
 									.setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
 									.setTimestamp();
-									await interaction.editReply({ embeds: [embed6] })
-									b6.setDisabled(true)
+									await interaction.update({ embeds: [embed6] });
+									return b6.setDisabled(true)
 				}
 				collector.on('end', collected => {
 					return;
