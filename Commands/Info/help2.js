@@ -53,7 +53,7 @@ module.exports = {
 		   
 			const collector = m.createMessageComponentCollector({ componentType: 'BUTTON', time: 15000 });
 
-			collector.on('collect', i => {
+			collector.on('collect', async i => {
 				switch(i.customId) {
 					case "1" :
 						const embed = new MessageEmbed()
