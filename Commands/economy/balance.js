@@ -1,15 +1,15 @@
 const { CommandInteraction, MessageEmbed, Client } = require('discord.js');
 const config = require ('../../Structures/config.json');
-const schema = require("../../Schemas/member-schema")
+const schema = require("../../Schemas/economyDB")
 const cool = ["768378164942471188", "495488613811879946"];
 
 module.exports = { 
-    name: 'balance', 
-    description: 'Give details and actions about balance',
+    name: 'cash', 
+    description: 'Give details and actions about cash',
     options: [
         {
             name: "check",
-            description: "Check the users balance",
+            description: "Check the users cash",
             type: "SUB_COMMAND",
             options: [
                 {
@@ -28,12 +28,12 @@ module.exports = {
                 {
                     name: "amount",
                     description: "Provide the amount to add",
-                    type: "NUMBER",
+                    type: "INTEGER",
                     required: true
                 },
                 {
                     name: "target",
-                    description: "Provide the user to check their balance",
+                    description: "Provide the user to check their cash",
                     type: "USER",
                     required: false
                 },
@@ -47,12 +47,12 @@ module.exports = {
                 {
                     name: "amount",
                     description: "Provide the amount to remove",
-                    type: "NUMBER",
+                    type: "INTEGER",
                     required: true
                 },
                 {
                     name: "target",
-                    description: "Provide the user to check their balance",
+                    description: "Provide the user to check their cash",
                     type: "USER",
                     required: false
                 },
@@ -65,56 +65,52 @@ module.exports = {
      * @param {Client} client 
      */
     async execute(interaction, client) {
-        let subc = interaction.options.getSubcommand();
-        let target = interaction.options.getUser("target");
-        let Amount = interaction.options.getNumber("amount");
-        if(!target) target = interaction.user;
+        const { options, user } = interaction;
 
+        let subc = options.getSubcommand();
+        let target = options.getUser("target");
+        let amount = options.getInteger("amount")
+        if(!target) target = user;
 
-        const embed = new MessageEmbed()
-        .setColor("RANDOM")
-        .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
-        .setTimestamp();
-        const errembed = new MessageEmbed();
+        schema.findOne({ userID : target.id }, async(err, docs) => {
+            if(err) throw err;
+            if(!docs) docs = await schema.create({ userID: target.id })
 
-        try {
-        let data;
-            data = await schema.findOne({ userId: target.id })
-            if(!data) data = await schema.create({ userId: target.id })
+            switch(subc) {
+                case "check" :
+                    const embed = new MessageEmbed()
+                    .setAuthor(`${target.tag}'s cash`)
+                    .setColor("GREEN")
+                    .addFields(
+                        {
+                            name: "Wallet/Cash",
+                            value: `\`\`\`js\n${docs.cash.toLocaleString()}\n\`\`\``,
+                            inline: true
+                        },
+                        {
+                            name: "Bank Account",
+                            value: `\`\`\`js\n${docs.bank.toLocaleString()}\n\`\`\``
+                        }
+                    )
+                    .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
+                    .setTimestamp();
+                    return interaction.reply({ embeds: [embed] })
 
-        switch(subc) {
-            case "check" :
-            embed.setAuthor(`${target.tag}'s balance`)
-            .addField("Balance", `${data.coins.toLocaleString()}`)
-            .setThumbnail(target.avatarURL({ dynamic: true }))
-            return interaction.reply({ embeds: [embed] })
+                case "add" :
+                if(!cool.includes(user.id)) return interaction.reply({ content: `${client.config.false1} Only developers can use this command.`});
+                const embed = new MessageEmbed()
+                .setDescription(`${user} aka my developer has been adding ${amount.toLocaleString()} to your bank!`)
+                .setColor("GREEN")
+                docs.bank += amount
+                await docs.save();
+                try {
+                    target.send({ embeds: [embed] })
+                } catch (e) {
+                    return interaction.reply({ content: `${client.config.false1} I cant dm this user.`, ephemeral: true })
+                }
+                interaction.reply({ content: `${client.config.true1} Successfully dm the user and add cash to they're bank!`})
+            }
+        })
 
-            case "add" :
-            if(!cool.includes(interaction.member.id)) return interaction.reply({ content: `${client.emojis.false1} **|** You do not have premission to use this command.`, ephemeral: true})
-            data.coins += Amount;
-            await data.save();
-            embed.setAuthor(`${target.tag}'s balance`)
-            .addField("Balance", `+ ${Amount.toLocaleString()}`)
-            .setThumbnail(target.avatarURL({ dynamic: true }))
-            return interaction.reply({ embeds: [embed] })
-
-            case "remove" :
-            if(!cool.includes(interaction.member.id)) return interaction.reply({ content: `${client.emojis.false1} **|** You do not have premission to use this command.`, ephemeral: true})
-            if(Amount > data.coins) return interaction.reply({ content: `The amount assigned is more than the user's balance, their balance ${data.coins.toLocaleString()}`, ephemeral: true })
-            data.coins -= Amount
-            await data.save()
-            embed.setAuthor(`${target.tag}'s balance`)
-            .addField("Balance", `- ${Amount.toLocaleString()}`)
-            .setThumbnail(target.avatarURL({ dynamic: true }))
-            return interaction.reply({ embeds: [embed] })    
-        };
-} catch (e) {
-        errembed.setTitle("⚠ An error occurred ⚠")
-        .setColor("YELLOW")
-        .setDescription(`${e}`)
-        .setFooter("🔍")
-        .setTimestamp();
-    interaction.reply({embeds: [embed], ephemeral: true});
-        }
     }
 }

@@ -7,10 +7,15 @@ const schema = mongoose.Schema({
         required: true
     },
 
-    coins: {
+    cash: {
+        type: Number,
+        default: 0
+    },
+
+    bank: {
         type: Number,
         default: 0
     }
 });
 
-module.exports = mongoose.model("member-data", schema)
+module.exports = mongoose.model("economy-data", schema)
