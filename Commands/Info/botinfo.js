@@ -20,6 +20,7 @@ module.exports = {
             .addField("**__Guilds__**", `\`${client.guilds.cache.size}\` guilds connected.`, true)
             .addField("**__Users__**", `\`${client.users.cache.size}\` users connected.`, true)
             .setThumbnail(client.user.avatarURL({ format: "png", dynamic: true, size: 1024 }))
+            .setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
             .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
             .setTimestamp();
 
@@ -28,7 +29,7 @@ module.exports = {
             new MessageButton()
             .setStyle("LINK")
             .setLabel("Support Server")
-            .setEmoji(`${client.emoji.server}`)
+            .setEmoji(`${client.config.server}`)
             .setURL("https://discord.gg/Qev2exTvMd")
         ])
 

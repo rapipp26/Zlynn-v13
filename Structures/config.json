@@ -1,7 +1,6 @@
 {
     "token": "ODA3NDQxMTgwMTgxOTIxNzky.YB4CMg.1mXWguq6-GK_Gge5oclSA6f7-1M",
     "mongoPath": "mongodb+srv://alchanuser:Rafifku26@clusteralchan.qprri.mongodb.net/Data",
-    "emoji" : {
         "true1": "<:Zlynn_true:899137788572733531>",
         "false1": "<:Zlynn_false:899137729638596648>",
         "arrow": "<:Zlynn_Arrow:899138284897312808>",
@@ -14,5 +13,4 @@
         "setting": "<:Zlynn_Settings:910010008077496410>",
         "server": "<:Zlynn_Server:911608880436498453>",
         "logo" : "<:Zlynn_discordlogo:916304654348980244>"
-    }
 }

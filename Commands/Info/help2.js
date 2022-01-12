@@ -110,8 +110,7 @@ module.exports = {
 								value: "```cs\n# No Usage\n```"
 							},
 						)
-						await interaction.editReply({ embeds: [embed] });
-						return b1.setDisabled(true)
+						return interaction.editReply({ embeds: [embed] });
 						case "2" : 
 						const embed2 = new MessageEmbed()
 						.setAuthor("Fun commands! (*^▽^*)", client.user.avatarURL({ format: "png" }))
@@ -131,8 +130,7 @@ module.exports = {
 								value: "```cs\n# No Usage\n```"
 							},
 						)
-						await interaction.editReply({ embeds: [embed2] });
-						return b2.setDisabled(true)
+						return interaction.editReply({ embeds: [embed2] });
 						case "3" :
 							const embed3 = new MessageEmbed()
 							.setAuthor("Images commands! (✿◡‿◡)", client.user.avatarURL({ format: "png" }))
@@ -146,8 +144,7 @@ module.exports = {
 							)
 							.setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
 							.setTimestamp();
-							await interaction.editReply({ embeds: [embed3] });
-							return b3.setDisabled(true)
+							return interaction.editReply({ embeds: [embed3] });
 						case "4" :
 							const embed4 = new MessageEmbed()
 							.setAuthor("Information commands! (❁´◡`❁))", client.user.avatarURL({ format: "png" }))
@@ -205,8 +202,7 @@ module.exports = {
 							)
 							.setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
 							.setTimestamp();
-							await interaction.editReply({ embeds: [embed4] });
-							return b4.setDisabled(true)
+							return interaction.editReply({ embeds: [embed4] });
 							case "5" :
 								const embed5 = new MessageEmbed()
 								.setAuthor("System commands! ○( ＾皿＾)っ ", client.user.avatarURL({ format: "png" }))
@@ -240,8 +236,7 @@ module.exports = {
 								)
 								.setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
 								.setTimestamp();
-								await interaction.editReply({ embeds: [embed5] });
-								return b5.setDisabled(true)
+								return interaction.editReply({ embeds: [embed5] });
 								case "6" :
 									const embed6 = new MessageEmbed()
 									.setAuthor("Moderation commands! φ(゜▽゜*)♪", client.user.avatarURL({ format: "png" }))
@@ -255,11 +250,10 @@ module.exports = {
 									)
 									.setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
 									.setTimestamp();
-									await interaction.editReply({ embeds: [embed6] });
-									return b6.setDisabled(true)
+									return interaction.editReply({ embeds: [embed6] })
 				}
 				collector.on('end', collected => {
-					return;
+					interaction.editReply({ content: "Button inactive.", ephemeral: true })
 				});
 			});
     }

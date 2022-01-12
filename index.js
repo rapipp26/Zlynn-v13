@@ -10,7 +10,7 @@ const Ascii = require("ascii-table");
 const Errorhandler = require('discord-error-handler')
 
 client.commands = new Collection();
-client.emojis = config.emoji;
+client.config = require("./Structures/config.json");
 
 const { DisTube } = require("distube");
 const { SpotifyPlugin } = require("@distube/spotify");

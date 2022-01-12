@@ -37,15 +37,15 @@ module.exports = {
                 .addFields(
                     {
                         name: "Post Title",
-                        value: `${client.emoji.reply1} ${response.data.title}`
+                        value: `${client.config.reply1} ${response.data.title}`
                     },
                     {
                         name: "Post Author",
-                        value: `${client.emoji.reply1} ${response.data.author}`
+                        value: `${client.config.reply1} ${response.data.author}`
                     },
                     {
                         name: "Post Upvotes",
-                        value: `${client.emoji.reply1} ${response.data.ups.toLocaleString()}`
+                        value: `${client.config.reply1} ${response.data.ups.toLocaleString()}`
                     }
                 )
                 .setImage(response.data.url)
