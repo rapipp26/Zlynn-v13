@@ -226,6 +226,5 @@ module.exports = {
 						.setTimestamp();
 						return interaction.reply({ embeds: [embed6], ephemeral: true });
 		}
-		break;
     }
 }
