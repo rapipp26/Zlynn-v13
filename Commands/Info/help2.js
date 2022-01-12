@@ -26,7 +26,7 @@ module.exports = {
      * @param {CommandInteraction} interaction 
      * @param {Client} client 
      */
-    async execute(interaction) {
+    async execute(interaction, client) {
 		switch(interaction.options.getString("module")) {
 			case "1" :
 			const embed = new MessageEmbed()
