@@ -11,11 +11,12 @@ module.exports = {
      * @param {Client} client 
      */
     async execute(interaction) {
+
 		const b1 = new MessageButton()
 		.setLabel("Anime")
 		.setEmoji("🍙")
 		.setCustomId("1")
-		.setStyle("SUCCESS"),
+		.setStyle("SUCCESS")
 		const b2 = new MessageButton()
 		.setLabel("Fun")
 		.setEmoji("😂")
@@ -25,17 +26,17 @@ module.exports = {
 		.setLabel("Images")
 		.setEmoji("📷")
 		.setCustomId("3")
-		.setStyle("SUCCESS"),
+		.setStyle("SUCCESS")
 		const b4 = new MessageButton()
 		.setLabel("Information")
 		.setEmoji("📣")
 		.setCustomId("4")
-		.setStyle("SUCCESS"),
+		.setStyle("SUCCESS")
 		const b5 = new MessageButton()
 		.setLabel("System")
 		.setEmoji("👔")
 		.setCustomId("5")
-		.setStyle("SUCCESS"),
+		.setStyle("SUCCESS")
 		const b6 = new MessageButton()
 		.setLabel("Moderation")
 		.setEmoji("🧥")
