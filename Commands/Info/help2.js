@@ -51,7 +51,7 @@ module.exports = {
 
             const m = await interaction.reply({ content: "Please select a button.", components: [row, row2], fetchReply: true })
 		   
-			const collector = m.createMessageComponentCollector({ componentType: 'BUTTON', time: 15000 });
+			const collector = m.createMessageComponentCollector({ componentType: 'BUTTON'  });
 
 			collector.on('collect', async i => {
 				switch(i.customId) {
@@ -252,14 +252,14 @@ module.exports = {
 									.setTimestamp();
 									return interaction.editReply({ embeds: [embed6] });
 				}
-				collector.on('end', () => {
+				setTimeout(() => {
 					b1.setDisabled(true)
 					b2.setDisabled(true)
 					b3.setDisabled(true)
 					b4.setDisabled(true)
 					b5.setDisabled(true)
 					b6.setDisabled(true)
-				});
+				}, 30000)
 			});
     }
 }
