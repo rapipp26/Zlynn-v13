@@ -49,9 +49,9 @@ module.exports = {
 			const row2 = new MessageActionRow()
 			.addComponents([ b6 ]);
 
-            const m = await interaction.reply({ content: "Please select a button.", components: [row, row2] })
-
-			const collector = m.createMessageComponentCollector({ componentType: 'BUTTON', time: 15000 });
+            await interaction.reply({ content: "Please select a button.", components: [row, row2] }).then((m) => {
+				const collector = m.createMessageComponentCollector({ componentType: 'BUTTON', time: 15000 });
+			})
 
 			collector.on('collect', i => {
 				switch(i.customId) {
