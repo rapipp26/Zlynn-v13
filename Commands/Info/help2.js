@@ -110,7 +110,7 @@ module.exports = {
 								value: "```cs\n# No Usage\n```"
 							},
 						)
-						await interaction.update({ embeds: [embed] });
+						await interaction.editReply({ embeds: [embed] });
 						return b1.setDisabled(true)
 						case "2" : 
 						const embed2 = new MessageEmbed()
@@ -131,7 +131,7 @@ module.exports = {
 								value: "```cs\n# No Usage\n```"
 							},
 						)
-						await interaction.update({ embeds: [embed2] });
+						await interaction.editReply({ embeds: [embed2] });
 						return b2.setDisabled(true)
 						case "3" :
 							const embed3 = new MessageEmbed()
@@ -144,10 +144,9 @@ module.exports = {
 									value: "```cs\n# Image commands is currently under maintenance.```"
 								},
 							)
-							.setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
 							.setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
 							.setTimestamp();
-							await interaction.update({ embeds: [embed3] });
+							await interaction.editReply({ embeds: [embed3] });
 							return b3.setDisabled(true)
 						case "4" :
 							const embed4 = new MessageEmbed()
@@ -204,10 +203,9 @@ module.exports = {
 									value: "```/zoo {animal}```"
 								},
 							)
-							.setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
 							.setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
 							.setTimestamp();
-							await interaction.update({ embeds: [embed4] });
+							await interaction.editReply({ embeds: [embed4] });
 							return b4.setDisabled(true)
 							case "5" :
 								const embed5 = new MessageEmbed()
@@ -240,10 +238,9 @@ module.exports = {
 										value: "```/blacklist_word {action} (word)```"
 									}
 								)
-								.setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
 								.setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
 								.setTimestamp();
-								await interaction.update({ embeds: [embed5] });
+								await interaction.editReply({ embeds: [embed5] });
 								return b5.setDisabled(true)
 								case "6" :
 									const embed6 = new MessageEmbed()
@@ -256,10 +253,9 @@ module.exports = {
 											value: "```/purge (amount) [target]```",
 										},
 									)
-									.setImage("https://cdn.discordapp.com/attachments/848032759939203072/911567264011132938/Zlynn_Banner.png")
 									.setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
 									.setTimestamp();
-									await interaction.update({ embeds: [embed6] });
+									await interaction.editReply({ embeds: [embed6] });
 									return b6.setDisabled(true)
 				}
 				collector.on('end', collected => {
