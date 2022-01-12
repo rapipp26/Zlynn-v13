@@ -72,9 +72,9 @@ module.exports = {
         let amount = options.getInteger("amount")
         if(!target) target = user;
 
-        schema.findOne({ userID : target.id }, async(err, docs) => {
+        schema.findOne({ userId : target.id }, async(err, docs) => {
             if(err) throw err;
-            if(!docs) docs = await schema.create({ userID: target.id })
+            if(!docs) docs = await schema.create({ userId: target.id })
 
             switch(subc) {
                 case "check" :
