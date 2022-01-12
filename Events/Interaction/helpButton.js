@@ -7,7 +7,9 @@ module.exports = {
      */
     async execute(interaction, client) {
         if(!interaction.isButton()) return;
-        if(!["1", "2", "3", "4", "5", "6" ].includes(interaction.customdId)) return;
+        if(!["1", "2", "3", "4", "5", "6"].includes(interaction.customdId)) return;
+
+        await interaction.deferReply();
 
         switch(interaction.customId) {
             case "1" :
@@ -65,7 +67,7 @@ module.exports = {
                         value: "```cs\n# No Usage\n```"
                     },
                 )
-                return interaction.editReply({ embeds: [embed] });
+                return interaction.editReply({ embeds: [embed], ephemeral: true });
                 case "2" : 
                 const embed2 = new MessageEmbed()
                 .setAuthor("Fun commands! (*^▽^*)", client.user.avatarURL({ format: "png" }))
@@ -85,7 +87,7 @@ module.exports = {
                         value: "```cs\n# No Usage\n```"
                     },
                 )
-                return interaction.editReply({ embeds: [embed2] });
+                return interaction.editReply({ embeds: [embed2], ephemeral: true  });
                 case "3" :
                     const embed3 = new MessageEmbed()
                     .setAuthor("Images commands! (✿◡‿◡)", client.user.avatarURL({ format: "png" }))
@@ -99,7 +101,7 @@ module.exports = {
                     )
                     .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
                     .setTimestamp();
-                    return interaction.editReply({ embeds: [embed3] });
+                    return interaction.editReply({ embeds: [embed3], ephemeral: true  });
                 case "4" :
                     const embed4 = new MessageEmbed()
                     .setAuthor("Information commands! (❁´◡`❁))", client.user.avatarURL({ format: "png" }))
@@ -157,7 +159,7 @@ module.exports = {
                     )
                     .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
                     .setTimestamp();
-                    return interaction.editReply({ embeds: [embed4] });
+                    return interaction.editReply({ embeds: [embed4], ephemeral: true  });
                     case "5" :
                         const embed5 = new MessageEmbed()
                         .setAuthor("System commands! ○( ＾皿＾)っ ", client.user.avatarURL({ format: "png" }))
@@ -191,7 +193,7 @@ module.exports = {
                         )
                         .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
                         .setTimestamp();
-                        return interaction.editReply({ embeds: [embed5] });
+                        return interaction.editReply({ embeds: [embed5], ephemeral: true  });
                         case "6" :
                             const embed6 = new MessageEmbed()
                             .setAuthor("Moderation commands! φ(゜▽゜*)♪", client.user.avatarURL({ format: "png" }))
@@ -205,7 +207,7 @@ module.exports = {
                             )
                             .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
                             .setTimestamp();
-                            return interaction.editReply({ embeds: [embed6] })
+                            return interaction.editReply({ embeds: [embed6], ephemeral: true  })
         }
         setTimeout(() => {
             interaction.editReply({ content: `*This message is now inactive ${client.config.false1}*`, components: [ ] })
