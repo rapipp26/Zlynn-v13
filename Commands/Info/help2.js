@@ -44,9 +44,12 @@ module.exports = {
 		.setStyle("SUCCESS")
 
 		const row = new MessageActionRow()
-			.addComponents([ b1, b2, b3, b4, b5, b6 ]);
+			.addComponents([ b1, b2, b3, b4, b5 ]);
 
-            interaction.reply({ content: "Please select a button.", components: [row] })
+			const row2 = new MessageActionRow()
+			.addComponents([ b6 ]);
+
+            interaction.reply({ content: "Please select a button.", components: [row, row2] })
 
 			const collector = message.createMessageComponentCollector({ componentType: 'BUTTON', time: 15000 });
 
