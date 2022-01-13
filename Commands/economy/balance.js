@@ -48,6 +48,7 @@ module.exports = {
         },
         {
             name: "daily",
+            type: "SUB_COMMAND",
             description: "Claim your daily cash every morning!"
         }
     ],
