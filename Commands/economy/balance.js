@@ -87,7 +87,7 @@ module.exports = {
                     if(docs.coins < amount) return interaction.reply({ content: `${client.config.false1} Your cash is less than the amount you want to deposit`, ephemeral: true})
 
                     docs.bank += amount
-                    docs.coins -= amount 
+                    docs.cash -= amount 
                     await docs.save();
                     return interaction.reply({ content: `${client.config.true1} Successfully deposited \`${amount.toLocaleString()}\` to your bank account`})
 
@@ -95,7 +95,7 @@ module.exports = {
                         if(docs.bank < amount) return interaction.reply({ content: `${client.config.false1} Your bank account balance is less than the amount you want to withdraw`, ephemeral: true })
     
                         docs.bank -= amount
-                        docs.coins += amount 
+                        docs.cash += amount 
                         await docs.save();
                         return interaction.reply({ content: `${client.config.true1} Successfully withdraw \`${amount.toLocaleString()}\` to your wallet` })
                 }

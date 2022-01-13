@@ -96,7 +96,7 @@ module.exports = {
             } catch (e) {
                 return interaction.reply({ content: `${client.config.false1} I cant dm this user. But the money should be in their bank account.`, ephemeral: true })
             }
-            interaction.reply({ content: `${client.config.true1} Successfully dm the user and add balance to their bank account!`, ephemeral: true })
+            return interaction.reply({ content: `${client.config.true1} Successfully dm the user and add balance to their bank account!`, ephemeral: true })
 
             case "remove" :
                 if(!cool.includes(user.id)) return interaction.reply({ content: `${client.config.false1} Only developers can use this command.`, ephemeral: true });
@@ -112,7 +112,7 @@ module.exports = {
                 } catch (e) {
                     return interaction.reply({ content: `${client.config.false1} I cant dm this user. But the money should be removed from their bank account.`, ephemeral: true })
                 }
-                interaction.reply({ content: `${client.config.true1} Successfully dm the user and remove balance from their bank account!`, ephemeral: true })
+                return interaction.reply({ content: `${client.config.true1} Successfully dm the user and remove balance from their bank account!`, ephemeral: true })
 
             case "set" :
                  if(!cool.includes(user.id)) return interaction.reply({ content: `${client.config.false1} Only developers can use this command.`, ephemeral: true });
@@ -127,7 +127,7 @@ module.exports = {
                  } catch (e) {
                         return interaction.reply({ content: `${client.config.false1} I cant dm this user. But the money should be set already in their bank account.`, ephemeral: true })
                  }
-                   interaction.reply({ content: `${client.config.true1} Successfully dm the user and set the balance to their bank account!`, ephemeral: true })
+                   return interaction.reply({ content: `${client.config.true1} Successfully dm the user and set the balance to their bank account!`, ephemeral: true })
         }
     })
     }
