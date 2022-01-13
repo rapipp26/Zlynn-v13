@@ -94,8 +94,8 @@ module.exports = {
             try {
                 target.send({ embeds: [embed2] })
             } catch (e) {
-                interaction.reply({ content: `${client.config.false1} I cant dm this user. But the money should be in their bank account.`, ephemeral: true })
-                throw e;
+                    interaction.reply({ content: `${client.config.false1} I cant dm this user. But the money should be in their bank account.`, ephemeral: true })
+                    throw e;
             }
             return interaction.reply({ content: `${client.config.true1} Successfully dm the user and add balance to their bank account!`, ephemeral: true })
 

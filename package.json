@@ -33,6 +33,7 @@
     "libsodium-wrappers": "^0.7.9",
     "mongoose": "^6.0.12",
     "node-fetch": "^3.0.0",
+    "parse-ms": "^3.0.0",
     "phin": "^3.6.0",
     "yt-search": "^2.10.2",
     "ytdl-core": "github:kabirsingh2004/node-ytdl-core"

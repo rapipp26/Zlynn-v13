@@ -1,6 +1,8 @@
 const { CommandInteraction, MessageEmbed, Client } = require('discord.js');
 const config = require ('../../Structures/config.json');
-const schema = require("../../Schemas/economyDB")
+const schema = require("../../Schemas/economyDB");
+const ms = require("parse-ms");
+
 module.exports = { 
     name: 'cash', 
     description: 'Give details and actions about cash',
@@ -44,6 +46,10 @@ module.exports = {
                 },
             ]
         },
+        {
+            name: "daily",
+            description: "Claim your daily cash every morning!"
+        }
     ],
     /**
      * 
@@ -98,7 +104,23 @@ module.exports = {
                         docs.cash += amount 
                         await docs.save();
                         return interaction.reply({ content: `${client.config.true1} Successfully withdraw \`${amount.toLocaleString()}\` to your wallet` })
+
+                
+                case "daily" :
+                    let timeout = 86400000
+                    let ra = Math.floor(Math.random() * 2000 ) + 500
+
+                    if(timeout - (Date.now() - docs.daily) > 0) {
+                        let tl = ms(timeout - (Date.now() - docs.daily))
+                        return interaction.reply({ content: `${client.config.false1} You already claimed your daily coins.\n Try again later after : **${tl.hours}h, ${tl.minutes}m, ${tl.seconds}s**`})
+                    }
+
+                    docs.daily = Date.now();
+                    docs.cash += ra;
+                    await docs.save()
+                    return interaction.reply({ content: `${client.config.true1} Successfully claimed your daily cash for **${ra}**`})
                 }
+                
             })
         }
     }

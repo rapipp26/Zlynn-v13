@@ -15,6 +15,10 @@ const schema = mongoose.Schema({
     bank: {
         type: Number,
         default: 0
+    },
+
+    daily: {
+        type: Number
     }
 });
 
