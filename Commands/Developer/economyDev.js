@@ -1,4 +1,6 @@
 const { MessageEmbed } = require(`discord.js`)
+const cool = ["768378164942471188", "495488613811879946"];
+const schema = require("../../Schemas/economyDB")
 module.exports = {
     name: "econ",
     description: "Economy commands that can only be used by the developers ",
@@ -76,6 +78,10 @@ module.exports = {
         let target = options.getUser("target");
         if(!target) target = user; 
 
+        schema.findOne({ userId : target.id }, async(err, docs) => {
+            if(err) throw err;
+            if(!docs) docs = await schema.create({ userId: target.id })
+
         switch(subco) {
             case "add" :
             if(!cool.includes(user.id)) return interaction.reply({ content: `${client.config.false1} Only developers can use this command.`, ephemeral: true });
@@ -94,6 +100,7 @@ module.exports = {
 
             case "remove" :
                 if(!cool.includes(user.id)) return interaction.reply({ content: `${client.config.false1} Only developers can use this command.`, ephemeral: true });
+                if(docs.bank < amount) return interaction.reply({ content: `${client.config.false1} That user has less balance than amount the amount you want to remove`, ephemeral: true });
                 const embed3 = new MessageEmbed()
                 .setDescription(`${user} aka my developer has been removing **${amount.toLocaleString()}** from your \`bank account\` balance!`)
                 .setFooter("You can check your bank account balance by using /cash check")
@@ -110,7 +117,7 @@ module.exports = {
             case "set" :
                  if(!cool.includes(user.id)) return interaction.reply({ content: `${client.config.false1} Only developers can use this command.`, ephemeral: true });
                  const embed4 = new MessageEmbed()
-                 .setDescription(`${user} aka my developer has been setting **${amount.toLocaleString()}** to your \`bank account\` balance!`)
+                 .setDescription(`${user} aka my developer has been set your \`bank account\` balance to **${amount.toLocaleString()}** !`)
                  .setFooter("You can check your bank account balance by using /cash check")
                   .setColor("GREEN")
                  docs.bank = amount
@@ -122,5 +129,6 @@ module.exports = {
                  }
                    interaction.reply({ content: `${client.config.true1} Successfully dm the user and set the balance to their bank account!`, ephemeral: true })
         }
+    })
     }
 };

@@ -18,6 +18,32 @@ module.exports = {
                 },
             ]
         },
+        {
+            name: "deposit",
+            description: "Deposit some cash to your bank account",
+            type: "SUB_COMMAND",
+            options: [
+                {
+                    name: "amount",
+                    description: "Provide the amount to deposit",
+                    type: "INTEGER",
+                    required: true
+                },
+            ]
+        },
+        {
+            name: "withdraw",
+            description: "Withdraw some balance to your wallet",
+            type: "SUB_COMMAND",
+            options: [
+                {
+                    name: "amount",
+                    description: "Provide the amount to withdraw",
+                    type: "INTEGER",
+                    required: true
+                },
+            ]
+        },
     ],
     /**
      * 
@@ -56,7 +82,23 @@ module.exports = {
                     .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
                     .setTimestamp();
                     return interaction.reply({ embeds: [embed] })
-            }
-        })
+                
+                case "deposit" :
+                    if(docs.coins < amount) return interaction.reply({ content: `${client.config.false1} Your cash is less than the amount you want to deposit`, ephemeral: true})
+
+                    docs.bank += amount
+                    docs.coins -= amount 
+                    await docs.save();
+                    return interaction.reply({ content: `${client.config.true1} Successfully deposited \`${amount.toLocaleString()}\` to your bank account`})
+
+                case "withdraw" :
+                        if(docs.bank < amount) return interaction.reply({ content: `${client.config.false1} Your bank account balance is less than the amount you want to withdraw`, ephemeral: true })
+    
+                        docs.bank -= amount
+                        docs.coins += amount 
+                        await docs.save();
+                        return interaction.reply({ content: `${client.config.true1} Successfully withdraw \`${amount.toLocaleString()}\` to your wallet` })
+                }
+            })
+        }
     }
-}
