@@ -1,7 +1,7 @@
 const { CommandInteraction, MessageEmbed, Client } = require('discord.js');
 const config = require ('../../Structures/config.json');
 const schema = require("../../Schemas/economyDB");
-const ms = import("parse-ms");
+const ms = require("parse-ms");
 
 module.exports = { 
     name: 'cash', 
