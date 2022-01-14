@@ -30,7 +30,7 @@ module.exports = {
      */
     async execute(interaction, client) {
         const animal      = interaction.options.getString("animal");
-        const capitalised = animal.replaceAll("_", " ").replace(/(^\w{1})|(\s{1}\w{1})/g, match => match.toUpperCase());
+        const capitalised = animal.replace(/(^\w{1})|(\s{1}\w{1})/g, match => match.toUpperCase());
         const embed       = new MessageEmbed();
 
         try {
