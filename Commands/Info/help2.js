@@ -16,11 +16,11 @@ module.exports = {
 			new MessageButton()
 			.setLabel("Command List")
 			.setEmoji(`${client.config.setting}`)
-			.setStyle("URL")
+			.setStyle("LINK")
 			.setURL("https://rapipp.gitbook.io/zlynn/command-list"),
 			new MessageButton()
 			.setLabel("Support Server")
-			.setStyle("URL")
+			.setStyle("LINK")
 			.setURL("https://discord.gg/AUWhsArSWb")
 			.setEmoji(`${client.config.server}`)
 		)
