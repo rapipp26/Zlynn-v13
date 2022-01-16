@@ -14,19 +14,19 @@ module.exports = {
         // await DB.deleteOne({ GuildID: guild.id, UserID: message.author.id });
 
         if(message.mentions.members.size) {
-            const embed = new MessageEmbed()
-            .setColor("RED")
-            .setAuthor("AFK Status 😴", client.user.avatarURL({ format: "png" }))
-            .setFooter("Do not disturb them please!")
-            .setTimestamp()
-
             message.mentions.members.forEach((m) => {
-                DB.findOne({ GuildID: message.guild.id, UserID: m.user.id }, async (err, data) => {
+                DB.findOne({ GuildID: message.guild.id, UserID: m.id }, async (err, data) => {
                     if(err) throw err;
-                    if(data)
-                    embed.addField("Reason",`\`\`\`yaml\n${data.Status}\n\`\`\``)
+                    if(data) {
+                    const embed = new MessageEmbed()
+                    .setColor("RED")
+                    .setAuthor("AFK Status 😴", client.user.avatarURL({ format: "png" }))
+                    .setFooter("Do not disturb them please!")
+                    .setTimestamp()
+                    .addField("Reason",`\`\`\`yaml\n${data.Status}\n\`\`\``)
                     .setDescription(`${m.user.tag} is currently afk since <t:${data.Time}:R> `)
                     return message.reply({ embeds: [embed] })
+                    }
                 })
             })
         }
