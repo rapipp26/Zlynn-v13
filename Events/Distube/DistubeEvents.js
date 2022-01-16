@@ -6,21 +6,21 @@ const status = queue => `Volume: \`${queue.volume}%\` | Filter: \`${queue.filter
 client.distube
     .on("playSong", (queue, song) => queue.textChannel.send({ embeds: [new MessageEmbed()
     .setAuthor("Now Playing")
-    .setDescription(`${client.emojis.true1} **|** Playing \`${song.name}\` - \`${song.formattedDuration}\`\n${client.emojis.setting} **|** ${status(queue)}\n${client.emojis.human} **|** Requested by: ${song.user}`)
+    .setDescription(`${client.config.true1} **|** Playing \`${song.name}\` - \`${song.formattedDuration}\`\n${client.config.setting} **|** ${status(queue)}\n${client.config.human} **|** Requested by: ${song.user}`)
     .setColor("BLURPLE")
     .setFooter("▶")
     .setTimestamp() ] }))
 
     .on("addSong", (queue, song) => queue.textChannel.send({ embeds: [new MessageEmbed()
     .setAuthor("Added to queue")
-    .setDescription(`${client.emojis.true1} **|** Added \`${song.name}\` - \`${song.formattedDuration}\`\n${client.emojis.human} **|** To the queue by ${song.user}`)
+    .setDescription(`${client.config.true1} **|** Added \`${song.name}\` - \`${song.formattedDuration}\`\n${client.config.human} **|** To the queue by ${song.user}`)
     .setColor("BLURPLE")
     .setFooter("➕")
     .setTimestamp() ] }))
 
     .on("addList", (queue, playlist) => queue.textChannel.send({ embeds: [new MessageEmbed()
     .setAuthor("Added Playlist")
-    .setDescription(`${client.emojis.true1} **|** Added \`${playlist.name}\` To the queue\n${client.emojis.setting} **|** ${status(queue)}`)
+    .setDescription(`${client.config.true1} **|** Added \`${playlist.name}\` To the queue\n${client.config.setting} **|** ${status(queue)}`)
     .setColor("BLURPLE")
     .setFooter("➕")
     .setTimestamp()]}))
@@ -34,7 +34,7 @@ client.distube
         .setTimestamp()]})
     })
 
-    .on("empty", queue => queue.textChannel.send({ content: `${client.emojis.false1} **|** Voice channel is empty! Leaving the channel...` }))
+    .on("empty", queue => queue.textChannel.send({ content: `${client.config.false1} **|** Voice channel is empty! Leaving the channel...` }))
 
     .on("searchNoResult", message => message.channel.send({ embeds: [new MessageEmbed()
         .setAuthor("⚠ An error occurred ⚠")
