@@ -15,7 +15,7 @@ module.exports = {
 
         if(message.mentions.members.size) {
             const embed = new MessageEmbed()
-            .setColor("DARK_VIVID_PINK")
+            .setColor("RED")
             .setAuthor("AFK Status 😴", client.user.avatarURL({ format: "png" }))
             .setFooter("Do not disturb them please!")
             .setTimestamp()
@@ -25,7 +25,7 @@ module.exports = {
                     if(err) throw err;
                     if(data)
                     embed.addField("Reason",`\`\`\`yaml\n${data.Status}\n\`\`\``)
-                    .setDescription(`${m.tag} is currently afk since <t:${data.Time}:R> `)
+                    .setDescription(`${m.user.tag} is currently afk since <t:${data.Time}:R> `)
                     return message.reply({ embeds: [embed] })
                 })
             })
@@ -34,8 +34,8 @@ module.exports = {
         DB.findOne({ GuildID: message.guild.id, UserID: message.id }, async (err, data) => {
             if(err) throw err;
             if(data)
-            await DB.deleteOne({ GuildID: guild.id, UserID: message.author.id });
-            return message.reply({ content: `${client.config.true1} Your afk status has been removed.\nYou're afk since <t:${data.Time}:R>`})
+            await message.reply({ content: `${client.config.true1} Your afk status has been removed.\nYou're afk since <t:${data.Time}:R>`})
+            return DB.deleteOne({ GuildID: guild.id, UserID: message.author.id });
         })
     }
 }   
