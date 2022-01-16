@@ -30,8 +30,9 @@ module.exports = {
             )
             const embed = new MessageEmbed()
             .setAuthor("AFK Status 😴", client.user.avatarURL({ format: "png" }))
+            .setColor("BLURPLE")
             .setDescription("Your afk status has been set. if someone mention you, the reason you type will reply them.")
-            .addField("Reason",`\`\`\`cs\n# ${reason}\n\`\`\``)
+            .addField("Reason",`\`\`\`yaml\n${reason}\n\`\`\``)
             .setThumbnail(user.avatarURL({ dynamic: true }))
             .setFooter(`Executed by ${user.tag}`, user.displayAvatarURL({ dynamic: true }))
             .setTimestamp();
