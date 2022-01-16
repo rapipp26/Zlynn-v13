@@ -21,7 +21,7 @@ module.exports = {
             .setTimestamp()
 
             message.mentions.members.forEach((m) => {
-                DB.findOne({ GuildID: message.guild.id, UserID: m.id }, async (err, data) => {
+                DB.findOne({ GuildID: message.guild.id, UserID: m.user.id }, async (err, data) => {
                     if(err) throw err;
                     if(data)
                     embed.addField("Reason",`\`\`\`yaml\n${data.Status}\n\`\`\``)
