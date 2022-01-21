@@ -52,7 +52,7 @@ module.exports = {
             })
 
             await channel.bulkDelete(filtered, true).then(messages => {
-                Response.setDescription(`${client.emojis.true1} **|** *Cleared \`${messages.size}\` messages from ${Target} (〃￣︶￣)人*`)
+                Response.setDescription(`${client.config.true1} **|** *Cleared \`${messages.size}\` messages from ${Target} (〃￣︶￣)人*`)
                 interaction.reply({ embed: [Response] })
             })
         } else {
@@ -65,7 +65,7 @@ module.exports = {
                     .setFooter("🔍")
                     .setTimestamp()]});
                 } else {
-                Response.setDescription(`${client.emojis.true1} **|** *Cleared \`${messages.size}\` messages from this channel (〃￣︶￣)人*`)
+                Response.setDescription(`${client.config.true1} **|** *Cleared \`${messages.size}\` messages from this channel (〃￣︶￣)人*`)
                 interaction.reply({ embeds: [Response] })
                 }
             })
