@@ -10,6 +10,9 @@ const Ascii = require("ascii-table");
 const Errorhandler = require('discord-error-handler')
 
 client.commands = new Collection();
+client.filters = new Collection();
+client.filtersLog = new Collection();
+
 client.config = require("./Structures/config.json");
 
 const { DisTube } = require("distube");
