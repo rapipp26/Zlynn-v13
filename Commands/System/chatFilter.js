@@ -50,7 +50,7 @@ module.exports = {
         },
         {
             name: "word",
-            description: "Provide the word to add/remove, add multiple words by placing comma between word(s). example: (word1, word2, word3)",
+            description: "Provide the word to add/remove, add multiple words by placing comma. example: (word1, word2, word3)",
             type: "STRING",
             required: true
         }
