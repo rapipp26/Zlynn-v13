@@ -45,15 +45,15 @@ module.exports = {
                         { name: "Add", value: "add" },
                         { name: "Remove", value: "remove" }
                     ]
+                },
+                {
+                    name: "word",
+                    description: "Provide the word to add/remove, add multiple words by placing comma. example: (word1, word2, word3)",
+                    type: "STRING",
+                    required: true
                 }
             ]
         },
-        {
-            name: "word",
-            description: "Provide the word to add/remove, add multiple words by placing comma. example: (word1, word2, word3)",
-            type: "STRING",
-            required: true
-        }
     ],
     /**
      * 
