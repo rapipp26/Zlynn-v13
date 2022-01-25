@@ -72,7 +72,7 @@ module.exports = {
                 const Data = await schema.findOne({ Guild: guild.id })
                 if(!Data) return interaction.editReply({ content: `${client.config.false1} There is no banned word(s) in this server.`, ephemeral: true })
                 const embed = new MessageEmbed()
-                .setAuthor({ name: "Banned word(s) list!", iconURL: client.user.avatarURL({ format: "PNG" })})
+                .setAuthor({ name: "Banned word(s) list!", iconURL: client.user.avatarURL({ format: "png" })})
                 .setDescription(`${Data.map((a,b) => b+1 - a).join("\n")}`)
                 .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
                 .setTimestamp();
@@ -108,7 +108,7 @@ module.exports = {
                                 })
 
                                 client.filters.set(guild.id, words) 
-                                return interaction.editReply({ content: `${client.config.true1} ${words.length} has been added to the data`});
+                                return interaction.editReply({ content: `${client.config.true1} ${words.length} word(s) has been added to the data`});
                             }
 
                             const newWords = []
@@ -121,7 +121,7 @@ module.exports = {
                             }); 
 
  
-                            interaction.repl({ content: `${client.config.true1} ${newWords.length} has been added to the data`});
+                            interaction.repl({ content: `${client.config.true1} ${newWords.length} word(s)has been added to the data`});
 
                             data.save();
                         });
@@ -144,7 +144,7 @@ module.exports = {
                             const newArray = client.filters.get(guild.id).filter((word) => !removedWords.includes(word));
 
                             client.filters.set(guild.id, newArray)
-                            interaction.editReply({ content: `${client.config.true1} ${removedWords.length} has been removed from the data`})
+                            interaction.editReply({ content: `${client.config.true1} ${removedWords.length} word(s) has been removed from the data`})
                             data.save();
                         })
                         break;
