@@ -107,11 +107,12 @@ module.exports = {
                                     Words: words
                                 })
 
-                                client.filters.set(guild.id, words) 
+                                client.filters.set(guild.id, words);
+                                
                                 return interaction.editReply({ content: `${client.config.true1} ${words.length} word(s) has been added to the data`});
                             }
 
-                            const newWords = []
+                            const newWords = [];
 
                             words.forEach((w) => {
                                 if(data.Words.includes(w)) return;
@@ -121,7 +122,7 @@ module.exports = {
                             }); 
 
  
-                            interaction.repl({ content: `${client.config.true1} ${newWords.length} word(s)has been added to the data`});
+                            interaction.editReply({ content: `${client.config.true1} ${newWords.length} word(s)has been added to the data`});
 
                             data.save();
                         });
