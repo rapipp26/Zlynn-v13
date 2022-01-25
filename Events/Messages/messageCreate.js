@@ -19,28 +19,6 @@ async execute(message, client) {
       m.delete();
     }, 10000)
   })
-
-        let GuildData;
-      try {
-        GuildData = await GuildSchema.findOne({ guildId: message.guild.id })
-        if(!GuildData) {
-          GuildData = await GuildSchema.create({ guildId: message.guild.id })
-        }
-      } catch (error) {
-        console.log(error)
-      }
-
-      const embed = new MessageEmbed()
-      .setTitle("⚠ Warning ⚠")
-      .setDescription(`Your message is blacklisted in **${message.guild}**`)
-      .setColor("RED")
-      .setFooter("❗")
-      .setTimestamp();
-
-      if(GuildData.BLW.some(word => message.content.toLowerCase().includes(word))) {
-        message.delete()
-        message.author.send({ embeds: [embed] })
-      }
     }
 
 }
