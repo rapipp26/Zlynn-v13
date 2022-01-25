@@ -115,8 +115,8 @@ module.exports = {
 
                             words.forEach((w) => {
                                 if(data.Words.includes(w)) return;
-                                newWords.push(w),
-                                data.Words.push(w)
+                                newWords.push(w);
+                                data.Words.push(w);
                                 client.filters.get(guild.id).push(w);
                             }); 
 
