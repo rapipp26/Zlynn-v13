@@ -73,7 +73,7 @@ module.exports = {
                 if(!Data) return interaction.editReply({ content: `${client.config.false1} There is no banned word(s) in this server.`, ephemeral: true })
                 const embed = new MessageEmbed()
                 .setAuthor({ name: "Banned word(s) list!", iconURL: client.user.avatarURL({ format: "png" })})
-                .setDescription(`${Data.Words.map((a,b) => b+1 - a).join("\n")}`)
+                .setDescription(`${Data.Words.map((a,b) => `${b+1 - a}`).join("\n")}`)
                 .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
                 .setTimestamp();
                 interaction.editReply({ embeds: [embed] })
@@ -135,7 +135,7 @@ module.exports = {
 
                             const removedWords = [];
 
-                            words.forEach((e) => {
+                            words.forEach((w) => {
                                 if(data.Words.include(w)) return;
                                 data.Words.remove(w);
                                 removedWords.Words.push(w);

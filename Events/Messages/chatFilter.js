@@ -27,7 +27,7 @@ module.exports = {
             }
         });
 
-        if(shouldDelete) message.deletable().catch(() => {});
+        if(shouldDelete) message.delete().catch(() => {});
 
         if(wordsUsed.length) {
             const channelID = client.filtersLog.get(guild.id);
