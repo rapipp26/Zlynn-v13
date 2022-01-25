@@ -1,6 +1,5 @@
 const { Client, CommandInteraction, MessageEmbed } = require("discord.js");
 const config = require("../../Structures/config.json")
-const GuildSchema = require("../../Schemas/blacklistwordDB")
 
 module.exports = {
 name: "messageCreate",

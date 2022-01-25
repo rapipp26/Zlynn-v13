@@ -137,7 +137,7 @@ module.exports = {
                             const removedWords = [];
 
                             words.forEach((w) => {
-                                if(data.Words.include(w)) return;
+                                if(data.Words.includes(w)) return;
                                 data.Words.remove(w);
                                 removedWords.Words.push(w);
                             });

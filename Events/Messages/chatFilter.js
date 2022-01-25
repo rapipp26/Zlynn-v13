@@ -41,7 +41,7 @@ module.exports = {
             .setColor("RED")
             .addFields(
                 { name: "Member", value: `${author.tag}`},
-                { name: `${wordsUsed.length} Word(s)`, value: `\`${wordsUsed.map((w) => w)}\``},
+                { name: `${wordsUsed.length} Word(s)`, value: `\`${wordsUsed.map((w) => w).join(" ")}\``},
                 { name: "Channel", value: `${channel}`}
             )
             .setTimestamp()
