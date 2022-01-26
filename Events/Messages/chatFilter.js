@@ -40,9 +40,9 @@ module.exports = {
             .setAuthor({ name: `Banned word(s) log!`, iconURL: client.user.avatarURL({ format: "png" })})
             .setColor("RED")
             .addFields(
-                { name: "Member", value: `${author.tag}`},
-                { name: `${wordsUsed.length} Word(s)`, value: `\`${wordsUsed.map((w) => w).join(" ")}\``},
-                { name: "Channel", value: `${channel}`}
+                { name: "Member", value: `${author.tag}`, inline: true },
+                { name: `${wordsUsed.length} Word(s)`, value: `\`${wordsUsed.map((w) => w).join(" ")}\``, inline: true },
+                { name: "Channel", value: `${channel}`, inline: true }
             )
             .setTimestamp()
             .setFooter({ text: "🔨" })

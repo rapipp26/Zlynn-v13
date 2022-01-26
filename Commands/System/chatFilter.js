@@ -2,24 +2,24 @@ const { MessageEmbed } = require(`discord.js`);
 const schema = require("../../Schemas/chatFilterDB");
 
 module.exports = {
-    name: "bannedword",
+    name: "filter",
     cooldown: 10,
-    description: "Ban some word(s) from your server",
+    description: "Filter some word(s) from your server",
     permission: "MANAGE_MESSAGES",
     options : [
         {
             name: "clear",
-            description: "Clear all banned word(s) from the data",
+            description: "Clear all word(s) from the data",
             type: "SUB_COMMAND"
         },
         {
             name: "list",
-            description: "List your banned word(s) data.",
+            description: "List your word(s) data.",
             type: "SUB_COMMAND"
         },
         {
             name: "log",
-            description: "Setup your banned word(s) log channel",
+            description: "Setup your filter log channel",
             type: "SUB_COMMAND",
             options: [
                 {
@@ -32,7 +32,7 @@ module.exports = {
             ]
         },
         {
-            name: "action",
+            name: "config",
             description: "Add/remove word(s) from the data",
             type: "SUB_COMMAND",
             options: [
@@ -48,7 +48,7 @@ module.exports = {
                 },
                 {
                     name: "word",
-                    description: "Provide the word to add/remove, add multiple words by placing comma. example: (word1, word2, word3)",
+                    description: "Provide the word to add/remove, add multiple words by placing comma. example: (word1,word2,word3)",
                     type: "STRING",
                     required: true
                 }
@@ -70,7 +70,7 @@ module.exports = {
         switch(sub) {
             case "list" :
                 const Data = await schema.findOne({ Guild: guild.id })
-                if(!Data) return interaction.editReply({ content: `${client.config.false1} There is no banned word(s) in this server.`, ephemeral: true })
+                if(!Data) return interaction.editReply({ content: `${client.config.false1} There is no data for the filter system.`, ephemeral: true })
                 const embed = new MessageEmbed()
                 .setAuthor({ name: "Banned word(s) list!", iconURL: client.user.avatarURL({ format: "png" })})
                 .setDescription(`${Data.Words.map((a,b) => `\`${b+1}.\` ${a}`).join("\n")}`)
@@ -90,7 +90,7 @@ module.exports = {
 
                 client.filtersLog.set(guild.id , logging);
 
-                interaction.editReply({ content: `${client.config.true1} <#${logging}> Has been added for your banned word(s) logging channel`, ephemeral: true })
+                interaction.editReply({ content: `${client.config.true1} <#${logging}> Has been added for your filter logging channel`, ephemeral: true })
                 break;
             case "action" :
                 const cho = options.getString("options");
@@ -139,7 +139,7 @@ module.exports = {
                             words.forEach((w) => {
                                 if(data.Words.includes(w)) return;
                                 data.Words.remove(w);
-                                removedWords.Words.push(w);
+                                removedWords.push(w);
                             });
 
                             const newArray = client.filters.get(guild.id).filter((word) => !removedWords.includes(word));
