@@ -107,7 +107,7 @@ module.exports = {
                                     Words: words
                                 })
 
-                                client.filters.set(guild.id, words);
+                                await client.filters.set(guild.id, words);
 
                                 return interaction.editReply({ content: `${client.config.true1} ${words.length} word(s) has been added to the data`});
                             }
