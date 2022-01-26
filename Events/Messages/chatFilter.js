@@ -37,7 +37,7 @@ module.exports = {
             
 
             const Embed = new MessageEmbed()
-            .setAuthor({ name: `Banned word(s) log!`, iconURL: client.user.avatarURL({ format: "png" })})
+            .setAuthor({ name: `Chat Filter log!`, iconURL: client.user.avatarURL({ format: "png" })})
             .setColor("RED")
             .addFields(
                 { name: "Member", value: `${author.tag}`, inline: true },

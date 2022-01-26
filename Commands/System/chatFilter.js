@@ -73,6 +73,7 @@ module.exports = {
                 if(!Data) return interaction.editReply({ content: `${client.config.false1} There is no data for the filter system.`, ephemeral: true })
                 const embed = new MessageEmbed()
                 .setAuthor({ name: "Banned word(s) list!", iconURL: client.user.avatarURL({ format: "png" })})
+                .setColor("BLURPLE")
                 .setDescription(`${Data.Words.map((a,b) => `\`${b+1}.\` ${a}`).join("\n")}`)
                 .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
                 .setTimestamp();
@@ -129,7 +130,7 @@ module.exports = {
                         break;
                     case "remove" :
                         schema.findOne({ Guild: guild.id }, async (err, data) => {
-                            if(err) throw err
+                            if(err) throw err;
                             if(!data) {
                                 return interaction.editReply({ content: `${client.config.false1} There is no word(s) in the data` })
                             };
@@ -137,7 +138,7 @@ module.exports = {
                             const removedWords = [];
 
                             words.forEach((w) => {
-                                if(data.Words.includes(w)) return;
+                                if(!data.Words.includes(w)) return;
                                 data.Words.remove(w);
                                 removedWords.push(w);
                             });
