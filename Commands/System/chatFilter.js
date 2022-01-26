@@ -92,7 +92,7 @@ module.exports = {
 
                 interaction.editReply({ content: `${client.config.true1} <#${logging}> Has been added for your filter logging channel`, ephemeral: true })
                 break;
-            case "action" :
+            case "config" :
                 const cho = options.getString("options");
                 const words = options.getString("word").toLowerCase().split(",");
 
