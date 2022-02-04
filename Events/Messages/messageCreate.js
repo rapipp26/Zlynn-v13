@@ -13,11 +13,8 @@ async execute(message, client) {
     > If you dont see \`Slash Commands\` appearing, please wait for a minute. If it still do not appearing, try to re-invite by kicking me and click this button below
     https://cdn.discordapp.com/attachments/905963716883906600/930058897052553286/unknown.png
     `
-  }).then((m) => {
-    setTimeout(() => {
-      m.delete();
-    }, 10000)
   })
+  
     }
 
 }
