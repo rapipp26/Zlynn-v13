@@ -1,5 +1,5 @@
 const { MessageEmbed } = require(`discord.js`)
-const dev = ["768378164942471188", "495488613811879946"]
+const dev = ["800882692219994123", "495488613811879946"]
 
 module.exports = {
     name: "eval",

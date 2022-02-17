@@ -1,5 +1,5 @@
 const { MessageEmbed } = require(`discord.js`)
-const cool = ["768378164942471188", "495488613811879946"];
+const cool = ["800882692219994123", "495488613811879946"];
 const schema = require("../../Schemas/economyDB")
 module.exports = {
     name: "econ",
