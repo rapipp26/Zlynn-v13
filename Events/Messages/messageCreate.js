@@ -11,7 +11,6 @@ async execute(message, client) {
     `
     > Hi!, this bot only support \`Slash Commands\` use \`/help\` to get the commands list
     > If you dont see \`Slash Commands\` appearing, please wait for a minute. If it still do not appearing, try to re-invite by kicking me and click this button below
-    https://cdn.discordapp.com/attachments/905963716883906600/930058897052553286/unknown.png
     `
   })
   

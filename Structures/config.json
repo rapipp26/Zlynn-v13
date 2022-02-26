@@ -1,16 +1,4 @@
 {
-    "token": "ODA3NDQxMTgwMTgxOTIxNzky.YB4CMg.1mXWguq6-GK_Gge5oclSA6f7-1M",
-    "mongoPath": "mongodb+srv://alchanuser:Rafifku26@clusteralchan.qprri.mongodb.net/Data",
-        "true1": "<:Zlynn_true:899137788572733531>",
-        "false1": "<:Zlynn_false:899137729638596648>",
-        "arrow": "<:Zlynn_Arrow:899138284897312808>",
-        "reply1": "<:Zlynn_Reply:899145147747557437>",
-        "reply2": "<:Zlynn_Reply2:899142693303771236>",
-        "thumbsup": "<:Zlynn_ThumbsUp:907612518409699379>",
-        "thumbsdown": "<:Zlynn_ThumbsDown:907612552530378803>",
-        "piano" : "<a:Zlynn_piano:910012149336793108>",
-        "human" : "<:Zlynn_user:910012811789352970>",
-        "setting": "<:Zlynn_Settings:910010008077496410>",
-        "server": "<:Zlynn_Server:911608880436498453>",
-        "logo" : "<:Zlynn_discordlogo:916304654348980244>"
+    "token": "OTQ3MDQ4MjQzNzIyODc0OTEw.YhnlaA.zOOAaOHzQxk5dOeVzo4t2L-wrck",
+    "mongoPath": "mongodb+srv://alchanuser:Rafifku26@clusteralchan.qprri.mongodb.net/Data"
 }

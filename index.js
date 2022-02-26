@@ -34,10 +34,10 @@ require("./Systems/GiveawaySys")(client);
 });
 
 const handle = new Errorhandler(client, {
-    webhook: { id: '909751263481192478', token: 'tIpehWFJUoSmQcg5r5TAn3whks7NFwIS8fhdz-qN0omoDPBSCLsm5o41d_8gJB6RzdtA' }
+    webhook: { id: '947048807026290728', token: 'j6sm0JuygulD-yc-Tm31UuCS8lZ-WLlTWtbwQ3uAjvruKkQ_74mE5g_6zV9FZE0k3ZAJ' }
     })
     process.on('unhandledRejection', error => {
       handle.createrr(client, undefined, undefined, error)
     })
-
+    
 client.login(config.token)
