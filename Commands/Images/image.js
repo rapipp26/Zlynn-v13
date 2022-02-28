@@ -67,8 +67,8 @@ module.exports = {
      */
     async execute(interaction) {
         const { options } = interaction
-        const loltarget = options.getMember("user");
-        const choices = interaction.options.getString("image");
+        const loltarget = options.getUser("user");
+        const choices = interaction.options.getString("filter");
 
         switch(choices) {
             case "rip" : {
