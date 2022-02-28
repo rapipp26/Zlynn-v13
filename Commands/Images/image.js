@@ -13,7 +13,7 @@ module.exports = {
         },
         {
             name: "filter",
-            description: "Select the image type.",
+            description: "Select the image filter.",
             type: "STRING",
             required: true,
             choices: [
