@@ -33,11 +33,11 @@ require("./Systems/GiveawaySys")(client);
     require(`./Structures/Handlers/${handler}`)(client, PG, Ascii);
 });
 
-const handle = new Errorhandler(client, {
-    webhook: { id: '947048807026290728', token: 'j6sm0JuygulD-yc-Tm31UuCS8lZ-WLlTWtbwQ3uAjvruKkQ_74mE5g_6zV9FZE0k3ZAJ' }
-    })
-    process.on('unhandledRejection', error => {
-      handle.createrr(client, undefined, undefined, error)
-    })
+//const handle = new Errorhandler(client, {
+//    webhook: { id: '947048807026290728', token: 'j6sm0JuygulD-yc-Tm31UuCS8lZ-WLlTWtbwQ3uAjvruKkQ_74mE5g_6zV9FZE0k3ZAJ' }
+//    })
+//    process.on('unhandledRejection', error => {
+//      handle.createrr(client, undefined, undefined, error)
+//    })
     
 client.login(config.token)

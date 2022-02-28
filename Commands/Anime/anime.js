@@ -8,64 +8,24 @@ module.exports = {
     cooldown: 10,
     options: [
         {
-            name: "baka",
-            description: "Send a baka gif",
-            type: "SUB_COMMAND"
-        },
-        {
-            name: "dance",
-            description: "Send a dance gif",
-            type: "SUB_COMMAND"
-        },
-        {
-            name: "bite",
-            description: "Send a bite gif",
-            type: "SUB_COMMAND"
-        },
-        {
-            name: "blush",
-            description: "Send a blush gif",
-            type: "SUB_COMMAND"
-        },
-        {
-            name: "bonk",
-            description: "Send a bonk gif",
-            type: "SUB_COMMAND"
-        },
-        {
-            name: "cuddle",
-            description: "Send a cuddle gif",
-            type: "SUB_COMMAND"
-        },
-        {
-            name: "hug",
-            description: "Send a hug gif",
-            type: "SUB_COMMAND"
-        },
-        {
-            name: "quote",
-            description: "Send a quote from an anime character",
-            type: "SUB_COMMAND"
-        },
-        {
-            name: "sad",
-            description: "Send a sad gif",
-            type: "SUB_COMMAND"
-        },
-        {
-            name: "slap",
-            description: "Send a slap gif",
-            type: "SUB_COMMAND"
-        },
-        {
-            name: "waifu",
-            description: "Send a waifu gif",
-            type: "SUB_COMMAND"
-        },
-        {
-            name: "wallpaper",
-            description: "Send an anime wallpaper",
-            type: "SUB_COMMAND"
+            name: "choices",
+            description: "Select the choices",
+            type: "STRING",
+            required: true,
+            choices: [
+                { name: "baka", value: "baka" },
+                { name: "dance", value: "dance" },
+                { name: "blush", value: "blush" },
+                { name: "bite", value: "bite" },
+                { name: "bonk", value: "bonk" },
+                { name: "cuddle", value: "cuddle" },
+                { name: "hug", value: "hug" },
+                { name: "quote", value: "quote" },
+                { name: "sad", value: "sad" },
+                { name: "slap", value: "slap" },
+                { name: "waifu", value: "waifu" },
+                { name: "wallpaper", value: "wallpaper" },
+            ]
         },
     ],
     /**
@@ -74,7 +34,7 @@ module.exports = {
      * @param {Client} client 
      */
     async execute(interaction, client) {
-        const subc = interaction.options.getSubcommand();
+        const subc = interaction.options.getString("choices");
         const embed = new MessageEmbed()
         .setColor("RANDOM")
         .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
