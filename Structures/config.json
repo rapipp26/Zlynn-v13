@@ -1,4 +1,12 @@
 {
     "token": "OTQ3MDQ4MjQzNzIyODc0OTEw.YhnlaA.zOOAaOHzQxk5dOeVzo4t2L-wrck",
-    "mongoPath": "mongodb+srv://alchanuser:Rafifku26@clusteralchan.qprri.mongodb.net/Data"
+    "mongoPath": "mongodb+srv://alchanuser:Rafifku26@clusteralchan.qprri.mongodb.net/Data",
+    "checked" : "<:f_checked:947809518635593798>",
+    "cancel" : "<:f_cancel:947809518950166548>",
+    "off" :"<:f_off:947810982028271639>",
+    "on" :"<:f_on:947810982103769098>",
+    "pause" :"<:f_pause:947810320058048513>",
+    "play" :"<:f_play:947810321526059008>",
+    "user" :"<:f_user:947810729812181004>",
+    "control" :"<:f_control:947812096152842274>"
 }

@@ -165,7 +165,7 @@ module.exports = {
 
                         case "queue" :
                         return interaction.reply({ embeds: [new MessageEmbed()
-                        .setColor("DARK_VIVID_PINK")
+                        .setColor("RANDOM")
                         .setAuthor(`Top 10 Songs in ${guild.name} Queue`, guild.iconURL({ dynamic: true }))
                         .setDescription(`${queue.songs.slice(0, 10).map(
                             (song, id) => `\n**${id + 1}**. [${song.name}](${song.url})・\`${song.formattedDuration}\` - ${song.user}\n`)}`)

@@ -6,21 +6,23 @@ const status = queue => `Volume: \`${queue.volume}%\` | Filter: \`${queue.filter
 client.distube
     .on("playSong", (queue, song) => queue.textChannel.send({ embeds: [new MessageEmbed()
     .setAuthor("Now Playing")
-    .setDescription(`${client.config.true1} **|** Playing \`${song.name}\` - \`${song.formattedDuration}\`\n${client.config.setting} **|** ${status(queue)}\n${client.config.human} **|** Requested by: ${song.user}`)
+    .addFields(
+    )
+    .setDescription(`${client.config.play} **|** Playing \`${song.name}\` - \`${song.formattedDuration}\`\n${client.config.control} **|** ${status(queue)}\n${client.config.user} **|** Requested by: ${song.user}`)
     .setColor("BLURPLE")
     .setFooter("▶")
     .setTimestamp() ] }))
 
     .on("addSong", (queue, song) => queue.textChannel.send({ embeds: [new MessageEmbed()
     .setAuthor("Added to queue")
-    .setDescription(`${client.config.true1} **|** Added \`${song.name}\` - \`${song.formattedDuration}\`\n${client.config.human} **|** To the queue by ${song.user}`)
+    .setDescription(`${client.config.play} **|** Added \`${song.name}\` - \`${song.formattedDuration}\`\n${client.config.user} **|** Requested by: ${song.user}`)
     .setColor("BLURPLE")
     .setFooter("➕")
     .setTimestamp() ] }))
 
     .on("addList", (queue, playlist) => queue.textChannel.send({ embeds: [new MessageEmbed()
     .setAuthor("Added Playlist")
-    .setDescription(`${client.config.true1} **|** Added \`${playlist.name}\` To the queue\n${client.config.setting} **|** ${status(queue)}`)
+    .setDescription(`${client.config.play} **|** Added \`${playlist.name}\` To the queue\n${client.config.control} **|** ${status(queue)}\n ${client.config.user} **|** Requested by: ${song.user}`)
     .setColor("BLURPLE")
     .setFooter("➕")
     .setTimestamp()]}))
@@ -34,7 +36,7 @@ client.distube
         .setTimestamp()]})
     })
 
-    .on("empty", queue => queue.textChannel.send({ content: `${client.config.false1} **|** Voice channel is empty! Leaving the channel...` }))
+    .on("empty", queue => queue.textChannel.send({ content: `${client.config.off} **|** Voice channel is empty! Leaving the channel...` }))
 
     .on("searchNoResult", message => message.channel.send({ embeds: [new MessageEmbed()
         .setAuthor("⚠ An error occurred ⚠")
@@ -46,6 +48,6 @@ client.distube
     .on("finish", queue => queue.textChannel.send({ embeds: [new MessageEmbed()
     .setAuthor("Music finished")
     .setColor("#303136")
-    .setDescription("Queue finished! leaving the channel...")
+    .setDescription(`Queue finished! leaving the channel... ${client.config.off}`)
     .setFooter("🏁")
     .setTimestamp()]}))
