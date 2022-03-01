@@ -45,7 +45,7 @@ module.exports = {
         .setColor("RED")
 
         const embed2 = new MessageEmbed()
-        .setDescription(`You wrote the time for \`${time}\`. Please choose an action for ${target} by clicking the button below`)
+        .setDescription(`You wrote the time for \`${ms(time)}\`. Please choose an action for ${target} by clicking the button below`)
         .setColor("RED")
 
         const row = new MessageActionRow()
@@ -68,9 +68,9 @@ module.exports = {
             .setCustomId("t"),
         )
 
-        if(time) return await interaction.reply({embeds: [embed2], components: [row], content: "You have `25` seconds to choose an action" })
+        if(time) return await interaction.reply({embeds: [embed2], components: [row2], content: "You have `25` seconds to choose an action" })
         else 
-        await interaction.reply({embeds: [embed], components: [row2], content: "You have `25` seconds to choose an action" })
+        await interaction.reply({embeds: [embed], components: [row], content: "You have `25` seconds to choose an action" })
 
         const filter = (i) => i.user.id === interaction.user.id
         const collector = interaction.channel.createMessageComponentCollector({filter, componentType: 'BUTTON', time: 25000})
