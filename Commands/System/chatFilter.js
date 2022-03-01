@@ -70,7 +70,7 @@ module.exports = {
         switch(sub) {
             case "list" :
                 const Data = await schema.findOne({ Guild: guild.id })
-                if(!Data) return interaction.editReply({ content: `${client.config.false1} There is no data for the filter system.`, ephemeral: true })
+                if(!Data) return interaction.editReply({ content: `${client.config.cancel} There is no data for the filter system.`, ephemeral: true })
                 const embed = new MessageEmbed()
                 .setAuthor({ name: "Banned word(s) list!", iconURL: client.user.avatarURL({ format: "png" })})
                 .setColor("BLURPLE")
@@ -82,7 +82,7 @@ module.exports = {
             case "clear" :
                 await schema.findOneAndUpdate({ Guild: guild.id }, { Words: [] });
                 client.filters.set(guild.id, []);
-                interaction.editReply({ content: `${client.config.true1} Cleared the data.`, ephemeral: true })
+                interaction.editReply({ content: `${client.config.delete} Cleared the data.`, ephemeral: true })
                 break;
             case "log" :
                 const logging = options.getChannel("channel").id;
@@ -91,7 +91,7 @@ module.exports = {
 
                 client.filtersLog.set(guild.id , logging);
 
-                interaction.editReply({ content: `${client.config.true1} <#${logging}> Has been added for your filter logging channel`, ephemeral: true })
+                interaction.editReply({ content: `${client.config.folder} <#${logging}> Has been added for your filter logging channel`, ephemeral: true })
                 break;
             case "config" :
                 const cho = options.getString("options");
@@ -110,7 +110,7 @@ module.exports = {
 
                                 await client.filters.set(guild.id, words);
 
-                                return interaction.editReply({ content: `${client.config.true1} ${words.length} word(s) has been added to the data`});
+                                return interaction.editReply({ content: `${client.config.folder} ${words.length} word(s) has been added to the data`});
                             }
 
                             const newWords = [];
@@ -123,7 +123,7 @@ module.exports = {
                             }); 
 
  
-                            interaction.editReply({ content: `${client.config.true1} ${newWords.length} word(s)has been added to the data`});
+                            interaction.editReply({ content: `${client.config.folder} ${newWords.length} word(s)has been added to the data`});
 
                             data.save();
                         });
@@ -132,7 +132,7 @@ module.exports = {
                         schema.findOne({ Guild: guild.id }, async (err, data) => {
                             if(err) throw err;
                             if(!data) {
-                                return interaction.editReply({ content: `${client.config.false1} There is no word(s) in the data` })
+                                return interaction.editReply({ content: `${client.config.cancel} There is no word(s) in the data` })
                             };
 
                             const removedWords = [];
@@ -146,7 +146,7 @@ module.exports = {
                             const newArray = client.filters.get(guild.id).filter((word) => !removedWords.includes(word));
 
                             client.filters.set(guild.id, newArray)
-                            interaction.editReply({ content: `${client.config.true1} ${removedWords.length} word(s) has been removed from the data`})
+                            interaction.editReply({ content: `${client.config.delete} ${removedWords.length} word(s) has been removed from the data`})
                             data.save();
                         })
                         break;

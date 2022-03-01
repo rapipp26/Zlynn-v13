@@ -33,7 +33,7 @@ module.exports = {
         const Response = new MessageEmbed()
         .setColor("LUMINOUS_VIVID_PINK")
 
-        if (Amount > 100 || Amount <= 0)
+        if (Amount > 100 || Amount < 0)
     return interaction.reply({ embed: [new MessageEmbed()
         .setTitle("⚠ An error occurred ⚠")
         .setColor("YELLOW")
@@ -52,12 +52,12 @@ module.exports = {
             })
 
             await channel.bulkDelete(filtered, true).then(messages => {
-                Response.setDescription(`${client.config.true1} **|** *Cleared \`${messages.size}\` messages from ${Target} (〃￣︶￣)人*`)
+                Response.setDescription(`${client.config.delete} **|** Cleared \`${messages.size}\` messages from ${Target}`)
                 interaction.reply({ embed: [Response] })
             })
         } else {
             await channel.bulkDelete(Amount, true).then(messages => {
-                Response.setDescription(`${client.config.true1} **|** *Cleared \`${messages.size}\` messages from this channel (〃￣︶￣)人*`)
+                Response.setDescription(`${client.config.delete} **|** Cleared \`${messages.size}\` messages from this channel`)
                 interaction.reply({ embeds: [Response] })
             })
         }
