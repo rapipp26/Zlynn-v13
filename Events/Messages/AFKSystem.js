@@ -34,7 +34,7 @@ module.exports = {
         DB.findOne({ GuildID: message.guild.id, UserID: message.author.id }, async (err, data) => {
             if(err) throw err;
             if(data)
-            await message.reply({ content: `${client.config.true1} Your afk status has been removed.\nYou're afk since <t:${data.Time}:R>`})
+            await message.reply({ content: `${client.config.checked} Your afk status has been removed.\nYou're afk since <t:${data.Time}:R>`})
             return DB.deleteOne({ GuildID: message.guild.id, UserID: message.author.id });
         })
     }

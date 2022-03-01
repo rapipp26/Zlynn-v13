@@ -27,12 +27,12 @@ module.exports = {
                     var time_left = (expiration_time - current_time) / 1000 ;
                     if(time_left > 3600) {
                         time_left = time_left / 3600
-                        reply = `${config.false1} **|** You can use \`${command.name}\` command in another **${time_left.toFixed(1)}**h !`;
+                        reply = `${config.cooldown} **|** You can use \`${command.name}\` command in another **${time_left.toFixed(1)}**h !`;
                     } else if(time_left > 60) {
                         time_left = time_left / 60
-                        reply = `${config.false1} **|** You can use \`${command.name}\` command in another **${time_left.toFixed(1)}**m !`;
+                        reply = `${config.cooldown} **|** You can use \`${command.name}\` command in another **${time_left.toFixed(1)}**m !`;
                     } else {
-                        reply = `${config.false1} **|** You can use \`${command.name}\` command in another **${time_left.toFixed(1)}**s !`;
+                        reply = `${config.cooldown} **|** You can use \`${command.name}\` command in another **${time_left.toFixed(1)}**s !`;
                     }
                     interaction.reply({embeds : [
                         new MessageEmbed()

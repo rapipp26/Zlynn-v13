@@ -16,7 +16,7 @@ module.exports = {
 
         const Embed = new MessageEmbed()
         .setColor("RANDOM")
-        .setAuthor(`${guild.name} Information`, client.user.avatarURL({ format: "png" }))
+        .setAuthor(`${guild.name} | Information`, client.user.avatarURL({ format: "png" }))
         .setThumbnail(guild.iconURL({ dynamic: true }))
         .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
         .setTimestamp()
@@ -32,7 +32,7 @@ module.exports = {
         );
         const Embed1 = new MessageEmbed()
         .setColor("RANDOM")
-        .setAuthor(`${guild.name} Information`, client.user.avatarURL({ format: "png" }))
+        .setAuthor(`${guild.name} | Information`, client.user.avatarURL({ format: "png" }))
         .setThumbnail(guild.iconURL({ dynamic: true }))
         .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
         .setTimestamp()
@@ -48,7 +48,7 @@ module.exports = {
             
         const Embed2 = new MessageEmbed()
         .setColor("RANDOM")
-        .setAuthor(`${guild.name} Information`, client.user.avatarURL({ format: "png" }))
+        .setAuthor(`${guild.name} | Information`, client.user.avatarURL({ format: "png" }))
         .setThumbnail(guild.iconURL({ dynamic: true }))
         .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
         .setTimestamp()
@@ -68,7 +68,7 @@ module.exports = {
         
         const Embed3 = new MessageEmbed()
         .setColor("RANDOM")
-        .setAuthor(`${guild.name} Information`, client.user.avatarURL({ format: "png" }))
+        .setAuthor(`${guild.name} | Information`, client.user.avatarURL({ format: "png" }))
         .setThumbnail(guild.iconURL({ dynamic: true }))
         .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
         .setTimestamp()
@@ -85,7 +85,7 @@ module.exports = {
         
         const Embed4 = new MessageEmbed()
         .setColor("RANDOM")
-        .setAuthor(`${guild.name} Information`, client.user.avatarURL({ format: "png" }))
+        .setAuthor(`${guild.name} | Information`, client.user.avatarURL({ format: "png" }))
         .setThumbnail(guild.iconURL({ dynamic: true }))
         .setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true }))
         .setTimestamp()
