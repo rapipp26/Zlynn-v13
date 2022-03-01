@@ -53,7 +53,7 @@ module.exports = {
 
             await channel.bulkDelete(filtered, true).then(messages => {
                 Response.setDescription(`${client.config.delete} **|** Cleared \`${messages.size}\` messages from ${Target}`)
-                interaction.reply({ embed: [Response] })
+                interaction.reply({ embeds: [Response] })
             })
         } else {
             await channel.bulkDelete(Amount, true).then(messages => {
