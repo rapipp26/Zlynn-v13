@@ -14,7 +14,7 @@ module.exports = {
             name: "reason",
             description: "Reason you do action to the member",
             type: "STRING",
-            required: true
+            required: false
         }
     ],
     /**
@@ -60,24 +60,24 @@ module.exports = {
             switch(i.customId) {
                 case "k" :
                     await target.kick(reason);
-                    const kembed = new MessageEmbed().setColor("GREEN").setAuthor({ name: "Successfully Kick A Member", iconURL: client.user.avatarURL({ format: "png" })}).addFields({ name: "Member", value: `${target}`}, { name: "Reason", value: `${reason}`})
+                    const kembed = new MessageEmbed().setColor("GREEN").setAuthor({ name: "Successfully Kick A Member", iconURL: client.user.avatarURL({ format: "png" })}).addFields({ name: "Member", value: `${target}`}, { name: "Reason", value: `${reason}`}).setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true })).setTimestamp()
                     i.update({ embeds: [kembed], components: [] })
                 break;
                 case "b" :
                     await target.ban({ reason: `${reason}` });
-                    const bembed = new MessageEmbed().setColor("GREEN").setAuthor({ name: "Successfully Ban A Member", iconURL: client.user.avatarURL({ format: "png" })}).addFields({ name: "Member", value: `${target}`}, { name: "Reason", value: `${reason}`})
+                    const bembed = new MessageEmbed().setColor("GREEN").setAuthor({ name: "Successfully Ban A Member", iconURL: client.user.avatarURL({ format: "png" })}).addFields({ name: "Member", value: `${target}`}, { name: "Reason", value: `${reason}`}).setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true })).setTimestamp()
                     i.update({ embeds: [bembed], components: [] })
                 break;
                 case "t" :
                     await target.timeout(3.6e+6, `${reason}`)
-                    const tembed = new MessageEmbed().setColor("GREEN").setAuthor({ name: "Successfully Timeout A Member", iconURL: client.user.avatarURL({ format: "png" })}).addFields({ name: "Member", value: `${target}`}, { name: "Reason", value: `${reason}`}, { name: "Time", value: "1 Hour"})
+                    const tembed = new MessageEmbed().setColor("GREEN").setAuthor({ name: "Successfully Timeout A Member", iconURL: client.user.avatarURL({ format: "png" })}).addFields({ name: "Member", value: `${target}`}, { name: "Reason", value: `${reason}`}, { name: "Time", value: "1 Hour"}).setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true })).setTimestamp()
                     i.update({ embeds: [tembed], components: [] })
                 break;
             }
         })
 
         collector.on('end', () => {
-            interaction.editReply({embeds: [embed], components: [], content: "This message has been expired" })
+            interaction.editReply({ embeds: [], components: [], content: `This message has been expired ${client.config.cooldown}` })
         })
     }
 };
