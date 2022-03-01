@@ -1,4 +1,5 @@
 const { MessageEmbed, MessageButton, MessageActionRow } = require(`discord.js`)
+const ms = require("ms")
 module.exports = {
     name: "moderate",
     cooldown: 15,
@@ -15,6 +16,12 @@ module.exports = {
             description: "Reason you do action to the member",
             type: "STRING",
             required: false
+        },
+        {
+            name: "time",
+            description: "You can provide the time by reading the example. Ex: 10s, 5m, 7d, 1h,",
+            type: "STRING",
+            required: false
         }
     ],
     /**
@@ -25,6 +32,7 @@ module.exports = {
     async execute(interaction, client) {
         const target = interaction.options.getMember("member");
         const reason = interaction.options.getString("reason") || "No reason provided.";
+        const time = ms(interaction.options.getString("time"))
 
         if(target.roles.highest.position >= interaction.member.roles.highest.position) return interaction.reply({ content: `${client.config.cancel} You can't moderate this member, it has the same/higher role position than you`});
         if(target.user.id.includes(interaction.guild.ownerId)) return interaction.reply({ content: `${client.config.cancel} You can't moderate the server owner, me neither can't`});
@@ -36,12 +44,12 @@ module.exports = {
         .setDescription(`**Please choose an action on ${target} by clicking the button below.**`)
         .setColor("RED")
 
+        const embed2 = new MessageEmbed()
+        .setDescription(`You wrote the time for \`${time}\`. Please choose an action for ${target} by clicking the button below`)
+        .setColor("RED")
+
         const row = new MessageActionRow()
         .addComponents(
-            new MessageButton()
-            .setStyle("DANGER")
-            .setLabel("Timeout")
-            .setCustomId("t"),
             new MessageButton()
             .setStyle("DANGER")
             .setLabel("Kick")
@@ -52,7 +60,18 @@ module.exports = {
             .setCustomId("b"),
         )
 
-        await interaction.reply({embeds: [embed], components: [row], content: "You have `25` seconds to choose an action" })
+        const row2 = new MessageActionRow()
+        .addComponents(
+            new MessageButton()
+            .setStyle("DANGER")
+            .setLabel("Timeout")
+            .setCustomId("t"),
+        )
+
+        if(time) return await interaction.reply({embeds: [embed2], components: [row], content: "You have `25` seconds to choose an action" })
+        else 
+        await interaction.reply({embeds: [embed], components: [row2], content: "You have `25` seconds to choose an action" })
+
         const filter = (i) => i.user.id === interaction.user.id
         const collector = interaction.channel.createMessageComponentCollector({filter, componentType: 'BUTTON', time: 25000})
 
@@ -69,7 +88,7 @@ module.exports = {
                     i.update({ embeds: [bembed], components: [] })
                 break;
                 case "t" :
-                    await target.timeout(3.6e+6, `${reason}`)
+                    await target.timeout(time, `${reason}`)
                     const tembed = new MessageEmbed().setColor("GREEN").setAuthor({ name: "Successfully Timeout A Member", iconURL: client.user.avatarURL({ format: "png" })}).addFields({ name: "Member", value: `${target}`}, { name: "Reason", value: `${reason}`}, { name: "Time", value: "1 Hour"}).setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true })).setTimestamp()
                     i.update({ embeds: [tembed], components: [] })
                 break;
