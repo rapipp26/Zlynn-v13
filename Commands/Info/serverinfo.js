@@ -1,4 +1,4 @@
-const { CommandInteraction, MessageEmbed, Client, Message } = require('discord.js');
+const { CommandInteraction, MessageEmbed, Client, MessageButton } = require('discord.js');
 const config = require ('../../Structures/config.json');
 const paginationEmbed = require('discordjs-button-pagination');
 
