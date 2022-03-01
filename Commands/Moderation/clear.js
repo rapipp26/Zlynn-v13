@@ -34,7 +34,7 @@ module.exports = {
         .setColor("LUMINOUS_VIVID_PINK")
 
         if (Amount > 100 || Amount < 0)
-    return interaction.reply({ embed: [new MessageEmbed()
+        return interaction.reply({ embed: [new MessageEmbed()
         .setTitle("⚠ An error occurred ⚠")
         .setColor("YELLOW")
         .setDescription(`The amount must be between 0 and 100`)
