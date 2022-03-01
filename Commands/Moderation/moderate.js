@@ -4,6 +4,7 @@ module.exports = {
     name: "moderate",
     cooldown: 15,
     description: "Moderate a member",
+    permission: "ADMINISTRATOR",
     options: [
         {
             name: "member",
