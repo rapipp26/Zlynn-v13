@@ -1,7 +1,7 @@
 module.exports = {
     name: "ready",
     once: true,
-    execute(client) {
+    async execute(client) {
         console.log(`Successfully connected to ${client.user.tag}!`)
         await client.user.setActivity('Mention me for more information! 🐸', { type: 'PLAYING' });
         await client.user.setStatus('idle');
