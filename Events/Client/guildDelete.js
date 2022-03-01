@@ -9,20 +9,20 @@ module.exports = {
     async execute(interaction, client) {
         const guild = interaction;
 
-        const embed = new MessageEmbed()
-        .setColor("GREEN")
-        .setTitle("The bot left a server")
-        .setDescription(`${client.user.tag} was removed from a server.`)
-        .setFields(
-            {name: "Guild Name:", value: `${guild.name}`, inline: true},
-            {name: "Guild Members:", value: `${guild.memberCount}`, inline: true},
-            {name: "Total Guilds", value: `${client.guilds.cache.size}`},
-            {name: "Total Users", value: `${client.users.cache.size}`}
+        const Log = new MessageEmbed()
+        .setColor("RED")
+        .setAuthor({name: `I was removed fromm a guild`, iconURL: client.user.displayAvatarURL()})
+        .addFields(
+            {name: "Guild Name", value: `\`\`\`${guild.name}\`\`\``},
+            {name: "Guild ID", value: `\`\`\`${guild.id}\`\`\``},
+            {name: "Guild Owner", value: `<@${guild.ownerId}>`},
+            {name: "Guild Members", value: `\`\`\`${guild.memberCount}\`\`\``},
         )
+        .setThumbnail(guild.iconURL({ dynamic: true }))
         .setTimestamp();
         
         const logC = client.channels.cache.get("948060231332692022")
 
-        logC.send({ embeds: [embed] })
+        logC.send({ embeds: [Log] })
     },
 };
