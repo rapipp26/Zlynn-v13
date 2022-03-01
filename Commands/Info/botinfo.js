@@ -30,7 +30,7 @@ module.exports = {
             .setStyle("LINK")
             .setLabel("Support Server")
             .setEmoji(`${client.config.server}`)
-            .setURL("https://discord.gg/Qev2exTvMd")
+            .setURL("https://discord.gg/TxFCsZ7Svw")
         ])
 
         interaction.reply({ embeds: [Response], components: [row] });

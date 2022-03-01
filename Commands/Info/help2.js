@@ -15,14 +15,9 @@ module.exports = {
 		.addComponents(
 			new MessageButton()
 			.setLabel("Command List")
-			.setEmoji(`${client.config.setting}`)
-			.setStyle("LINK")
-			.setURL("https://rapipp.gitbook.io/zlynn/command-list"),
-			new MessageButton()
-			.setLabel("Support Server")
-			.setStyle("LINK")
-			.setURL("https://discord.gg/AUWhsArSWb")
 			.setEmoji(`${client.config.server}`)
+			.setStyle("LINK")
+			.setURL("https://rapipp.gitbook.io/frogi/command-list"),
 		)
 		interaction.reply({ content: "Please click this button below to get the command list.", components: [row] })
     }
