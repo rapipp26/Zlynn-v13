@@ -53,7 +53,7 @@ module.exports = {
 
                 const embed2 = new MessageEmbed()
                 .setAuthor({ name: `${target.tag}'s Cash Info 💳`}, client.user.displayAvatarURL({ format: "png" }))
-                .setThumbnail(user.displayAvatarURL({ dynamic: true }))
+                .setThumbnail(target.displayAvatarURL({ dynamic: true }))
                 .setColor("RANDOM")
                 .addFields(
                     {
@@ -172,7 +172,6 @@ module.exports = {
                             await docs.save();
                             return interaction.followUp({ content: `${client.config.checked} Successfully deposited \`${col.first[0].content.toLocaleString()}\` to your bank account`})
                         })
-                        i.editReply({ embeds: [], components: [], content: `This message has been expired ${client.config.cooldown}`})
                     break;
                     case "with" :
                         await i.reply({ content: `Please type how many cash do you want to withdraw.`});
@@ -186,14 +185,12 @@ module.exports = {
                             await docs.save();
                             return interaction.followUp({ content: `${client.config.checked} Successfully deposited \`${col.first[0].content.toLocaleString()}\` to your bank account`})
                         })
-                        i.editReply({ embeds: [], components: [], content: `This message has been expired ${client.config.cooldown}`})
                     break; 
                     case "dai" :
                         docs.daily = Date.now();
                         docs.cash += ra;
                         await docs.save()
                          i.reply({ content: `${client.config.checked} Successfully claimed your daily cash for \`${ra}\``})
-                        i.editReply({ embeds: [], components: [], content: `This message has been expired ${client.config.cooldown}`})
                     break;
                 }
             })
