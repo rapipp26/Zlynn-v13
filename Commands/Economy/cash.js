@@ -168,9 +168,9 @@ module.exports = {
                             if(docs.cash < col.content) return interaction.followUp({ content: `${client.config.cancel} Your cash is less than the amount you want to deposit`, ephemeral: true})
                             console.log(col.content)
 
-                            docs.bank += col.content;
-                            docs.cash -= col.content;
-                            await docs.save();
+                            //docs.bank += col.content;
+                            //docs.cash -= col.content;
+                            //await docs.save();
                             return interaction.followUp({ content: `${client.config.checked} Successfully deposited \`${col.content.toLocaleString()}\` to your bank account`})
                         })
                     break;
@@ -181,9 +181,9 @@ module.exports = {
                             if(col.content === NaN) return interaction.followUp({ content: `${client.config.cancel} Please input a valid number.`})
                             if(docs.bank < col.content) return interaction.followUp({ content: `${client.config.cancel} Your money in PiggyBank is less than the amount you want to withdraw`, ephemeral: true})
 
-                            docs.cash += col.content;
-                            docs.bank -= col.content;
-                            await docs.save();
+                            //docs.cash += col.content;
+                            //docs.bank -= col.content;
+                            //await docs.save();
                             return interaction.followUp({ content: `${client.config.checked} Successfully withdraw \`${col.content.toLocaleString()}\` from your PiggyBank`})
                         })
                     break; 
