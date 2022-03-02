@@ -13,13 +13,15 @@ module.exports = {
      */
     async execute(interaction, client) {
 
-        schema.findOne({ userId : interaction.user.id }, async(err, docs) => {
+        const { user } = interaction
+
+        schema.findOne({ userId : user.id }, async(err, docs) => {
             if(err) throw err;
-            if(!docs) docs = await schema.create({ userId: interaction.user.id });
+            if(!docs) docs = await schema.create({ userId: user.id });
 
             const embed = new MessageEmbed()
-            .setAuthor({ name: `${interaction.user.tag}'s Cash Info 💳`}, client.user.displayAvatarURL({ format: "png" }))
-            .setThumbnail(interaction.user.displayAvatarURL({ dynamic: true }))
+            .setAuthor({ name: `${user.tag}'s Cash Info 💳`}, client.user.displayAvatarURL({ format: "png" }))
+            .setThumbnail(user.displayAvatarURL({ dynamic: true }))
             .setColor("RANDOM");
 
             const row = new MessageActionRow()
@@ -97,7 +99,7 @@ module.exports = {
             }
             //Daily button
 
-            const filter = (i) => i.user.id === interaction.user.id
+            const filter = (i) => i.user.id === user.id
             const collector = interaction.channel.createMessageComponentCollector({filter, componentType: 'BUTTON', time: 25000})
 
             collector.on('collect', async (i) => {
