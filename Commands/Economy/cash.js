@@ -103,10 +103,10 @@ module.exports = {
             const collector = interaction.channel.createMessageComponentCollector({filter, componentType: 'BUTTON', time: 25000})
 
             collector.on('collect', async (i) => {
+                const fil = msg => msg.author.id === user.id;
                 switch(i.customId) {
                     case "depo" :
                         await i.reply({ content: `Please type how many cash do you want to deposit.`});
-                        const fil = msg => msg.author.id === user.id;
                         await i.channel.awaitMessages({ filter: fil, max: 1 }).then(async col => {
                             if(col.first[0].content === NaN) return interaction.followUp({ content: `${client.config.cancel} Please input a valid number.`})
                             if(docs.cash < col.first[0].content) return interaction.followUp({ content: `${client.config.cancel} Your cash is less than the amount you want to deposit`, ephemeral: true})
@@ -120,7 +120,7 @@ module.exports = {
                     break;
                     case "with" :
                         await i.reply({ content: `Please type how many cash do you want to withdraw.`});
-                        const fil = msg => msg.author.id === user.id;
+
                         await i.channel.awaitMessages({ filter: fil, max: 1 }).then(async col => {
                             if(col.first[0].content === NaN) return interaction.followUp({ content: `${client.config.cancel} Please input a valid number.`})
                             if(docs.bank < col.first[0].content) return interaction.followUp({ content: `${client.config.cancel} Your money in PiggyBank is less than the amount you want to withdraw`, ephemeral: true})
@@ -141,7 +141,7 @@ module.exports = {
                     break;
                     case "depo1" :
                         await i.reply({ content: `Please type how many cash do you want to deposit.`});
-                        const fil = msg => msg.author.id === user.id;
+
                         await i.channel.awaitMessages({ filter: fil, max: 1 }).then(async col => {
                             if(col.first[0].content === NaN) return interaction.followUp({ content: `${client.config.cancel} Please input a valid number.`})
                             if(docs.cash < col.first[0].content) return interaction.followUp({ content: `${client.config.cancel} Your cash is less than the amount you want to deposit`, ephemeral: true})
@@ -155,7 +155,7 @@ module.exports = {
                     break;
                     case "with1" :
                         await i.reply({ content: `Please type how many cash do you want to withdraw.`});
-                        const fil = msg => msg.author.id === user.id;
+
                         await i.channel.awaitMessages({ filter: fil, max: 1 }).then(async col => {
                             if(col.first[0].content === NaN) return interaction.followUp({ content: `${client.config.cancel} Please input a valid number.`})
                             if(docs.bank < col.first[0].content) return interaction.followUp({ content: `${client.config.cancel} Your money in PiggyBank is less than the amount you want to withdraw`, ephemeral: true})
