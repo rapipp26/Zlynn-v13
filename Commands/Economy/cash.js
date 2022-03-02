@@ -3,7 +3,7 @@ const schema = require("../../Schemas/economyDB");
 const ms = require("parse-ms");
 
 module.exports = {
-    name: "cash",
+    name: "balance",
     cooldown: 5,
     description: "A simple economy command.",
     /**
