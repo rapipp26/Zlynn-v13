@@ -83,7 +83,7 @@ module.exports = {
                         value: `\`\`\`${tl.hours}h, ${tl.minutes}m, ${tl.seconds}s\`\`\``
                     }
                 );
-                return interaction.reply({ embeds: [embed], components: [row2] })
+                await interaction.reply({ embeds: [embed], components: [row2] })
             } else {
                 await embed.addFields(
                     {
@@ -96,7 +96,7 @@ module.exports = {
                     },
                 )
                 .setDescription(`${client.config.checked} Your daily cash is ready! Claim it by clicking the button below.`)
-                interaction.reply({ embeds: [embed], components: [row] })
+                await interaction.reply({ embeds: [embed], components: [row] })
             }
             //Daily button
 
