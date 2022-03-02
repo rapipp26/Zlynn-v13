@@ -73,7 +73,7 @@ module.exports = {
                     },
                     {
                         name: `${client.config.bank} PiggyBank`,
-                        vaue: `\`\`\`js\n${docs.bank.toLocaleString()}\n\`\`\``
+                        value: `\`\`\`js\n${docs.bank.toLocaleString()}\n\`\`\``
                     },
                     {
                         name: `${client.config.daily} Daily Cash`,
@@ -89,7 +89,7 @@ module.exports = {
                     },
                     {
                         name: `${client.config.bank} PiggyBank`,
-                        vaue: `\`\`\`js\n${docs.bank.toLocaleString()}\n\`\`\``
+                        value: `\`\`\`js\n${docs.bank.toLocaleString()}\n\`\`\``
                     },
                 )
                 .setDescription(`${client.config.checked} Your daily cash is ready! Claim it by clicking the button below.`)
