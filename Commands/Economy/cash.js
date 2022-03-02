@@ -13,7 +13,7 @@ module.exports = {
      */
     async execute(interaction, client) {
 
-        schema.findOne({ userId : target.id }, async(err, docs) => {
+        schema.findOne({ userId : interaction.user.id }, async(err, docs) => {
             if(err) throw err;
             if(!docs) docs = await schema.create({ userId: interaction.user.id });
 
