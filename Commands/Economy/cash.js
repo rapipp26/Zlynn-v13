@@ -121,7 +121,7 @@ module.exports = {
                         docs.daily = Date.now();
                         docs.cash += ra;
                         await docs.save()
-                        return interaction.reply({ content: `${client.config.checked} Successfully claimed your daily cash for \`${ra}\``})
+                        return i.reply({ content: `${client.config.checked} Successfully claimed your daily cash for \`${ra}\``})
                     break;
                 }
             })
