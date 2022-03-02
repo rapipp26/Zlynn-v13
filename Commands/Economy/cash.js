@@ -166,6 +166,7 @@ module.exports = {
                          i.channel.awaitMessages({ filter: fil, max: 1 }).then(async col => {
                             if(col.content === NaN) return interaction.followUp({ content: `${client.config.cancel} Please input a valid number.`})
                             if(docs.cash < col.content) return interaction.followUp({ content: `${client.config.cancel} Your cash is less than the amount you want to deposit`, ephemeral: true})
+                            console.log(col.content)
 
                             docs.bank += col.content;
                             docs.cash -= col.content;
