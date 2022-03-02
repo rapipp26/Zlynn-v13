@@ -6,6 +6,14 @@ module.exports = {
     name: "balance",
     cooldown: 5,
     description: "A simple economy command.",
+    options: [
+        {
+            name: "user",
+            description: "Mention a user to check their balance",
+            type: "USER",
+            required: false
+        }
+    ],
     /**
      * 
      * @param {CommandInteraction} interaction 
@@ -13,7 +21,53 @@ module.exports = {
      */
     async execute(interaction, client) {
 
-        const { user } = interaction
+        const { user } = interaction;
+        const target = interaction.options.getUser("user")
+
+        const row3 = new MessageActionRow()
+        .addComponents(
+            new MessageButton()
+            .setLabel("Deposit")
+            .setStyle("SUCCESS")
+            .setCustomId("depo")
+            .setDisabled(true)
+            .setEmoji(`${client.config.bank}`),
+            new MessageButton()
+            .setLabel("Withdraw")
+            .setStyle("SUCCESS")
+            .setCustomId("with")
+            .setDisabled(true)
+            .setEmoji(`${client.config.dollar}`),
+            new MessageButton()
+            .setLabel("Daily")
+            .setStyle("DANGER")
+            .setCustomId("dai1")
+            .setEmoji(`${client.config.daily}`)
+            .setDisabled(true)
+        );
+
+        if(target) {
+            schema.findOne({ userId : target.id }, async(err, docs) => {
+                if(err) throw err;
+                if(!docs) docs = await schema.create({ userId: target.id });
+
+                const embed2 = new MessageEmbed()
+                .setAuthor({ name: `${target.tag}'s Cash Info 💳`}, client.user.displayAvatarURL({ format: "png" }))
+                .setThumbnail(user.displayAvatarURL({ dynamic: true }))
+                .setColor("RANDOM")
+                .addFields(
+                    {
+                        name: `${client.config.dollar} Cash`,
+                        value: `\`\`\`js\n${docs.cash.toLocaleString()}\n\`\`\``
+                    },
+                    {
+                        name: `${client.config.bank} PiggyBank`,
+                        value: `\`\`\`js\n${docs.bank.toLocaleString()}\n\`\`\``
+                    }
+                )
+                return interaction.reply({ embeds: [embed2], components: [row3] })
+            })
+        }
 
         schema.findOne({ userId : user.id }, async(err, docs) => {
             if(err) throw err;
@@ -23,6 +77,7 @@ module.exports = {
             .setAuthor({ name: `${user.tag}'s Cash Info 💳`}, client.user.displayAvatarURL({ format: "png" }))
             .setThumbnail(user.displayAvatarURL({ dynamic: true }))
             .setColor("RANDOM");
+            
 
             const row = new MessageActionRow()
             .addComponents(
@@ -117,7 +172,7 @@ module.exports = {
                             await docs.save();
                             return interaction.followUp({ content: `${client.config.checked} Successfully deposited \`${col.first[0].content.toLocaleString()}\` to your bank account`})
                         })
-                        i.update({ embeds: [], components: [], content: `This message has been expired ${client.config.cooldown}`})
+                        i.editReply({ embeds: [], components: [], content: `This message has been expired ${client.config.cooldown}`})
                     break;
                     case "with" :
                         await i.reply({ content: `Please type how many cash do you want to withdraw.`});
@@ -131,14 +186,14 @@ module.exports = {
                             await docs.save();
                             return interaction.followUp({ content: `${client.config.checked} Successfully deposited \`${col.first[0].content.toLocaleString()}\` to your bank account`})
                         })
-                        i.update({ embeds: [], components: [], content: `This message has been expired ${client.config.cooldown}`})
+                        i.editReply({ embeds: [], components: [], content: `This message has been expired ${client.config.cooldown}`})
                     break; 
                     case "dai" :
                         docs.daily = Date.now();
                         docs.cash += ra;
                         await docs.save()
                          i.reply({ content: `${client.config.checked} Successfully claimed your daily cash for \`${ra}\``})
-                        i.update({ embeds: [], components: [], content: `This message has been expired ${client.config.cooldown}`})
+                        i.editReply({ embeds: [], components: [], content: `This message has been expired ${client.config.cooldown}`})
                     break;
                 }
             })
