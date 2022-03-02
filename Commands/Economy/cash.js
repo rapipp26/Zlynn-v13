@@ -48,18 +48,19 @@ module.exports = {
                 new MessageButton()
                 .setLabel("Deposit")
                 .setStyle("SUCCESS")
-                .setCustomId("depo1")
+                .setCustomId("depo")
                 .setEmoji(`${client.config.bank}`),
                 new MessageButton()
                 .setLabel("Withdraw")
                 .setStyle("SUCCESS")
-                .setCustomId("with1")
+                .setCustomId("with")
                 .setEmoji(`${client.config.dollar}`),
                 new MessageButton()
                 .setLabel("Daily")
                 .setStyle("DANGER")
                 .setCustomId("dai1")
-                .setEmoji(`${client.config.daily}`),
+                .setEmoji(`${client.config.daily}`)
+                .setDisabled(true)
             );
 
             let timeout = 86400000
@@ -137,38 +138,6 @@ module.exports = {
                         docs.cash += ra;
                         await docs.save()
                          i.reply({ content: `${client.config.checked} Successfully claimed your daily cash for \`${ra}\``})
-                        i.update({ embeds: [], components: [], content: `This message has been expired ${client.config.cooldown}`})
-                    break;
-                    case "depo1" :
-                        await i.reply({ content: `Please type how many cash do you want to deposit.`});
-
-                         i.channel.awaitMessages({ filter: fil, max: 1 }).then(async col => {
-                            if(col.first[0].content === NaN) return interaction.followUp({ content: `${client.config.cancel} Please input a valid number.`})
-                            if(docs.cash < col.first[0].content) return interaction.followUp({ content: `${client.config.cancel} Your cash is less than the amount you want to deposit`, ephemeral: true})
-
-                            docs.bank += col.first[0].content;
-                            docs.cash -= col.first[0].content;
-                            await docs.save();
-                            return interaction.followUp({ content: `${client.config.checked} Successfully deposited \`${col.first[0].content.toLocaleString()}\` to your bank account`})
-                        })
-                        i.update({ embeds: [], components: [], content: `This message has been expired ${client.config.cooldown}`})
-                    break;
-                    case "with1" :
-                        await i.reply({ content: `Please type how many cash do you want to withdraw.`});
-
-                         i.channel.awaitMessages({ filter: fil, max: 1 }).then(async col => {
-                            if(col.first[0].content === NaN) return interaction.followUp({ content: `${client.config.cancel} Please input a valid number.`})
-                            if(docs.bank < col.first[0].content) return interaction.followUp({ content: `${client.config.cancel} Your money in PiggyBank is less than the amount you want to withdraw`, ephemeral: true})
-
-                            docs.cash += col.first[0].content;
-                            docs.bank -= col.first[0].content;
-                            await docs.save();
-                            return interaction.followUp({ content: `${client.config.checked} Successfully deposited \`${col.first[0].content.toLocaleString()}\` to your bank account`})
-                        })
-                        i.update({ embeds: [], components: [], content: `This message has been expired ${client.config.cooldown}`})
-                    break; 
-                    case "dai1" :
-                        i.reply({ content: `${client.config.cancel} You already claim your daily cash.`})
                         i.update({ embeds: [], components: [], content: `This message has been expired ${client.config.cooldown}`})
                     break;
                 }
