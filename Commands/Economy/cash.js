@@ -107,7 +107,7 @@ module.exports = {
                 switch(i.customId) {
                     case "depo" :
                         await i.reply({ content: `Please type how many cash do you want to deposit.`});
-                        await i.channel.awaitMessages({ filter: fil, max: 1 }).then(async col => {
+                         i.channel.awaitMessages({ filter: fil, max: 1 }).then(async col => {
                             if(col.first[0].content === NaN) return interaction.followUp({ content: `${client.config.cancel} Please input a valid number.`})
                             if(docs.cash < col.first[0].content) return interaction.followUp({ content: `${client.config.cancel} Your cash is less than the amount you want to deposit`, ephemeral: true})
 
@@ -121,7 +121,7 @@ module.exports = {
                     case "with" :
                         await i.reply({ content: `Please type how many cash do you want to withdraw.`});
 
-                        await i.channel.awaitMessages({ filter: fil, max: 1 }).then(async col => {
+                         i.channel.awaitMessages({ filter: fil, max: 1 }).then(async col => {
                             if(col.first[0].content === NaN) return interaction.followUp({ content: `${client.config.cancel} Please input a valid number.`})
                             if(docs.bank < col.first[0].content) return interaction.followUp({ content: `${client.config.cancel} Your money in PiggyBank is less than the amount you want to withdraw`, ephemeral: true})
 
@@ -136,13 +136,13 @@ module.exports = {
                         docs.daily = Date.now();
                         docs.cash += ra;
                         await docs.save()
-                        await i.reply({ content: `${client.config.checked} Successfully claimed your daily cash for \`${ra}\``})
+                         i.reply({ content: `${client.config.checked} Successfully claimed your daily cash for \`${ra}\``})
                         i.update({ embeds: [], components: [], content: `This message has been expired ${client.config.cooldown}`})
                     break;
                     case "depo1" :
                         await i.reply({ content: `Please type how many cash do you want to deposit.`});
 
-                        await i.channel.awaitMessages({ filter: fil, max: 1 }).then(async col => {
+                         i.channel.awaitMessages({ filter: fil, max: 1 }).then(async col => {
                             if(col.first[0].content === NaN) return interaction.followUp({ content: `${client.config.cancel} Please input a valid number.`})
                             if(docs.cash < col.first[0].content) return interaction.followUp({ content: `${client.config.cancel} Your cash is less than the amount you want to deposit`, ephemeral: true})
 
@@ -156,7 +156,7 @@ module.exports = {
                     case "with1" :
                         await i.reply({ content: `Please type how many cash do you want to withdraw.`});
 
-                        await i.channel.awaitMessages({ filter: fil, max: 1 }).then(async col => {
+                         i.channel.awaitMessages({ filter: fil, max: 1 }).then(async col => {
                             if(col.first[0].content === NaN) return interaction.followUp({ content: `${client.config.cancel} Please input a valid number.`})
                             if(docs.bank < col.first[0].content) return interaction.followUp({ content: `${client.config.cancel} Your money in PiggyBank is less than the amount you want to withdraw`, ephemeral: true})
 
