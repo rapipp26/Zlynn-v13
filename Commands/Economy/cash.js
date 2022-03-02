@@ -15,7 +15,7 @@ module.exports = {
 
         schema.findOne({ userId : target.id }, async(err, docs) => {
             if(err) throw err;
-            if(!docs) docs = await schema.create({ userId: target.id });
+            if(!docs) docs = await schema.create({ userId: interaction.user.id });
 
             const embed = new MessageEmbed()
             .setAuthor({ name: `${interaction.user.tag}'s Cash Info 💳`}, client.user.displayAvatarURL({ format: "png" }))
@@ -39,7 +39,7 @@ module.exports = {
                 .setStyle("SUCCESS")
                 .setCustomId("dai")
                 .setEmoji(`${client.config.daily}`),
-            )
+            );
 
             const row2 = new MessageActionRow()
             .addComponents(
@@ -58,7 +58,7 @@ module.exports = {
                 .setStyle("DANGER")
                 .setCustomId("dai")
                 .setEmoji(`${client.config.daily}`),
-            )
+            );
 
             let timeout = 86400000
             let ra = Math.floor(Math.random() * 2000 ) + 500
