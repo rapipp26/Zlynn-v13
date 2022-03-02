@@ -14,5 +14,8 @@
     "next" : "<:f_next:948067602645778475> ",
     "previous" : "<:f_previous:948067602863915090> ",
     "cooldown" : "<:f_cooldown:948067605279825931>",
-    "server" : "<:f_database:948067602733867059>"
+    "server" : "<:f_database:948067602733867059>",
+    "dollar" : "<:f_dollar:948494098267000832>",
+    "bank" : "<:f_piggybank:948494100083142656>",
+    "daily" : "<:f_daily:948495683135111168>"
 }
