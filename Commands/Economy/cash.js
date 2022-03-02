@@ -77,7 +77,7 @@ module.exports = {
                     },
                     {
                         name: `${client.config.daily} Daily Cash`,
-                        value: `**${tl.hours}h, ${tl.minutes}m, ${tl.seconds}s**`
+                        value: `\`\`\`${tl.hours}h, ${tl.minutes}m, ${tl.seconds}s\`\`\``
                     }
                 );
                 return interaction.reply({ embeds: [embed], components: [row2] })
@@ -93,9 +93,41 @@ module.exports = {
                     },
                 )
                 .setDescription(`${client.config.checked} Your daily cash is ready! Claim it by clicking the button below.`)
-                return interaction.reply({ embeds: [embed], components: [row] })
+                interaction.reply({ embeds: [embed], components: [row] })
             }
             //Daily button
+
+            const filter = (i) => i.user.id === interaction.user.id
+            const collector = interaction.channel.createMessageComponentCollector({filter, componentType: 'BUTTON', time: 25000})
+
+            collector.on('collect', async (i) => {
+                switch(i.customId) {
+                    case "depo" :
+                        await i.reply({ content: `Please type how many cash do you want to deposit.`});
+                        const fil = msg => msg.author.id === user.id;
+                        await i.channel.awaitMessages({ filter: fil, max: 1 }).then(async col => {
+                            if(col.first[0].content === NaN) return interaction.followUp({ content: `${client.config.cancel} Please input a valid number.`})
+                            if(docs.cash < col.first[0].content) return interaction.followUp({ content: `${client.config.cancel} Your cash is less than the amount you want to deposit`, ephemeral: true})
+
+                            docs.bank += col.first[0].content;
+                            docs.cash -= col.first[0].content;
+                            await docs.save();
+                            return interaction.followUp({ content: `${client.config.checked} Successfully deposited \`${col.first[0].content.toLocaleString()}\` to your bank account`})
+                        })
+                    break;
+                    case "with" :
+                    break; 
+                    case "dai" :
+                        docs.daily = Date.now();
+                        docs.cash += ra;
+                        await docs.save()
+                        return interaction.reply({ content: `${client.config.checked} Successfully claimed your daily cash for \`${ra}\``})
+                    break;
+                }
+            })
+            collector.on('end', () => {
+                interaction.editReply({ embeds: [], components: [], content: `This message has been expired ${client.config.cooldown}` })
+            })
 
     })
 }
