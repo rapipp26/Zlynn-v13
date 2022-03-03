@@ -161,18 +161,7 @@ module.exports = {
             collector.on('collect', async (i) => {
                 switch(i.customId) {
                     case "depo" :
-                        const fil = msg => msg.author.id === user.id;
-                        await i.reply({ content: "Please type the amount that you want to deposit.", fetchReply: true }).then(() => {
-                            i.channel.awaitMessages({ fil, max: 3, time: 30000, errors: ["time"] }).then(col=> {
-                                if(isNaN(col.content)) return interaction.followUp({ content: "Please input a valid number." })
-                                if(col.content > docs.cash) return interaction.followUp({ content: "Your cash is leess than the amount you want to deposit."})
-
-                                docs.bank += amount
-                                docs.cash -= amount 
-                                docs.save();
-                                return interaction.followUp({ content: `${client.config.checked} Successfully deposited \`${amount.toLocaleString()}\` to your bank account`})
-                            })
-                        })
+                        i.reply({ content: "Coming soon!" })
                     break;
                     case "with" :
                         i.reply({ content: "Coming soon!" })
