@@ -67,7 +67,7 @@ module.exports = {
                 )
                 return interaction.reply({ embeds: [embed2], components: [row3] })
             })
-        }
+        } else {
 
         schema.findOne({ userId : user.id }, async(err, docs) => {
             if(err) throw err;
@@ -161,7 +161,12 @@ module.exports = {
             collector.on('collect', async (i) => {
                 switch(i.customId) {
                     case "depo" :
-                        i.reply({ content: "Coming soon!" })
+                        const fil = msg => msg.author.id === user.id;
+                        await i.reply({ content: "Coming soon!", fetchReply: true }).then(() => {
+                            i.channel.awaitMessages({ fil, max: 1, time: 30000, errors: ["time"] }).then(col=> {
+                                if(isNaN(col.content)) return i.followUp({ content: "bukann nomor" })
+                            })
+                        })
                     break;
                     case "with" :
                         i.reply({ content: "Coming soon!" })
@@ -179,5 +184,6 @@ module.exports = {
             })
 
     })
+}
 }
 }
