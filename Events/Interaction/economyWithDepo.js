@@ -33,16 +33,13 @@ module.exports = {
                 break;
                 case "done" :
                     if(docs.cash < docs.withd) return interaction.followUp({ content: `${client.config.cancel} Your cash is less than the amount you want to deposit`, ephemeral: true })
-                    interaction.update({ content: `${client.config.checked} Successfully deposited \`${docs.withd}\` to your bank account.`, ephemeral: true })
+                    interaction.update({ content: `${client.config.checked} Successfully deposited \`${docs.withd}\` to your bank account.`, ephemeral: true, components: [] })
                     docs.bank += docs.withd
                     docs.cash -= docs.withd
                     docs.withd = 0
                     docs.save()
                 break;
             }
-            setTimeout(() => {
-                interaction.update({ content: `This message has been expired ${client.config.cooldown}`, components: [] })
-            }, 30000)
         })
         
     }
