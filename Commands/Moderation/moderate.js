@@ -33,7 +33,8 @@ module.exports = {
     async execute(interaction, client) {
         const target = interaction.options.getMember("member");
         const reason = interaction.options.getString("reason") || "No reason provided.";
-        const time = ms(interaction.options.getString("time") || 0)
+        let time = interaction.options.getString("time")
+        if(time) time = ms(interaction.options.getString("time"))
 
         if(target.roles.highest.position >= interaction.member.roles.highest.position) return interaction.reply({ content: `${client.config.cancel} You can't moderate this member, it has the same/higher role position than you`});
         if(target.user.id.includes(interaction.guild.ownerId)) return interaction.reply({ content: `${client.config.cancel} You can't moderate the server owner, me neither can't`});

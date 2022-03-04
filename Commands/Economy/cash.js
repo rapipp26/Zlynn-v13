@@ -138,7 +138,7 @@ module.exports = {
                         value: `\`\`\`${tl.hours}h, ${tl.minutes}m, ${tl.seconds}s\`\`\``
                     }
                 );
-                await interaction.reply({ embeds: [embed], components: [row2] })
+                await interaction.reply({ embeds: [embed], components: [row2], ephemeral: true  })
             } else {
                 await embed.addFields(
                     {
@@ -151,7 +151,7 @@ module.exports = {
                     },
                 )
                 .setDescription(`${client.config.checked} Your daily cash is ready! Claim it by clicking the button below.`)
-                await interaction.reply({ embeds: [embed], components: [row] })
+                await interaction.reply({ embeds: [embed], components: [row], ephemeral: true  })
             }
             //Daily button
 
@@ -161,11 +161,27 @@ module.exports = {
             collector.on('collect', async (i) => {
                 switch(i.customId) {
                     case "depo" :
-                        i.reply({ content: "Coming soon!" })
+                        const d = new MessageActionRow()
+                        .addComponents(
+                            new MessageButton()
+                            .setCustomId("10")
+                            .setLabel("+ 10")
+                            .setStyle("SUCCESS"),
+                            new MessageButton()
+                            .setCustomId("50")
+                            .setLabel("+ 50")
+                            .setStyle("SUCCESS"),
+                            new MessageButton()
+                            .setCustomId("100")
+                            .setLabel("+ 100")
+                            .setStyle("SUCCESS"),
+                            new MessageButton()
+                            .setCustomId("done")
+                            .setLabel("Done")
+                            .setStyle("SUCCESS"),
+                        )
+                        i.reply({ content: `Please click the button below to increase the amount you want to deposit. Amount: \`${docs.withd}\`` })
                     break;
-                    case "with" :
-                        i.reply({ content: "Coming soon!" })
-                    break; 
                     case "dai" :
                         docs.daily = Date.now();
                         docs.cash += ra;

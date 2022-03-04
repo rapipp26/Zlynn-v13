@@ -19,6 +19,11 @@ const schema = mongoose.Schema({
 
     daily: {
         type: Number
+    },
+
+    withd: {
+        type: Number,
+        default: 0
     }
 });
 
