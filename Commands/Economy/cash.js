@@ -180,7 +180,7 @@ module.exports = {
                             .setLabel("Done")
                             .setStyle("SUCCESS"),
                         )
-                        i.reply({ content: `Please click the button below to increase the amount you want to deposit. Amount: \`${docs.withd}\``, components: [d] })
+                        i.reply({ content: `Please click the button below to increase the amount you want to deposit. Amount: \`${docs.withd}\``, components: [d], ephemeral: true  })
                     break;
                     case "dai" :
                         docs.daily = Date.now();
