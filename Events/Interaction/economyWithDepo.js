@@ -10,7 +10,7 @@ module.exports = {
      */
     async execute(interaction, client) {
         if(!interaction.isButton()) return;
-        const { member, customId, user } = interaction;
+        const { customId, user } = interaction;
 
         if(!["10","50","100","done"].includes(customId)) return;
 
@@ -34,8 +34,9 @@ module.exports = {
                 case "done" :
                     if(docs.cash < docs.withd) return interaction.followUp({ content: `${client.config.cancel} Your cash is less than the amount you want to deposit`, ephemeral: true })
                     interaction.update({ content: `${client.config.checked} Successfully deposited \`${docs.withd}\` to your bank account.`, ephemeral: true })
-                    docs.bank += docs.withd;
-                    docs.withd = 0;
+                    docs.bank += docs.withd
+                    docs.cash -= docs.withd
+                    docs.withd = 0
                     docs.save()
                 break;
             }
