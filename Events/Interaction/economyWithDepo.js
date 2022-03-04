@@ -33,7 +33,7 @@ module.exports = {
                 break;
                 case "done" :
                     if(docs.cash < docs.widht) return interaction.followUp({ content: `${client.config.cancel} Your cash is less than the amount you want to deposit`})
-                    interaction.update({ content: `${client.config,checked} Successfully deposited \`${docs.withd}\` to your bank account.`})
+                    interaction.update({ content: `${client.config.checked} Successfully deposited \`${docs.withd}\` to your bank account.`})
                     docs.bank = docs.withd
                     docs.widht = 0
                     docs.save()
