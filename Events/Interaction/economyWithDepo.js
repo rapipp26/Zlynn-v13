@@ -40,6 +40,9 @@ module.exports = {
                     docs.save()
                 break;
             }
+            setTimeout(() => {
+                interaction.update({ content: `This message has been expired ${client.config.cooldown}`, components: [] })
+            }, 30000)
         })
         
     }
