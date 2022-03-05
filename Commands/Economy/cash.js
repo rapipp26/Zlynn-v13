@@ -4,7 +4,7 @@ const ms = require("parse-ms");
 
 module.exports = {
     name: "balance",
-    cooldown: 5,
+    cooldown: 10,
     description: "A simple economy command.",
     options: [
         {
@@ -182,6 +182,28 @@ module.exports = {
                         )
                         i.reply({ content: `Please click the button below to increase the amount you want to deposit. Amount: \`${docs.withd}\``, components: [d], ephemeral: true  })
                     break;
+                    case "with" :
+                        const w = new MessageActionRow()
+                        .addComponents(
+                            new MessageButton()
+                            .setCustomId("10w")
+                            .setLabel("+ 10")
+                            .setStyle("SUCCESS"),
+                            new MessageButton()
+                            .setCustomId("50w")
+                            .setLabel("+ 50")
+                            .setStyle("SUCCESS"),
+                            new MessageButton()
+                            .setCustomId("100w")
+                            .setLabel("+ 100")
+                            .setStyle("SUCCESS"),
+                            new MessageButton()
+                            .setCustomId("donew")
+                            .setLabel("Done")
+                            .setStyle("SUCCESS"),
+                        )
+                        i.reply({ content: `Please click the button below to increase the amount you want to withdraw. Amount: \`${docs.withd}\``, components: [w], ephemeral: true  })
+                    break
                     case "dai" :
                         docs.daily = Date.now();
                         docs.cash += ra;
