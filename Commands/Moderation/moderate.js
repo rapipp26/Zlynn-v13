@@ -93,9 +93,9 @@ module.exports = {
                     i.update({ embeds: [tembed], components: [] })
                 break;
                 case "w" :
-                    const id = uuid.v4()
-                    console.log(id)
-                    await db.findOne({ UserID : user.id, GuildID : guild.id }, async(err, docs) => {
+                    const id = uuid.v4();
+                    
+                    db.findOne({ UserID : user.id, GuildID : guild.id }, async(err, docs) => {
                         if(err) throw err;
                         if(!docs) {
                             docs = new db({
