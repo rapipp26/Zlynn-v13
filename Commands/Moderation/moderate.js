@@ -37,7 +37,8 @@ module.exports = {
         const target = interaction.options.getMember("member");
         const { guild, user } = interaction;
 
-        let time = interaction.options.getString("time") || 0;
+        let time = interaction.options.getString("time");
+        if(time) time = ms(time) 
 
         if(target.roles.highest.position >= interaction.member.roles.highest.position) return interaction.reply({ content: `${client.config.cancel} You can't moderate this member, it has the same/higher role position than you`});
         if(target.user.id.includes(interaction.guild.ownerId)) return interaction.reply({ content: `${client.config.cancel} You can't moderate the server owner, me neither can't`});
@@ -78,14 +79,10 @@ module.exports = {
         )
 
 
-        if(time === 0) {
-            return
-        } else if(!time === 0) {
-            time = ms(time)
-            return interaction.reply({embeds: [embed2], components: [row2], content: "You have `25` seconds to choose an action" })
-        } else {
-            interaction.reply({embeds: [embed], components: [row], content: "You have `25` seconds to choose an action" })   
-        }
+        if(time) return interaction.reply({embeds: [embed2], components: [row2], content: "You have `25` seconds to choose an action" })
+        else 
+        interaction.reply({embeds: [embed], components: [row], content: "You have `25` seconds to choose an action" })   
+        
         const filter = (i) => i.user.id === interaction.user.id
         const collector = interaction.channel.createMessageComponentCollector({filter, componentType: 'BUTTON', time: 25000})
 
