@@ -94,7 +94,8 @@ module.exports = {
                 break;
                 case "w" :
                     const id = uuid.v4()
-                    db.findOne({ UserID : user.id, GuildID : guild.id }, async(err, docs) => {
+                    console.log(id)
+                    await db.findOne({ UserID : user.id, GuildID : guild.id }, async(err, docs) => {
                         if(err) throw err;
                         if(!docs) {
                             docs = new db({
@@ -104,7 +105,7 @@ module.exports = {
                                     {
                                         ExecuterID: user.id,
                                         ExecuterTag: user.tag,
-                                        TargetID: target.id,
+                                        TargetID: target.user.id,
                                         TargetTag: target.user.tag,
                                         Reason: reason,
                                         Date: parseInt(interaction.createdTimestamp / 1000),
@@ -116,7 +117,7 @@ module.exports = {
                             const obj = {
                                 ExecuterID: user.id,
                                 ExecuterTag: user.tag,
-                                TargetID: target.id,
+                                TargetID: target.user.id,
                                 TargetTag: target.user.tag,
                                 Reason: reason,
                                 Date: parseInt(interaction.createdTimestamp / 1000),
