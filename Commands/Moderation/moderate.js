@@ -1,5 +1,8 @@
-const { MessageEmbed, MessageButton, MessageActionRow } = require(`discord.js`)
-const ms = require("ms")
+const { MessageEmbed, MessageButton, MessageActionRow } = require(`discord.js`);
+const ms = require("ms");
+const db = require("../../Schemas/warnDB");
+const uuid = require("uuid");
+
 module.exports = {
     name: "moderate",
     cooldown: 15,
@@ -16,7 +19,7 @@ module.exports = {
             name: "reason",
             description: "Reason you do action to the member",
             type: "STRING",
-            required: false
+            required: true
         },
         {
             name: "time",
@@ -32,7 +35,8 @@ module.exports = {
      */
     async execute(interaction, client) {
         const target = interaction.options.getMember("member");
-        const reason = interaction.options.getString("reason") || "No reason provided.";
+        const { guild, user } = interaction;
+
         let time = interaction.options.getString("time")
         if(time) time = ms(interaction.options.getString("time"))
 
@@ -60,6 +64,10 @@ module.exports = {
             .setStyle("DANGER")
             .setLabel("Ban")
             .setCustomId("b"),
+            new MessageButton()
+            .setStyle("DANGER")
+            .setLabel("Warn")
+            .setCustomId("w"),
         )
 
         const row2 = new MessageActionRow()
@@ -96,6 +104,19 @@ module.exports = {
                     await target.timeout(time, `${reason}`)
                     const tembed = new MessageEmbed().setColor("GREEN").setAuthor({ name: "Successfully Timeout A Member", iconURL: client.user.avatarURL({ format: "png" })}).addFields({ name: "Member", value: `${target}`}, { name: "Reason", value: `${reason}`}, { name: "Time", value: `${ms(time)}`}).setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true })).setTimestamp()
                     i.update({ embeds: [tembed], components: [] })
+                break;
+                case "w" :
+                    const id = uuid.v4();
+
+                    await db.findOneAndUpdate(
+                        { GuildID : guild.id, ExecuterID : user.id },
+                        { ExecuterTag : user.tag, UserID : target.user.id },
+                        { UserTag : target.user.tag, WarnID : id },
+                        { new: true, upsert: true }
+                    )
+
+                    const wembed = new MessageEmbed().setColor("GREEN").setAuthor({ name: "Successfully Warn A Member", iconURL: client.user.avatarURL({ format: "png" })}).addFields({ name: "Member", value: `${target}`}, { name: "Reason", value: `${reason}`}, { name: "Warn ID", value: `${id}`}, { name: "Remove Warn", value: `\`/warn remove ${id}\``}, { name: "Warnings", value: `\`/warn check\``}).setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true })).setTimestamp()
+                    i.update({ embeds: [wembed], components: [] })
                 break;
             }
         })
