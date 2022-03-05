@@ -35,6 +35,7 @@ module.exports = {
      */
     async execute(interaction, client) {
         const target = interaction.options.getMember("member");
+        const reason = interaction.options.getString("reason")
         const { guild, user } = interaction;
 
         const time = ms(interaction.options.getString("time") || 0)
@@ -94,7 +95,7 @@ module.exports = {
                 break;
                 case "w" :
                     const id = uuid.v4();
-                    
+
                     db.findOne({ UserID : user.id, GuildID : guild.id }, async(err, docs) => {
                         if(err) throw err;
                         if(!docs) {
