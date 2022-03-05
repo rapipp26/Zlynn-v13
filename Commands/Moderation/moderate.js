@@ -78,14 +78,14 @@ module.exports = {
         )
 
 
-        if(time === 0) return;
-        if(!time === 0) {
+        if(time === 0) {
+            return
+        } else if(!time === 0) {
             time = ms(time)
-            await interaction.reply({embeds: [embed2], components: [row2], content: "You have `25` seconds to choose an action" })
+            return interaction.reply({embeds: [embed2], components: [row2], content: "You have `25` seconds to choose an action" })
         } else {
-            await interaction.reply({embeds: [embed], components: [row], content: "You have `25` seconds to choose an action" })   
+            interaction.reply({embeds: [embed], components: [row], content: "You have `25` seconds to choose an action" })   
         }
-        
         const filter = (i) => i.user.id === interaction.user.id
         const collector = interaction.channel.createMessageComponentCollector({filter, componentType: 'BUTTON', time: 25000})
 
