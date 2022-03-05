@@ -46,7 +46,7 @@ module.exports = {
         if(target.id === interaction.member.id) return interaction.reply({ content: `${client.config.cancel} You can't moderate yourself`});
 
         const embed = new MessageEmbed()
-        .setDescription(`**Please choose an action for ${target}**\n\n**Notes**\n> To timeout a member, make sure you have provided the time option. If the time was \`0\`, then you cant timing out a member. Time: \`${time}\`\n> For other commands, you dont need to provide the time options.`)
+        .setDescription(`**Please choose an action for ${target}**\n\n**Notes**\n> To timeout a member, make sure you have provided the time option. If the time was \`0\`, then you cant timing out a member. Time: \`${time}\`\n\n> For other commands, you dont need to provide the time options.`)
         .setColor("RED")
 
         const row = new MessageActionRow()
@@ -93,23 +93,49 @@ module.exports = {
                     i.update({ embeds: [tembed], components: [] })
                 break;
                 case "w" :
-                    const id = uuid.v4();
-
-                    await db.findOneAndUpdate(
-                        { GuildID : guild.id, ExecuterID : user.id },
-                        { ExecuterTag : user.tag, UserID : target.user.id },
-                        { UserTag : target.user.tag, WarnID : id },
-                        { new: true, upsert: true }
-                    )
+                    const id = uuid.v4()
+                    db.findOne({ UserID : user.id, GuildID : guild.id }, async(err, docs) => {
+                        if(err) throw err;
+                        if(!docs) {
+                            docs = new db({
+                                GuildID: guild.id,
+                                UserID: target.id,
+                                WarnData: [
+                                    {
+                                        ExecuterID: user.id,
+                                        ExecuterTag: user.tag,
+                                        TargetID: target.id,
+                                        TargetTag: target.user.tag,
+                                        Reason: reason,
+                                        Date: parseInt(interaction.createdTimestamp / 1000),
+                                        WarnID: id
+                                    }
+                                ],
+                        })
+                        } else {
+                            const obj = {
+                                ExecuterID: user.id,
+                                ExecuterTag: user.tag,
+                                TargetID: target.id,
+                                TargetTag: target.user.tag,
+                                Reason: reason,
+                                Date: parseInt(interaction.createdTimestamp / 1000),
+                                WarnID: id
+                            }
+                            docs.WarnData.push(obj);
+                        }
+                    docs.save()
 
                     const wembed = new MessageEmbed().setColor("GREEN").setAuthor({ name: "Successfully Warn A Member", iconURL: client.user.avatarURL({ format: "png" })}).addFields({ name: "Member", value: `${target}`}, { name: "Reason", value: `${reason}`}, { name: "Warn ID", value: `${id}`}, { name: "Remove Warn", value: `\`/warn remove ${id}\``}, { name: "Warnings", value: `\`/warn check\``}).setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true })).setTimestamp()
                     i.update({ embeds: [wembed], components: [] })
+                    });
                 break;
             }
-        })
+    })
 
-        collector.on('end', () => {
-            interaction.editReply({ embeds: [], components: [], content: `This message has been expired ${client.config.cooldown}` })
-        })
+    collector.on('end', () => {
+        interaction.editReply({ embeds: [], components: [], content: `This message has been expired ${client.config.cooldown}` })
+    })
+
     }
-};
+}
