@@ -37,8 +37,7 @@ module.exports = {
         const target = interaction.options.getMember("member");
         const { guild, user } = interaction;
 
-        let timen = interaction.options.getString("time");
-        if(timen) const time = ms(timen)
+        const time = ms(interaction.options.getString("time") || 0)
 
         if(target.roles.highest.position >= interaction.member.roles.highest.position) return interaction.reply({ content: `${client.config.cancel} You can't moderate this member, it has the same/higher role position than you`});
         if(target.user.id.includes(interaction.guild.ownerId)) return interaction.reply({ content: `${client.config.cancel} You can't moderate the server owner, me neither can't`});
@@ -47,7 +46,7 @@ module.exports = {
         if(target.id === interaction.member.id) return interaction.reply({ content: `${client.config.cancel} You can't moderate yourself`});
 
         const embed = new MessageEmbed()
-        .setDescription(`**Please choose an action on ${target} by clicking the button below.**`)
+        .setDescription(`**Please choose an action for ${target}**\n\n**Notes**\n> To timeout a member, make sure you have provided the time option. If the time was \`0\`, then you cant timing out a member. Time: \`${time}\`\n> For other commands, you dont need to provide the time options.`)
         .setColor("RED")
 
         const row = new MessageActionRow()
@@ -64,10 +63,6 @@ module.exports = {
             .setStyle("DANGER")
             .setLabel("Warn")
             .setCustomId("w"),
-        )
-
-        const row2 = new MessageActionRow()
-        .addComponents(
             new MessageButton()
             .setStyle("DANGER")
             .setLabel("Timeout")
@@ -75,8 +70,6 @@ module.exports = {
         )
 
 
-        if(time) return interaction.reply({embeds: [embed2], components: [row2], content: "You have `25` seconds to choose an action" })
-        else 
         interaction.reply({embeds: [embed], components: [row], content: "You have `25` seconds to choose an action" })   
 
         const filter = (i) => i.user.id === interaction.user.id
