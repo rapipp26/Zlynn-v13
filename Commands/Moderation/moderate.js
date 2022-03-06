@@ -71,7 +71,7 @@ module.exports = {
         )
 
 
-        interaction.reply({embeds: [embed], components: [row], content: "You have `25` seconds to choose an action" })   
+        interaction.reply({embeds: [embed], components: [row], content: "You have `25` seconds to choose an action", ephemeral: true })   
 
         const filter = (i) => i.user.id === interaction.user.id
         const collector = interaction.channel.createMessageComponentCollector({filter, componentType: 'BUTTON', time: 25000})
@@ -96,47 +96,16 @@ module.exports = {
                 case "w" :
                     const id = uuid.v4();
 
-                    db.findOne({ UserID : user.id, GuildID : guild.id }, async(err, docs) => {
-                        if(err) throw err;
-                        if(!docs) {
-                            docs = new db({
-                                GuildID: guild.id,
-                                UserID: target.id,
-                                WarnData: [
-                                    {
-                                        ExecuterID: user.id,
-                                        ExecuterTag: user.tag,
-                                        TargetID: target.user.id,
-                                        TargetTag: target.user.tag,
-                                        Reason: reason,
-                                        Date: parseInt(interaction.createdTimestamp / 1000),
-                                        WarnID: id
-                                    }
-                                ],
-                        })
-                        } else {
-                            const obj = {
-                                ExecuterID: user.id,
-                                ExecuterTag: user.tag,
-                                TargetID: target.user.id,
-                                TargetTag: target.user.tag,
-                                Reason: reason,
-                                Date: parseInt(interaction.createdTimestamp / 1000),
-                                WarnID: id
-                            }
-                            docs.WarnData.push(obj);
-                        }
-                    docs.save()
+                    db.save({ TargetID: target.user.id }).then((res) => {
+                        console.log("added warn to a user" + target)
+                    })
 
-                    const wembed = new MessageEmbed().setColor("GREEN").setAuthor({ name: "Successfully Warn A Member", iconURL: client.user.avatarURL({ format: "png" })}).addFields({ name: "Member", value: `${target}`}, { name: "Reason", value: `${reason}`}, { name: "Warn ID", value: `${id}`}, { name: "Remove Warn", value: `\`/warn remove ${id}\``}, { name: "Warnings", value: `\`/warn check\``}).setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true })).setTimestamp()
-                    i.update({ embeds: [wembed], components: [] })
-                    });
                 break;
             }
     })
 
     collector.on('end', () => {
-        interaction.editReply({ embeds: [], components: [], content: `This message has been expired ${client.config.cooldown}` })
+        interaction.editReply({ content: `This message has been expired ${client.config.cooldown}` })
     })
 
     }

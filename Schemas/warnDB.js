@@ -2,6 +2,8 @@ const { model, Schema } = require("mongoose");
 
 module.exports = model("warnings", new Schema ({
     GuildID: String,
-    UserID: String,
-    WarnData: Array,
+    TargetID: String,
+    ExecuterID: String,
+    Date: String,
+    WarnID: String,
 }))
