@@ -50,12 +50,12 @@ module.exports = {
         switch(sub) {
             case "check" :
                 db.find({ TargetID: target.id }).then((docs) => {
-                    interaction.reply({ content: `Total warnings from **${client.user.cache.get(docs.TargetID).tag}** : \`${docs.length} Warnings\``})
+                    interaction.reply({ content: `Total warnings from **${client.users.cache.get(docs.TargetID).tag}** : \`${docs.length} Warnings\``})
                  }).catch(console.error) 
             break;
             case "remove" :
                 db.findOneAndRemove({ WarnID: id }).then((res) => {
-                    interaction.reply({ content: `${client.config.checked} **|** Removed warn \`${res.id}\` from ${client.user.cache.get(res.TargetID).tag}` })
+                    interaction.reply({ content: `${client.config.checked} **|** Removed warn \`${res.id}\` from ${client.users.cache.get(res.TargetID).tag}` })
                 }).catch(console.error)
             break;
         }
