@@ -49,15 +49,13 @@ module.exports = {
 
         switch(sub) {
             case "check" :
-                db.find({ TargetID: target.id }).then( async (docs) => {
-                    const user = await client.users.cache.get(docs.TargetID);
-                    interaction.reply({ content: `Total warnings from **${user.tag}** : \`${docs.length} Warnings\``})
+                db.find({ TargetID: target.id }).then((docs) => {
+                    interaction.reply({ content: `Total warnings from <@${docs.TargetID}> : \`${docs.length} Warnings\``})
                  }).catch(console.error) 
             break;
             case "remove" :
-                db.findOneAndRemove({ WarnID: id }).then( async (res) => {
-                    const user1 = await client.users.cache.get(res.TargetID);
-                    interaction.reply({ content: `${client.config.checked} **|** Removed warn \`${id}\` from ${user1.tag}` })
+                db.findOneAndRemove({ WarnID: id }).then((res) => {
+                    interaction.reply({ content: `${client.config.checked} **|** Removed warn \`${id}\` from <@${res.TargetID}>` })
                 }).catch(console.error)
             break;
         }
