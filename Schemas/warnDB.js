@@ -6,4 +6,5 @@ module.exports = model("warnings", new Schema ({
     ExecuterID: String,
     Date: String,
     WarnID: String,
+    Reason: String,
 }))

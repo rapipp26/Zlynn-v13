@@ -2,6 +2,7 @@ const { MessageEmbed, MessageButton, MessageActionRow } = require(`discord.js`);
 const ms = require("ms");
 const db = require("../../Schemas/warnDB");
 const uuid = require("uuid");
+const { schema } = require("../../Schemas/warnDB");
 
 module.exports = {
     name: "moderate",
@@ -96,8 +97,29 @@ module.exports = {
                 case "w" :
                     const id = uuid.v4();
 
-                    db.save({ TargetID: target.user.id }).then((res) => {
-                        console.log("added warn to a user" + target)
+                    db.findOne({ TargetID: target.user.id, GuildID: guild.id }, async (err, docs) => {
+                        if(err) throw err;
+                        if(!docs) {
+                            docs = await db.create({
+                                GuildID: guild.id,
+                                TargetID: target.user.id,
+                                ExecuterID: user.id,
+                                Date: parseInt(interaction.createdTimestamp / 1000),
+                                WarnID: id,
+                                Reason: reason
+                            })
+                        } else {
+                            await db.create({
+                                GuildID: guild.id,
+                                TargetID: target.user.id,
+                                ExecuterID: user.id,
+                                Date: parseInt(interaction.createdTimestamp / 1000),
+                                WarnID: id,
+                                Reason: reason
+                            })
+                        }
+                        const wembed = new MessageEmbed().setColor("GREEN").setAuthor({ name: "Successfully Warn A Member", iconURL: client.user.avatarURL({ format: "png" })}).addFields({ name: "Member", value: `${target}`}, { name: "Reason", value: `${reason}`}, { name: "Warn ID", value: `${id}`}, { name: "Remove Warn", value: `\`/warn remove ${id}\``}, { name: "Warnings", value: `\`/warn check\``}).setFooter(`Executed by ${interaction.user.tag}`, interaction.user.displayAvatarURL({ dynamic: true })).setTimestamp()
+                        i.update({ embeds: [wembed], components: [] })
                     })
 
                 break;
