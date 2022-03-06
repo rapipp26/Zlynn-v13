@@ -53,7 +53,7 @@ module.exports = {
                  }).catch(console.error)
             break;
             case "remove" :
-                Warns.findOneAndRemove({ WarnID: "x", TargetID: "y" }).then((res) => {
+                db.findOneAndRemove({ WarnID: id }).then((res) => {
                     console.log(res);
                 }).catch(console.error)
             break;
