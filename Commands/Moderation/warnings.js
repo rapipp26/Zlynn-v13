@@ -6,6 +6,7 @@ module.exports = {
     name: "warn",
     cooldown: 10,
     description: "Remove or check warnings from a member",
+    permission: "ADMINISTRATOR",
     options: [
         {
             name: "check",
@@ -49,12 +50,12 @@ module.exports = {
         switch(sub) {
             case "check" :
                 db.find({ TargetID: target.id }).then((docs) => {
-                    console.log("jumlah warn: ", docs.length)
-                 }).catch(console.error)
+                    interaction.reply({ content: `Total warnings from **${client.user.cache.get(docs.TargetID).tag}** : \`${docs.length} Warnings\``})
+                 }).catch(console.error) 
             break;
             case "remove" :
                 db.findOneAndRemove({ WarnID: id }).then((res) => {
-                    console.log(res);
+                    interaction.reply({ content: `${client.config.checked} **|** Removed warn \`${res.id}\` from ${client.user.cache.get(res.TargetID).tag}` })
                 }).catch(console.error)
             break;
         }
